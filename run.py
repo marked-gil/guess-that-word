@@ -55,12 +55,15 @@ WORDS_DICTIONARY = {
 }
 
 
-def get_random_word():
+def get_random_word(used_words_list):
     """
-    Gets a random word from the words dictionary and returns it
+    Gets a random word from the words dictionary while preventing used words
+    from being repeated, and returns a tuple of word/definition and id
     """
     word_id = math.floor((random() * len(WORDS_DICTIONARY)+1))
-    return WORDS_DICTIONARY[word_id]
+    while word_id in used_words_list:
+        word_id = math.floor((random() * len(WORDS_DICTIONARY)+1))
+    return WORDS_DICTIONARY[word_id], word_id
 
 
 def display_placeholder(placeholder, full_answer=False):
@@ -110,9 +113,14 @@ def show_answer(word, placeholder):
 
 
 print(LOGO)
-dictionary_item = get_random_word()
-word_definition = dictionary_item['definition']
-word_to_guess = dictionary_item['word'].upper()
+
+# Holds the IDs of used words
+used_words = []
+
+dictionary_item = get_random_word(used_words)
+used_words.append(dictionary_item[1])
+word_definition = dictionary_item[0]['definition']
+word_to_guess = dictionary_item[0]['word'].upper()
 
 print(f"Definition:\n\"{word_definition}\"")
 
