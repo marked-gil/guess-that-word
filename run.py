@@ -87,6 +87,16 @@ def give_2nd_hint(word, placeholder):
     return placeholder
 
 
+def show_answer(word, placeholder):
+    """
+    Displays the correct answer by replacing the placeholder underscores
+    with the correct letters and returns the modified placeholder
+    """
+    for ind, letter in enumerate(word):
+        placeholder[ind] = letter
+    return placeholder
+
+
 print(LOGO)
 dictionary_item = get_random_word()
 word_definition = dictionary_item['definition']
@@ -116,3 +126,7 @@ while not_guessed_yet and num_guess != 3:
             word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
             print('  '.join(word_placeholder))
             print("Try again!")
+        else:
+            print("Sorry your guess is wrong!")
+            answer = show_answer(word_to_guess, word_placeholder)
+            print('   '.join(answer))
