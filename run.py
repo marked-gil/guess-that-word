@@ -67,7 +67,11 @@ print(LOGO)
 dictionary_item = get_random_word()
 word_definition = dictionary_item['definition']
 word_to_guess = dictionary_item['word'].upper()
+
 print(f"Definition:\n\"{word_definition}\"")
+
+word_placeholder = ["___" for _ in range(len(word_to_guess))]
+print('  '.join(word_placeholder))
 
 not_guessed_yet = True
 
