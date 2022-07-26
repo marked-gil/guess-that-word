@@ -64,18 +64,18 @@ def get_random_word():
 
 
 print(LOGO)
-word_to_guess = get_random_word()
-print(f"Definition:\n\"{word_to_guess['definition']}\"")
+dictionary_item = get_random_word()
+word_definition = dictionary_item['definition']
+word_to_guess = dictionary_item['word'].upper()
+print(f"Definition:\n\"{word_definition}\"")
 
 not_guessed_yet = True
 
 while not_guessed_yet:
-    guess = input("Provide your guess:\n")
+    guess = input("Provide your guess:\n").upper()
 
-    if guess == word_to_guess['word']:
+    if guess == word_to_guess:
         not_guessed_yet = False
         print("Congratulations!")
     else:
         print("Try again!")
-
-print(not_guessed_yet)
