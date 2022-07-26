@@ -65,13 +65,25 @@ def get_random_word():
 
 def give_1st_hint(word, placeholder):
     """
-    Gives hint by adding the first and last letters of the word to 
+    Gives hint by adding the first and last letters of the word to
     the placeholder and returns the modified placeholder
     """
     first_letter = word[0]
     last_letter = word[-1]
     placeholder[0] = first_letter
     placeholder[-1] = last_letter
+    return placeholder
+
+
+def give_2nd_hint(word, placeholder):
+    """
+    Gives hint by adding the 2nd and middle letters of the word to
+    the placeholder and returns the modified placeholder
+    """
+    second_letter = word[1]
+    middle_letter = word[math.floor(len(word) / 2)]
+    placeholder[1] = second_letter
+    placeholder[math.floor(len(word) / 2)] = middle_letter
     return placeholder
 
 
@@ -98,5 +110,9 @@ while not_guessed_yet and num_guess != 3:
         num_guess += 1
         if num_guess == 1:
             word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
+            print('  '.join(word_placeholder))
+            print("Try again!")
+        elif num_guess == 2:
+            word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
             print('  '.join(word_placeholder))
             print("Try again!")
