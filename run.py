@@ -1,3 +1,6 @@
+from random import random
+import math
+
 LOGO = """\n
     ╔═══╗────────────╔════╦╗────╔╗─╔╗╔╗╔╗──────╔╗
     ║╔═╗║────────────║╔╗╔╗║║───╔╝╚╗║║║║║║──────║║
@@ -51,4 +54,14 @@ WORDS_DICTIONARY = {
     },
 }
 
+
+def get_random_word():
+    """
+    Gets a random word from the words dictionary and return it
+    """
+    word_id = math.floor((random() * len(WORDS_DICTIONARY)+1))
+    return WORDS_DICTIONARY[word_id]
+
+
 print(LOGO)
+print(get_random_word())
