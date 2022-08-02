@@ -14,7 +14,8 @@ LOGO = """\n
 WORDS_DICTIONARY = {
     1: {
         "word": "empathy",
-        "definition": "The action of understanding and vicariously experiencing the feelings, thoughts, and experience of another"
+        "definition": """The action of understanding and vicariously
+        experiencing the feelings, thoughts, and experience of another"""
     },
     2: {
         "word": "expatriate",
@@ -22,7 +23,8 @@ WORDS_DICTIONARY = {
     },
     3: {
         "word": "meticulous",
-        "definition": "Marked by extreme or excessive care in the consideration or treatment of details",
+        "definition": """Marked by extreme or excessive care in the consideration
+         or treatment of details""",
     },
     4: {
         "word": "intuition",
@@ -30,11 +32,13 @@ WORDS_DICTIONARY = {
     },
     5: {
         "word": "warehouse",
-        "definition": "A structure or room for the storage of merchandise or commodities",
+        "definition": """""A structure or room for the storage of merchandise or
+        commodities""",
     },
     6: {
         "word": "bailiwick",
-        "definition": "The sphere in which one has superior knowledge or authority",
+        "definition": """The sphere in which one has superior knowledge or
+        authority""",
     },
     7: {
         "word": "magazine",
@@ -42,7 +46,8 @@ WORDS_DICTIONARY = {
     },
     8: {
         "word": "fascism",
-        "definition": "A tendency toward or actual exercise of strong autocratic or dictatorial control",
+        "definition": """A tendency toward or actual exercise of strong autocratic
+         or dictatorial control""",
     },
     9: {
         "word": "community",
