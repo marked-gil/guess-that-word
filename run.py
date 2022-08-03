@@ -49,7 +49,21 @@ def show_answer(word, placeholder):
         placeholder[ind] = letter
     return placeholder
 
+
+# --> START
 print(LOGO)
+print("Welcome to the game that will test your vocabulary.")
+wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue.\n").lower()
+
+# validates if user wants to read instruction <-- start
+while wants_instruction not in ['y', 'n']:
+    wants_instruction = input("Please press 'Y' to read the instruction; or, press 'N' to proceed to the game.\n").lower()
+if wants_instruction == 'y':
+    print("Here is the instruction.")
+elif wants_instruction == 'n':
+    print("Proceed to the menu.")
+# validates if user wants to read instruction <-- end
+
 
 game_on = True
 
