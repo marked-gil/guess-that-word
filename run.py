@@ -58,6 +58,55 @@ def display_logo(logo):
     return f"{logo} \n {(' ' * 14)} Welcome to the game that will test your vocabulary.\n\n{'=' * 80}"
 
 
+def play_game(game_mode):
+    """
+    Runs the main game with specific game mode
+    """
+    if game_mode == 1:
+        words_list = easy_words
+    elif game_mode == 2:
+        words_list = hard_words
+    elif game_mode_num == 3:
+        # come back and do something
+        pass
+
+    game_on = True
+
+    while game_on:
+        selected_word = Word(words_list)
+        word_definition = selected_word.definition
+        word_to_guess = selected_word.word.upper()
+
+        print(f"Definition:\n\"{word_definition}\"")
+        print("Used Words Id:", Word.used_words)
+
+        word_placeholder = ["___" for _ in range(len(word_to_guess))]
+        print('  '.join(word_placeholder))
+
+        not_guessed_yet = True
+        num_guess = 0
+
+        while not_guessed_yet and num_guess != 3:
+            guess = input("Provide your guess:\n").upper()
+
+            if guess == word_to_guess:
+                not_guessed_yet = False
+                print("Correct!")
+            else:
+                num_guess += 1
+                if num_guess == 1:
+                    word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
+                    display_placeholder(word_placeholder)
+                    print("Try again!")
+                elif num_guess == 2:
+                    word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
+                    display_placeholder(word_placeholder)
+                    print("Try again!")
+                else:
+                    print("Sorry your guess is wrong!")
+                    answer = show_answer(word_to_guess, word_placeholder)
+                    display_placeholder(word_placeholder, True)
+
 # Home <-- start
 print(display_logo(LOGO))
 wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue:\n").lower()
@@ -116,43 +165,11 @@ elif game_mode_num == "3":
     print(f"You chose Game Mode: {game_mode_num}")
 # Game Mode <-- end
 
-game_on = True
+# Play Game <-- start
+os.system('cls||clear')
+play_game(game_mode_num)
+# Play Game <-- end
 
-while game_on:
-    selected_word = Word(easy_words)
-    word_definition = selected_word.definition
-    word_to_guess = selected_word.word.upper()
-
-    print(f"Definition:\n\"{word_definition}\"")
-    print("Used Words Id:", Word.used_words)
-
-    word_placeholder = ["___" for _ in range(len(word_to_guess))]
-    print('  '.join(word_placeholder))
-
-    not_guessed_yet = True
-    num_guess = 0
-
-    while not_guessed_yet and num_guess != 3:
-        guess = input("Provide your guess:\n").upper()
-
-        if guess == word_to_guess:
-            not_guessed_yet = False
-            print("Correct!")
-        else:
-            num_guess += 1
-            if num_guess == 1:
-                word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
-                display_placeholder(word_placeholder)
-                print("Try again!")
-            elif num_guess == 2:
-                word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
-                display_placeholder(word_placeholder)
-                print("Try again!")
-            else:
-                print("Sorry your guess is wrong!")
-                answer = show_answer(word_to_guess, word_placeholder)
-                display_placeholder(word_placeholder, True)
-
-    # if len(used_words) == 10:
-    #     print("GAME OVER!")
-    #     game_on = False
+# if len(used_words) == 10:
+#     print("GAME OVER!")
+#     game_on = False
