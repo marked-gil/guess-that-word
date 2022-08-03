@@ -1,6 +1,6 @@
 import math
 import os
-from arts import LOGO
+from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
 
@@ -51,6 +51,23 @@ def show_answer(word, placeholder):
     return placeholder
 
 
+def display_game_area(word_def, placeholder):
+    """
+    Displays the game area template and accepts arguments
+    for the "word definition" and "word placeholder"
+    """
+    game_area_template = f"{MINOR_LOGO} {' ' * 30} Score: ___/15\n"\
+        + "\n" * 2\
+        + "Definition:".center(80)\
+        + "\n" * 2\
+        + word_def.center(80)\
+        + "\n" * 2\
+        + '  '.join(placeholder).center(80)\
+        + "\n" * 3
+
+    print(game_area_template)
+
+
 def display_logo(logo):
     """
     Returns the game ascii logo
@@ -77,11 +94,10 @@ def play_game(game_mode):
         word_definition = selected_word.definition
         word_to_guess = selected_word.word.upper()
 
-        print(f"Definition:\n\"{word_definition}\"")
-        print("Used Words Id:", Word.used_words)
-
         word_placeholder = ["___" for _ in range(len(word_to_guess))]
-        print('  '.join(word_placeholder))
+        display_game_area(word_definition, word_placeholder)
+
+        print(f"Used Words Id: {Word.used_words}")
 
         not_guessed_yet = True
         num_guess = 0
@@ -91,21 +107,22 @@ def play_game(game_mode):
 
             if guess == word_to_guess:
                 not_guessed_yet = False
+                display_game_area(word_definition, word_to_guess)
                 print("Correct!")
             else:
                 num_guess += 1
                 if num_guess == 1:
                     word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
-                    display_placeholder(word_placeholder)
+                    display_game_area(word_definition, word_placeholder)
                     print("Try again!")
                 elif num_guess == 2:
                     word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
-                    display_placeholder(word_placeholder)
+                    display_game_area(word_definition, word_placeholder)
                     print("Try again!")
                 else:
+                    display_game_area(word_definition, word_to_guess)
                     print("Sorry your guess is wrong!")
-                    answer = show_answer(word_to_guess, word_placeholder)
-                    display_placeholder(word_placeholder, True)
+
 
 # Home <-- start
 print(display_logo(LOGO))
