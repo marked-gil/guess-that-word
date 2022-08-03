@@ -1,6 +1,6 @@
 import math
 from arts import LOGO
-from dictionary import WORDS_DICTIONARY
+from dictionary import easy_words, hard_words
 from word_manager import Word
 
 
@@ -49,15 +49,14 @@ def show_answer(word, placeholder):
         placeholder[ind] = letter
     return placeholder
 
-
 print(LOGO)
 
 game_on = True
 
 while game_on:
-    dictionary_item = Word(WORDS_DICTIONARY).random_word
-    word_definition = dictionary_item[1]['definition']
-    word_to_guess = dictionary_item[1]['word'].upper()
+    selected_word = Word(easy_words)
+    word_definition = selected_word.definition
+    word_to_guess = selected_word.word.upper()
 
     print(f"Definition:\n\"{word_definition}\"")
     print("Used Words Id:", Word.used_words)
@@ -73,7 +72,7 @@ while game_on:
 
         if guess == word_to_guess:
             not_guessed_yet = False
-            print("Congratulations!")
+            print("Correct!")
         else:
             num_guess += 1
             if num_guess == 1:
