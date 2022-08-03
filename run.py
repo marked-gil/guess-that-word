@@ -66,6 +66,7 @@ wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 
 # validates if user wants to read instruction <-- start
 while wants_instruction not in ['y', 'n']:
     wants_instruction = input("Please press 'Y' to read the instruction; or, press 'N' to proceed to the game.\n").lower()
+
 if wants_instruction == 'y':
     os.system('cls||clear')
     print(display_logo(LOGO))
@@ -83,19 +84,29 @@ if wants_instruction == 'y':
         "   c. 3rd clue = additional 1 or 2 letters within the word\n"
     )
     proceed_to_menu = input("To proceed to the game, enter 'Y'; otherwise, enter 'N' to return home:\n")
+    while proceed_to_menu not in ['y', 'n']:
+        proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n")
 elif wants_instruction == 'n':
     print("Proceed to the menu.")
     os.system('cls||clear')
 # validates if user wants to read instruction <-- end
 
 # Game Mode <-- start
-print(
-    "GAME MODES:\n"
-    "  1. Easy Mode\n"
-    "  2. Hard Mode\n"
-    "  3. Beat the Highscore\n"
-    )
+if proceed_to_menu == 'y':
+    os.system('cls||clear')
+    print(display_logo(LOGO))
+    print(
+        "GAME MODES:\n"
+        "  1. Easy Mode\n"
+        "  2. Hard Mode\n"
+        "  3. Beat the Highscore\n"
+        )
+elif proceed_to_menu == 'n':
+    """should return to home"""
+    pass
+
 game_mode_num = input("Choose a game mode by entering '1', '2', or '3'\n")
+
 while game_mode_num not in ["1", "2", "3"]:
     game_mode_num = input("You need to enter '1', '2', or '3'\n")
 if game_mode_num == "1":
