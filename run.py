@@ -51,10 +51,17 @@ def show_answer(word, placeholder):
     return placeholder
 
 
-# --> START
-print(LOGO)
-print("Welcome to the game that will test your vocabulary.")
+def display_logo(logo):
+    """
+    Returns the game ascii logo
+    """
+    return f"{logo} \n {(' ' * 14)} Welcome to the game that will test your vocabulary.\n\n{'=' * 80}"
+
+
+# Home <-- start
+print(display_logo(LOGO))
 wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue.\n").lower()
+# Home <-- end
 
 # validates if user wants to read instruction <-- start
 while wants_instruction not in ['y', 'n']:
