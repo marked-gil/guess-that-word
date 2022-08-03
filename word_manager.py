@@ -7,20 +7,26 @@ from random import choice
 
 class Word:
     """
-    Provides a word instance that will be guessed in the game
+    Creates a word instance that will be guessed in the game
     """
     used_words = []    # Holds the IDs of used words
 
-    def __init__(self, words_dict):
-        self.random_word = self._get_random_word(words_dict)
-        Word.used_words.append(self.random_word[0])
+    def __init__(self, words_list):
+        self.word_obj = self._get_random_word(words_list)
+        self.word = self.word_obj["word"]
+        self.definition = self.word_obj["definition"]
+        self.word_id = self.word_obj["id"]
+        Word.used_words.append(self.word_id)
 
-    def _get_random_word(self, words_dict):
+    def _get_random_word(self, words_list):
         """
         Selects a random word from passed in words dictionary
         and returns a tuple of word/definition and id
         """
-        word_id = choice(list(words_dict.keys()))
+        word_obj = choice(words_list)
+        word_id = word_obj["id"]
+
         while word_id in Word.used_words:
-            word_id = choice(list(words_dict.keys()))
-        return word_id, words_dict[word_id]
+            word_id = word_obj["id"]
+
+        return word_obj
