@@ -60,12 +60,12 @@ def display_logo(logo):
 
 # Home <-- start
 print(display_logo(LOGO))
-wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue.\n").lower()
+wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue:\n").lower()
 # Home <-- end
 
 # validates if user wants to read instruction <-- start
 while wants_instruction not in ['y', 'n']:
-    wants_instruction = input("Please press 'Y' to read the instruction; or, press 'N' to proceed to the game.\n").lower()
+    wants_instruction = input("Please press 'Y' to read the instruction; or, press 'N' to proceed to the game:\n").lower()
 
 if wants_instruction == 'y':
     os.system('cls||clear')
@@ -87,7 +87,6 @@ if wants_instruction == 'y':
     while proceed_to_menu not in ['y', 'n']:
         proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n")
 elif wants_instruction == 'n':
-    print("Proceed to the menu.")
     os.system('cls||clear')
 # validates if user wants to read instruction <-- end
 
@@ -105,9 +104,9 @@ elif proceed_to_menu == 'n':
     """should return to home"""
     pass
 
-game_mode_num = input("Choose a game mode by entering '1', '2', or '3'\n")
+game_mode_num = int(input("Choose a game mode by entering '1', '2', or '3':\n"))
 
-while game_mode_num not in ["1", "2", "3"]:
+while game_mode_num not in [1, 2, 3]:
     game_mode_num = input("You need to enter '1', '2', or '3'\n")
 if game_mode_num == "1":
     print(f"You chose Game Mode: {game_mode_num}")
