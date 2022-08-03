@@ -67,9 +67,25 @@ wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 
 while wants_instruction not in ['y', 'n']:
     wants_instruction = input("Please press 'Y' to read the instruction; or, press 'N' to proceed to the game.\n").lower()
 if wants_instruction == 'y':
-    print("Here is the instruction.")
+    os.system('cls||clear')
+    print(display_logo(LOGO))
+    print(
+        "HOW TO PLAY:\n"
+        "1. There are 3 modes of the game you can choose to play:\n"
+        "   a. Easy Mode - guess 15 EASY words\n"
+        "   b. Hard Mode - guess 15 HARD words\n"
+        "   c. Beat the Highscore - guess 15 EASY & HARD words with scoring\n"
+        "2. You will be presented with a definition, and you need to guess the word that it defines\n"
+        "3. You are allowed 3 attempts to guess the word.\n"
+        "4. Before each attempt, you will be provided with clues:\n"
+        "   a. 1st clue = the number of letters in the word\n"
+        "   b. 2nd clue = the first and last letters\n"
+        "   c. 3rd clue = additional 1 or 2 letters within the word\n"
+    )
+    proceed_to_menu = input("To proceed to the game, enter 'Y'; otherwise, enter 'N' to return home:\n")
 elif wants_instruction == 'n':
     print("Proceed to the menu.")
+    os.system('cls||clear')
 # validates if user wants to read instruction <-- end
 
 # Game Mode <-- start
