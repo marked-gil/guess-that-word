@@ -82,33 +82,33 @@ def play_game(game_mode):
         num_guess = 0
 
         while not_guessed_yet and num_guess != 3:
-            guess = input("Provide your guess:\n").upper()
+            guess = input("Provide your guess:\n".center(80)).upper()
 
             if guess == word_to_guess:
                 os.system('cls||clear')
                 not_guessed_yet = False
                 display_game_area(word_definition, word_to_guess)
-                print("Correct!")
+                print("Correct!".center(80))
             else:
                 num_guess += 1
                 if num_guess == 1:
                     os.system('cls||clear')
                     word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
                     display_game_area(word_definition, word_placeholder)
-                    print("Try again!")
+                    print("Try again!".center(80))
                 elif num_guess == 2:
                     os.system('cls||clear')
                     word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
                     display_game_area(word_definition, word_placeholder)
-                    print("Try again!")
+                    print("Try again!".center(80))
                 else:
                     os.system('cls||clear')
                     display_game_area(word_definition, word_to_guess)
-                    print("Sorry your guess is wrong!")
+                    print("Sorry, you did not guess it!\n".center(80))
 
         input("Press 'Enter' to proceed to the next word.\n".center(80))
 
-        
+
 # Home <-- start
 print(display_logo(LOGO))
 wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue:\n").lower()
