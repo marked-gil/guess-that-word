@@ -5,18 +5,6 @@ from dictionary import easy_words, hard_words
 from word_manager import Word
 
 
-def display_placeholder(placeholder, full_answer=False):
-    """
-    Displays the random word placeholder in the terminal, and
-    accepts a boolean argument on whether the full answer is
-    to be shown or not
-    """
-    if full_answer:
-        print('   '.join(placeholder))
-    else:
-        print('  '.join(placeholder))
-
-
 def give_1st_hint(word, placeholder):
     """
     Gives hint by adding the first and last letters of the word to
@@ -38,16 +26,6 @@ def give_2nd_hint(word, placeholder):
     middle_letter = word[math.floor(len(word) / 2)]
     placeholder[1] = second_letter
     placeholder[math.floor(len(word) / 2)] = middle_letter
-    return placeholder
-
-
-def show_answer(word, placeholder):
-    """
-    Displays the correct answer by replacing the placeholder underscores
-    with the correct letters and returns the modified placeholder
-    """
-    for ind, letter in enumerate(word):
-        placeholder[ind] = letter
     return placeholder
 
 
@@ -174,12 +152,6 @@ game_mode_num = int(input("Choose a game mode by entering '1', '2', or '3':\n"))
 
 while game_mode_num not in [1, 2, 3]:
     game_mode_num = input("You need to enter '1', '2', or '3'\n")
-if game_mode_num == "1":
-    print(f"You chose Game Mode: {game_mode_num}")
-elif game_mode_num == "2":
-    print(f"You chose Game Mode: {game_mode_num}")
-elif game_mode_num == "3":
-    print(f"You chose Game Mode: {game_mode_num}")
 # Game Mode <-- end
 
 # Play Game <-- start
