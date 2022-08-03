@@ -64,6 +64,23 @@ elif wants_instruction == 'n':
     print("Proceed to the menu.")
 # validates if user wants to read instruction <-- end
 
+# Game Mode <-- start
+print(
+    "GAME MODES:\n"
+    "  1. Easy Mode\n"
+    "  2. Hard Mode\n"
+    "  3. Beat the Highscore\n"
+    )
+game_mode_num = input("Choose a game mode by entering '1', '2', or '3'\n")
+while game_mode_num not in ["1", "2", "3"]:
+    game_mode_num = input("You need to enter '1', '2', or '3'\n")
+if game_mode_num == "1":
+    print(f"You chose Game Mode: {game_mode_num}")
+elif game_mode_num == "2":
+    print(f"You chose Game Mode: {game_mode_num}")
+elif game_mode_num == "3":
+    print(f"You chose Game Mode: {game_mode_num}")
+# Game Mode <-- end
 
 game_on = True
 
