@@ -1,18 +1,7 @@
-from random import random
 import math
 from arts import LOGO
 from dictionary import WORDS_DICTIONARY
-
-
-def get_random_word(used_words_list):
-    """
-    Gets a random word from the words dictionary while preventing used words
-    from being repeated, and returns a tuple of word/definition and id
-    """
-    word_id = math.floor((random() * len(WORDS_DICTIONARY)+1))
-    while word_id in used_words_list:
-        word_id = math.floor((random() * len(WORDS_DICTIONARY)+1))
-    return WORDS_DICTIONARY[word_id], word_id
+from word_manager import Word
 
 
 def display_placeholder(placeholder, full_answer=False):
@@ -63,18 +52,15 @@ def show_answer(word, placeholder):
 
 print(LOGO)
 
-# Holds the IDs of used words
-used_words = []
-
 game_on = True
 
 while game_on:
-    dictionary_item = get_random_word(used_words)
-    used_words.append(dictionary_item[1])
-    word_definition = dictionary_item[0]['definition']
-    word_to_guess = dictionary_item[0]['word'].upper()
+    dictionary_item = Word(WORDS_DICTIONARY).random_word
+    word_definition = dictionary_item[1]['definition']
+    word_to_guess = dictionary_item[1]['word'].upper()
 
     print(f"Definition:\n\"{word_definition}\"")
+    print("Used Words Id:", Word.used_words)
 
     word_placeholder = ["___" for _ in range(len(word_to_guess))]
     print('  '.join(word_placeholder))
@@ -103,6 +89,6 @@ while game_on:
                 answer = show_answer(word_to_guess, word_placeholder)
                 display_placeholder(word_placeholder, True)
 
-    if len(used_words) == 10:
-        print("GAME OVER!")
-        game_on = False
+    # if len(used_words) == 10:
+    #     print("GAME OVER!")
+    #     game_on = False
