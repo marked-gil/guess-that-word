@@ -1,4 +1,5 @@
 import math
+import os
 from arts import LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
