@@ -107,8 +107,16 @@ def play_game(game_mode):
                     os.system('cls||clear')
                     display_game_area(word_definition, word_to_guess, correct_guesses)
                     print("Sorry, you did not guess it!\n".center(80))
-
-        input("Press 'Enter' to proceed to the next word.\n".center(80))
+        
+        # Game ends after 15 words
+        if len(Word.used_words) == 15:
+            game_on = False
+        else:
+            proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
+            while proceed != "":
+                os.system('cls||clear')
+                display_game_area(word_definition, word_to_guess, correct_guesses)
+                proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
 
 
 # Home <-- start
@@ -166,4 +174,5 @@ while game_mode_num not in [1, 2, 3]:
 # Play Game <-- start
 os.system('cls||clear')
 play_game(game_mode_num)
+print("The End!")
 # Play Game <-- end
