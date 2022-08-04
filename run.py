@@ -63,6 +63,23 @@ def display_placeholder(placeholder):
     print(word_placeholder)
 
 
+def scoring(num_of_guesses):
+    """
+    Returns the points earned per correctly guessed word
+    for game mode 3 (Beat Your Highscore)
+    """
+    if num_of_guesses == 1:
+        points = 5
+    elif num_of_guesses == 2:
+        points = 3
+    elif num_of_guesses == 3:
+        points = 1
+    else:
+        points = 0
+
+    return points
+
+
 def display_logo(logo):
     """
     Returns the game ascii logo
@@ -76,6 +93,7 @@ def play_game(game_mode):
     """
     game_on = True
     correct_guesses = 0
+    score = 0
 
     while game_on:
         os.system('cls||clear')
@@ -106,6 +124,7 @@ def play_game(game_mode):
                 os.system('cls||clear')
                 not_guessed_yet = False
                 correct_guesses += 1
+                score += scoring(num_guess)
                 display_game_area(word_definition, correct_guesses)
                 display_placeholder(word_to_guess)
                 print("Correct!\n".center(80))
