@@ -29,12 +29,13 @@ def give_2nd_hint(word, placeholder):
     return placeholder
 
 
-def display_game_area(word_def, placeholder):
+def display_game_area(word_def, placeholder, correct_num):
     """
-    Displays the game area template and accepts arguments
-    for the "word definition" and "word placeholder"
+    Displays the game area template and accepts arguments for the
+    "word definition", "word placeholder", and "number of correct guesses"
     """
-    game_area_template = f"{MINOR_LOGO} {' ' * 30} Correct Answers: ___/15\n"\
+    total_words = len(Word.used_words)
+    game_area_template = f"{MINOR_LOGO} {' ' * 30} Correct Answers: {correct_num} of {total_words}\n"\
         + "\n" * 2\
         + "Definition:".center(80)\
         + "\n" * 2\
@@ -58,6 +59,7 @@ def play_game(game_mode):
     Runs the main game with specific game mode
     """
     game_on = True
+    correct_guesses = 0
 
     while game_on:
         os.system('cls||clear')
@@ -73,7 +75,7 @@ def play_game(game_mode):
         word_to_guess = selected_word.word.upper()
 
         word_placeholder = selected_word.placeholder
-        display_game_area(word_definition, word_placeholder)
+        display_game_area(word_definition, word_placeholder, correct_guesses)
 
         print(f"Used Words Id: {Word.used_words}")
 
@@ -86,23 +88,24 @@ def play_game(game_mode):
             if guess == word_to_guess:
                 os.system('cls||clear')
                 not_guessed_yet = False
-                display_game_area(word_definition, word_to_guess)
+                correct_guesses += 1
+                display_game_area(word_definition, word_to_guess, correct_guesses)
                 print("Correct!\n".center(80))
             else:
                 num_guess += 1
                 if num_guess == 1:
                     os.system('cls||clear')
                     word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
-                    display_game_area(word_definition, word_placeholder)
+                    display_game_area(word_definition, word_placeholder, correct_guesses)
                     print("Here are clues. Try again!\n".center(80))
                 elif num_guess == 2:
                     os.system('cls||clear')
                     word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
-                    display_game_area(word_definition, word_placeholder)
+                    display_game_area(word_definition, word_placeholder, correct_guesses)
                     print("More clues for you. Try again!\n".center(80))
                 else:
                     os.system('cls||clear')
-                    display_game_area(word_definition, word_to_guess)
+                    display_game_area(word_definition, word_to_guess, correct_guesses)
                     print("Sorry, you did not guess it!\n".center(80))
 
         input("Press 'Enter' to proceed to the next word.\n".center(80))
