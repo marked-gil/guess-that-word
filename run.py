@@ -29,13 +29,21 @@ def give_2nd_hint(word, placeholder):
     return placeholder
 
 
-def display_game_area(word_def, correct_num):
+def display_game_area(word_def, total_answered, highscore_mode=False, score=0):
     """
     Displays the game area template and accepts arguments for the
-    "word definition", and "number of correct guesses"
+    "word definition", "total correct guesses", "boolean for highscore_mode",
+    and "score"
     """
+    if highscore_mode is True:
+        score_display = f'Score: {score}'
+        space_between = " " * 15
+    else:
+        score_display = ""
+        space_between = " " * 30
+
     total_words = len(Word.used_words)
-    game_area_template = f"{MINOR_LOGO} {' ' * 30} Correct Answers: {correct_num} of {total_words}\n"\
+    game_area_template = f"{MINOR_LOGO} {space_between} {score_display}      Correct Answers: {total_answered} of {total_words}\n"\
         + "\n" * 2\
         + "Definition:".center(80)\
         + "\n" * 2\
