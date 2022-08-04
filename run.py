@@ -31,6 +31,18 @@ def show_instruction():
     )
 
 
+def show_game_modes():
+    """
+    Shows the different modes of the game to choose from
+    """
+    print(
+        "GAME MODES:\n"
+        "  1. Easy Mode\n"
+        "  2. Hard Mode\n"
+        "  3. Beat the Highscore\n"
+        )
+
+
 def give_1st_hint(word, placeholder):
     """
     Gives hint by adding the first and last letters of the word to
@@ -216,12 +228,7 @@ elif wants_instruction == 'n':
 if proceed_to_menu == 'y':
     os.system('cls||clear')
     print(display_logo(LOGO))
-    print(
-        "GAME MODES:\n"
-        "  1. Easy Mode\n"
-        "  2. Hard Mode\n"
-        "  3. Beat the Highscore\n"
-        )
+    show_game_modes()
 elif proceed_to_menu == 'n':
     """should return to home"""
     pass
