@@ -16,6 +16,8 @@ class Word:
         self.word = self.word_obj["word"]
         self.definition = self.word_obj["definition"]
         self.word_id = self.word_obj["id"]
+        self.length = len(self.word)
+        self.placeholder = ["___" for _ in range(self.length)]
         Word.used_words.append(self.word_id)
 
     def _get_random_word(self, words_list):
