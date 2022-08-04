@@ -34,7 +34,7 @@ def display_game_area(word_def, placeholder):
     Displays the game area template and accepts arguments
     for the "word definition" and "word placeholder"
     """
-    game_area_template = f"{MINOR_LOGO} {' ' * 30} Score: ___/15\n"\
+    game_area_template = f"{MINOR_LOGO} {' ' * 30} Correct Answers: ___/15\n"\
         + "\n" * 2\
         + "Definition:".center(80)\
         + "\n" * 2\
@@ -57,7 +57,6 @@ def play_game(game_mode):
     """
     Runs the main game with specific game mode
     """
-
     game_on = True
 
     while game_on:
@@ -73,7 +72,7 @@ def play_game(game_mode):
         word_definition = selected_word.definition
         word_to_guess = selected_word.word.upper()
 
-        word_placeholder = ["___" for _ in range(len(word_to_guess))]
+        word_placeholder = selected_word.placeholder
         display_game_area(word_definition, word_placeholder)
 
         print(f"Used Words Id: {Word.used_words}")
