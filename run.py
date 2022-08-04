@@ -57,19 +57,19 @@ def play_game(game_mode):
     """
     Runs the main game with specific game mode
     """
-    if game_mode == 1:
-        words_list = easy_words
-    elif game_mode == 2:
-        words_list = hard_words
-    elif game_mode_num == 3:
-        # come back and do something
-        pass
 
     game_on = True
 
     while game_on:
         os.system('cls||clear')
-        selected_word = Word(words_list)
+
+        if game_mode == 1:
+            selected_word = Word(easy_words)
+        elif game_mode == 2:
+            selected_word = Word(hard_words)
+        elif game_mode_num == 3:
+            selected_word = Word(easy_words) if len(Word.used_words) < 8 else Word(hard_words)
+
         word_definition = selected_word.definition
         word_to_guess = selected_word.word.upper()
 
@@ -88,19 +88,19 @@ def play_game(game_mode):
                 os.system('cls||clear')
                 not_guessed_yet = False
                 display_game_area(word_definition, word_to_guess)
-                print("Correct!".center(80))
+                print("Correct!\n".center(80))
             else:
                 num_guess += 1
                 if num_guess == 1:
                     os.system('cls||clear')
                     word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
                     display_game_area(word_definition, word_placeholder)
-                    print("Try again!".center(80))
+                    print("Here are clues. Try again!\n".center(80))
                 elif num_guess == 2:
                     os.system('cls||clear')
                     word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
                     display_game_area(word_definition, word_placeholder)
-                    print("Try again!".center(80))
+                    print("More clues for you. Try again!\n".center(80))
                 else:
                     os.system('cls||clear')
                     display_game_area(word_definition, word_to_guess)
@@ -165,7 +165,3 @@ while game_mode_num not in [1, 2, 3]:
 os.system('cls||clear')
 play_game(game_mode_num)
 # Play Game <-- end
-
-# if len(used_words) == 10:
-#     print("GAME OVER!")
-#     game_on = False
