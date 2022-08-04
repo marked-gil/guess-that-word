@@ -80,6 +80,24 @@ def scoring(num_of_guesses):
     return points
 
 
+def game_mode_assembler(mode: int, answered_words: int, score: int):
+    """
+    Returns the "word object", and "game area" while accepting parameters such as:
+    "game mode" (mode), "total of correctly answered words" (answered_words), and "score"
+    """
+    if mode == 1:
+        random_word = Word(easy_words)
+    elif mode == 2:
+        random_word = Word(hard_words)
+    elif mode == 3:
+        random_word = Word(easy_words) if len(Word.used_words) < 8 else Word(hard_words)
+
+    if mode in (1, 2):
+        return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words)}
+
+    return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words, True, score)}
+
+
 def display_logo(logo):
     """
     Returns the game ascii logo
