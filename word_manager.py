@@ -23,12 +23,11 @@ class Word:
     def _get_random_word(self, words_list):
         """
         Selects a random word from passed in words dictionary
-        and returns a tuple of word/definition and id
+        and returns the word object
         """
         word_obj = choice(words_list)
-        word_id = word_obj["id"]
 
-        while word_id in Word.used_words:
-            word_id = word_obj["id"]
+        while word_obj["id"] in Word.used_words:
+            word_obj = choice(words_list)
 
         return word_obj
