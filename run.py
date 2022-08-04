@@ -29,10 +29,10 @@ def give_2nd_hint(word, placeholder):
     return placeholder
 
 
-def display_game_area(word_def, placeholder, correct_num):
+def display_game_area(word_def, correct_num):
     """
     Displays the game area template and accepts arguments for the
-    "word definition", "word placeholder", and "number of correct guesses"
+    "word definition", and "number of correct guesses"
     """
     total_words = len(Word.used_words)
     game_area_template = f"{MINOR_LOGO} {' ' * 30} Correct Answers: {correct_num} of {total_words}\n"\
@@ -41,10 +41,18 @@ def display_game_area(word_def, placeholder, correct_num):
         + "\n" * 2\
         + word_def.center(80)\
         + "\n" * 2\
-        + '  '.join(placeholder).center(80)\
-        + "\n" * 3
 
     print(game_area_template)
+
+
+def display_placeholder(placeholder):
+    """
+    Displays the placeholder for the word
+    """
+    word_placeholder = '  '.join(placeholder).center(80)\
+        + "\n" * 3
+
+    print(word_placeholder)
 
 
 def display_logo(logo):
@@ -75,7 +83,8 @@ def play_game(game_mode):
         word_to_guess = selected_word.word.upper()
 
         word_placeholder = selected_word.placeholder
-        display_game_area(word_definition, word_placeholder, correct_guesses)
+        display_game_area(word_definition, correct_guesses)
+        display_placeholder(word_placeholder)
 
         print(f"Used Words Id: {Word.used_words}")
 
@@ -89,25 +98,29 @@ def play_game(game_mode):
                 os.system('cls||clear')
                 not_guessed_yet = False
                 correct_guesses += 1
-                display_game_area(word_definition, word_to_guess, correct_guesses)
+                display_game_area(word_definition, correct_guesses)
+                display_placeholder(word_to_guess)
                 print("Correct!\n".center(80))
             else:
                 num_guess += 1
                 if num_guess == 1:
                     os.system('cls||clear')
                     word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
-                    display_game_area(word_definition, word_placeholder, correct_guesses)
+                    display_game_area(word_definition, correct_guesses)
+                    display_placeholder(word_placeholder)
                     print("Here are clues. Try again!\n".center(80))
                 elif num_guess == 2:
                     os.system('cls||clear')
                     word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
-                    display_game_area(word_definition, word_placeholder, correct_guesses)
+                    display_game_area(word_definition, correct_guesses)
+                    display_placeholder(word_placeholder)
                     print("More clues for you. Try again!\n".center(80))
                 else:
                     os.system('cls||clear')
-                    display_game_area(word_definition, word_to_guess, correct_guesses)
+                    display_game_area(word_definition, correct_guesses)
+                    display_placeholder(word_to_guess)
                     print("Sorry, you did not guess it!\n".center(80))
-        
+
         # Game ends after 15 words
         if len(Word.used_words) == 15:
             game_on = False
@@ -115,7 +128,8 @@ def play_game(game_mode):
             proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
             while proceed != "":
                 os.system('cls||clear')
-                display_game_area(word_definition, word_to_guess, correct_guesses)
+                display_game_area(word_definition, correct_guesses)
+                display_placeholder(word_to_guess)
                 proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
 
 
@@ -145,8 +159,10 @@ if wants_instruction == 'y':
         "   c. 3rd clue = additional 1 or 2 letters within the word\n"
     )
     proceed_to_menu = input("To proceed to the game, enter 'Y'; otherwise, enter 'N' to return home:\n")
+
     while proceed_to_menu not in ['y', 'n']:
         proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n")
+
 elif wants_instruction == 'n':
     os.system('cls||clear')
 # validates if user wants to read instruction <-- end
