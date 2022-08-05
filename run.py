@@ -249,11 +249,11 @@ if wants_instruction == 'y':
     display_logo(LOGO)
     show_instruction()
 
-    proceed_to_menu = input("To proceed, enter 'Y'; otherwise, enter 'N' to return home:\n".center(80))
+    proceed_to_menu = input("To proceed, enter 'Y'; otherwise, enter 'N' to return home:\n".center(80)).lower()
     while proceed_to_menu not in ['y', 'n']:
         display_logo(LOGO)
         show_instruction()
-        proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n".center(80))
+        proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n".center(80)).lower()
     
     if proceed_to_menu == 'y':
         game_mode_num = game_mode_validator()
