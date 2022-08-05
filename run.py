@@ -1,6 +1,6 @@
-import math
 import os
 import sys
+import random
 from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
@@ -71,6 +71,20 @@ def see_instruction_validator():
     return view_instruction
 
 
+def see_modes_validator():
+    """
+    Prompts user to enter 'y' to go to Game Modes menu, or
+    'n' to return home, and validates the input.
+    Returns user input
+    """
+    see_menu = input("Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
+    while see_menu not in ('y', 'n'):
+        show_instruction()
+        see_menu = input("Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
+    
+    return see_menu
+
+
 def give_1st_hint(word, placeholder):
     """
     Gives hint by adding the first and last letters of the word to
@@ -85,13 +99,26 @@ def give_1st_hint(word, placeholder):
 
 def give_2nd_hint(word, placeholder):
     """
-    Gives hint by adding the 2nd and middle letters of the word to
-    the placeholder and returns the modified placeholder
+    Gives hint by adding letters to the placeholder, and
+    returns the modified placeholder
     """
-    second_letter = word[1]
-    middle_letter = word[math.floor(len(word) / 2)]
-    placeholder[1] = second_letter
-    placeholder[math.floor(len(word) / 2)] = middle_letter
+    indx_list = []
+    num_characters = len(word)
+    if num_characters < 8:
+        while len(indx_list) != 2:
+            indx = random.randrange(1, num_characters-1)
+            if indx not in indx_list:
+                indx_list.append(indx)
+    elif num_characters >= 8:
+        while len(indx_list) != 3:
+            indx = random.randrange(1, num_characters-1)
+            if indx not in indx_list:
+                indx_list.append(indx)
+        placeholder[indx_list[2]] = word[indx_list[2]]
+
+    placeholder[indx_list[0]] = word[indx_list[0]]
+    placeholder[indx_list[1]] = word[indx_list[1]]
+
     return placeholder
 
 
@@ -202,7 +229,7 @@ def play_game(game_mode):
         print(game_object["game_area"])
         display_placeholder(word_placeholder)
 
-        print(f"Used Words Id: {Word.used_words}")   # temporary code -- delete
+        # print(f"Used Words Id: {Word.used_words}")
 
         not_guessed_yet = True
         num_guess = 0
@@ -256,20 +283,12 @@ display_logo(LOGO)
 
 # validates if user wants to read instruction <-- start
 see_instruction = see_instruction_validator()
-
 if see_instruction == 'y':
-    display_logo(LOGO)
     show_instruction()
-
-    proceed_to_menu = input("To proceed, enter 'Y'; otherwise, enter 'N' to return home:\n".center(80)).lower()
-    while proceed_to_menu not in ['y', 'n']:
-        display_logo(LOGO)
-        show_instruction()
-        proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n".center(80)).lower()
-
-    if proceed_to_menu == 'y':
+    see_modes = see_modes_validator()
+    if see_modes == 'y':
         game_mode_num = game_mode_validator()
-    elif proceed_to_menu == 'n':
+    elif see_modes == 'n':
         clear_terminal()
         # return home
         os.execv(sys.executable, ['python'] + sys.argv)
