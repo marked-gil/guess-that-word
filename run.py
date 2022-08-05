@@ -6,11 +6,23 @@ from dictionary import easy_words, hard_words
 from word_manager import Word
 
 
+def clear_terminal():
+    """
+    Clears the terminal
+    """
+    os.system('cls||clear')
+
+
 def display_logo(logo):
     """
     Returns the game ascii logo
     """
-    return f"{logo} \n {(' ' * 14)} Welcome to the game that will test your vocabulary.\n\n{'=' * 80}"
+    clear_terminal()
+    print(
+        logo + "\n" + (' ' * 14)
+        + "Welcome to the game that will test your vocabulary.\n\n"
+        + ('=' * 80)
+        )
 
 
 def show_instruction():
@@ -42,13 +54,6 @@ def show_game_modes():
         "  2. Hard Mode\n"
         "  3. Beat the Highscore\n"
         )
-
-
-def clear_terminal():
-    """
-    Clears the terminal
-    """
-    os.system('cls||clear')
 
 
 def give_1st_hint(word, placeholder):
@@ -231,21 +236,23 @@ def play_game(game_mode):
 
 
 # Home <-- start
-print(display_logo(LOGO))
+display_logo(LOGO)
 # Home <-- end
 
 # validates if user wants to read instruction <-- start
 wants_instruction = input("To read the instruction, enter 'Y'; otherwise, enter 'N' to continue:\n".center(80)).lower()
 while wants_instruction not in ['y', 'n']:
+    display_logo(LOGO)
     wants_instruction = input("Please enter 'Y' to read the instruction; or, enter 'N' to proceed to the game:\n".center(80)).lower()
 
 if wants_instruction == 'y':
-    clear_terminal()
-    print(display_logo(LOGO))
+    display_logo(LOGO)
     show_instruction()
 
     proceed_to_menu = input("To proceed, enter 'Y'; otherwise, enter 'N' to return home:\n".center(80))
     while proceed_to_menu not in ['y', 'n']:
+        display_logo(LOGO)
+        show_instruction()
         proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n".center(80))
     
     if proceed_to_menu == 'y':
