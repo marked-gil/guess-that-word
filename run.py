@@ -18,11 +18,9 @@ def display_logo(logo):
     Returns the game ascii logo
     """
     clear_terminal()
-    print(
-        logo + "\n" + (' ' * 14)
-        + "Welcome to the game that will test your vocabulary.\n\n"
-        + ('=' * 80)
-        )
+    print(logo)
+    print("Welcome to the game that will test your vocabulary.\n".center(80))
+    print(('=' * 70).center(80))
 
 
 def show_instruction():
