@@ -29,14 +29,15 @@ def show_instruction():
     """
     Shows the game mechanics
     """
+    display_logo(LOGO)
     print(
         "HOW TO PLAY:\n"
         "1. There are 3 modes of the game you can choose to play:\n"
         "   a. Easy Mode - guess 15 EASY words\n"
         "   b. Hard Mode - guess 15 HARD words\n"
         "   c. Beat the Highscore - guess 15 EASY & HARD words with scoring\n"
-        "2. A definition will be shown, and you will guess the word it defines\n"
-        "3. You are allowed 3 attempts to guess the word.\n"
+        "2. A definition will be shown, and you will guess the word it defines"
+        "\n3. You are allowed 3 attempts to guess the word.\n"
         "4. Before each attempt, you will be provided with clues:\n"
         "   a. 1st clue = the number of letters in the word\n"
         "   b. 2nd clue = the first and last letters\n"
