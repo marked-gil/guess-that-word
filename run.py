@@ -204,10 +204,10 @@ def play_game(game_mode):
 
 # Home <-- start
 print(display_logo(LOGO))
-wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue:\n").lower()
 # Home <-- end
 
 # validates if user wants to read instruction <-- start
+wants_instruction = input("To read the instruction, press 'Y'; otherwise, press 'N' to continue:\n").lower()
 while wants_instruction not in ['y', 'n']:
     wants_instruction = input("Please press 'Y' to read the instruction; or, press 'N' to proceed to the game:\n").lower()
 
@@ -215,24 +215,25 @@ if wants_instruction == 'y':
     os.system('cls||clear')
     print(display_logo(LOGO))
     show_instruction()
-    proceed_to_menu = input("To proceed to the game, enter 'Y'; otherwise, enter 'N' to return home:\n")
 
+    proceed_to_menu = input("To proceed to the game, enter 'Y'; otherwise, enter 'N' to return home:\n")
     while proceed_to_menu not in ['y', 'n']:
         proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n")
+    
+    if proceed_to_menu == 'y':
+        os.system('cls||clear')
+        print(display_logo(LOGO))
+        show_game_modes()
+    elif proceed_to_menu == 'n':
+        os.system('cls||clear')
 
 elif wants_instruction == 'n':
     os.system('cls||clear')
+    print(display_logo(LOGO))
+    show_game_modes()
 # validates if user wants to read instruction <-- end
 
 # Game Mode <-- start
-if proceed_to_menu == 'y':
-    os.system('cls||clear')
-    print(display_logo(LOGO))
-    show_game_modes()
-elif proceed_to_menu == 'n':
-    """should return to home"""
-    pass
-
 game_mode_num = int(input("Choose a game mode by entering '1', '2', or '3':\n"))
 
 while game_mode_num not in [1, 2, 3]:
