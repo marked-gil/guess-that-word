@@ -57,6 +57,20 @@ def show_game_modes():
         )
 
 
+def see_instruction_validator():
+    """
+    Prompts user to enter 'y' to see the instruction or 'n' to
+    proceed to Game Menu, and validates the input.
+    Returns user input
+    """
+    view_instruction = input("Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
+    while view_instruction not in ('y', 'n'):
+        display_logo(LOGO)
+        view_instruction = input("Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
+
+    return view_instruction
+
+
 def give_1st_hint(word, placeholder):
     """
     Gives hint by adding the first and last letters of the word to
@@ -138,7 +152,7 @@ def game_mode_validator():
     returns the game mode number
     """
     clear_terminal()
-    print(display_logo(LOGO))
+    display_logo(LOGO)
     show_game_modes()
 
     try:
@@ -241,12 +255,9 @@ display_logo(LOGO)
 # Home <-- end
 
 # validates if user wants to read instruction <-- start
-wants_instruction = input("To read the instruction, enter 'Y'; otherwise, enter 'N' to continue:\n".center(80)).lower()
-while wants_instruction not in ['y', 'n']:
-    display_logo(LOGO)
-    wants_instruction = input("Please enter 'Y' to read the instruction; or, enter 'N' to proceed to the game:\n".center(80)).lower()
+see_instruction = see_instruction_validator()
 
-if wants_instruction == 'y':
+if see_instruction == 'y':
     display_logo(LOGO)
     show_instruction()
 
@@ -255,7 +266,7 @@ if wants_instruction == 'y':
         display_logo(LOGO)
         show_instruction()
         proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n".center(80)).lower()
-    
+
     if proceed_to_menu == 'y':
         game_mode_num = game_mode_validator()
     elif proceed_to_menu == 'n':
@@ -263,7 +274,7 @@ if wants_instruction == 'y':
         # return home
         os.execv(sys.executable, ['python'] + sys.argv)
 
-elif wants_instruction == 'n':
+elif see_instruction == 'n':
     game_mode_num = game_mode_validator()
 # validates if user wants to read instruction <-- end
 
