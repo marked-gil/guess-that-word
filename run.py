@@ -58,6 +58,7 @@ def see_instruction_validator():
     proceed to Game Menu, and validates the input.
     Returns user input
     """
+    print("\n")
     view_instruction = input("Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
