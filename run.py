@@ -1,9 +1,14 @@
 import os
 import sys
 import random
+from colorama import init, Fore, Style
 from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
+
+
+# keeps color change within the text inside print statement
+init(autoreset=True)
 
 
 def clear_terminal():
@@ -18,7 +23,7 @@ def display_logo(logo):
     Returns the game ascii logo
     """
     clear_terminal()
-    print(logo)
+    print(Fore.GREEN + logo)
     print("Welcome to the game that will test your vocabulary.\n".center(80))
     print(('=' * 70).center(80))
 
@@ -59,10 +64,10 @@ def see_instruction_validator():
     Returns user input
     """
     print("\n")
-    view_instruction = input("Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
+    view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
-        view_instruction = input("Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
+        view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
 
     return view_instruction
 
@@ -73,10 +78,10 @@ def see_modes_validator():
     'n' to return home, and validates the input.
     Returns user input
     """
-    see_menu = input("Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
+    see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
     while see_menu not in ('y', 'n'):
         show_instruction()
-        see_menu = input("Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
+        see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
     
     return see_menu
 
@@ -132,8 +137,8 @@ def display_game_area(word_def, total_answered, game_mode, score=0):
         space_between = " " * 20
 
     total_words = len(Word.used_words)
-    game_area_template = f"\n {MINOR_LOGO} {space_between} {score_display}    Correct Answers: {total_answered} of {total_words}\n"\
-        + "=" * 80\
+    game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between} {score_display}    Correct Answers: {total_answered} of {total_words}\n"\
+        + Style.RESET_ALL + "=" * 80\
         + "\n" * 3\
         + "Definition:".center(80)\
         + "\n" * 2\
@@ -150,7 +155,7 @@ def display_placeholder(placeholder):
     word_placeholder = '  '.join(placeholder).center(80)\
         + "\n" * 3
 
-    print(word_placeholder)
+    print(Fore.CYAN + word_placeholder)
 
 
 def scoring(num_of_guesses):
@@ -180,7 +185,7 @@ def game_mode_validator():
     show_game_modes()
 
     try:
-        game_mode_int = int(input("Choose a game mode by entering '1', '2', or '3':\n".center(80)))
+        game_mode_int = int(input(Fore.BLUE + "Choose a game mode by entering '1', '2', or '3':\n".center(80)))
     except ValueError:
         game_mode_int = game_mode_validator()
     else:
@@ -231,7 +236,7 @@ def play_game(game_mode):
         num_guess = 0
 
         while not_guessed_yet and num_guess != 3:
-            guess = input("Provide your guess:\n".center(80)).upper()
+            guess = input(Fore.YELLOW + "Provide your guess:\n".center(80)).upper()
 
             num_guess += 1
             if guess == word_to_guess:
@@ -242,7 +247,7 @@ def play_game(game_mode):
                 game_object["game_area"] = display_game_area(word_definition, correct_guesses, game_mode, score)
                 print(game_object["game_area"])
                 display_placeholder(word_to_guess)
-                print("Correct!\n".center(80))
+                print(Fore.YELLOW + "Correct!\n".center(80))
             else:
                 if num_guess == 1:
                     clear_terminal()
@@ -260,18 +265,18 @@ def play_game(game_mode):
                     clear_terminal()
                     print(game_object["game_area"])
                     display_placeholder(word_to_guess)
-                    print("Sorry, you did not guess it!\n".center(80))
+                    print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
 
         # Game ends after 15 words
         if len(Word.used_words) == 15:
             game_on = False
         else:
-            proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
+            proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the next word:\n".center(80))
             while proceed != "":
                 clear_terminal()
                 print(game_object["game_area"])
                 display_placeholder(word_to_guess)
-                proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
+                proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the next word:\n".center(80))
 
 
 # Home <-- start
@@ -297,5 +302,5 @@ elif see_instruction == 'n':
 # Play Game <-- start
 clear_terminal()
 play_game(game_mode_num)
-print("The End!")
+print("You got ___ correctly guessed words out of 15".center(80))
 # Play Game <-- end
