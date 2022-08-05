@@ -126,6 +126,26 @@ def scoring(num_of_guesses):
     return points
 
 
+def game_mode_validator():
+    """
+    Prompts user to select game mode and validates the input;
+    returns the game mode number
+    """
+    clear_terminal()
+    print(display_logo(LOGO))
+    show_game_modes()
+
+    try:
+        game_mode_int = int(input("Choose a game mode by entering '1', '2', or '3':\n".center(80)))
+    except ValueError:
+        game_mode_int = game_mode_validator()
+    else:
+        if game_mode_int not in (1, 2, 3):
+            game_mode_int = game_mode_validator()
+
+    return game_mode_int
+
+
 def game_mode_assembler(mode: int, answered_words: int, score: int):
     """
     Returns the "word object", and "game area" while accepting parameters such as:
@@ -229,25 +249,15 @@ if wants_instruction == 'y':
         proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n".center(80))
     
     if proceed_to_menu == 'y':
-        clear_terminal()
-        print(display_logo(LOGO))
-        show_game_modes()
+        game_mode_num = game_mode_validator()
     elif proceed_to_menu == 'n':
         clear_terminal()
         # return home
         os.execv(sys.executable, ['python'] + sys.argv)
 
 elif wants_instruction == 'n':
-    clear_terminal()
-    print(display_logo(LOGO))
-    show_game_modes()
+    game_mode_num = game_mode_validator()
 # validates if user wants to read instruction <-- end
-
-# Game Mode <-- start
-game_mode_num = int(input("Choose a game mode by entering '1', '2', or '3':\n".center(80)))
-while game_mode_num not in [1, 2, 3]:
-    game_mode_num = int(input("You need to enter '1', '2', or '3'\n".center(80)))
-# Game Mode <-- end
 
 # Play Game <-- start
 clear_terminal()
