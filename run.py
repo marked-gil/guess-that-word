@@ -44,6 +44,13 @@ def show_game_modes():
         )
 
 
+def clear_terminal():
+    """
+    Clears the terminal
+    """
+    os.system('cls||clear')
+
+
 def give_1st_hint(word, placeholder):
     """
     Gives hint by adding the first and last letters of the word to
@@ -146,7 +153,7 @@ def play_game(game_mode):
     score = 0
 
     while game_on:
-        os.system('cls||clear')
+        clear_terminal()
 
         game_object = game_mode_assembler(game_mode, correct_guesses, score)
         word_to_guess = game_object["word_obj"].word.upper()
@@ -165,7 +172,7 @@ def play_game(game_mode):
 
             num_guess += 1
             if guess == word_to_guess:
-                os.system('cls||clear')
+                clear_terminal()
                 not_guessed_yet = False
                 correct_guesses += 1
                 score += scoring(num_guess)
@@ -174,19 +181,19 @@ def play_game(game_mode):
                 print("Correct!\n".center(80))
             else:
                 if num_guess == 1:
-                    os.system('cls||clear')
+                    clear_terminal()
                     word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
                     print(game_object["game_area"])
                     display_placeholder(word_placeholder)
                     print("Here are clues. Try again!\n".center(80))
                 elif num_guess == 2:
-                    os.system('cls||clear')
+                    clear_terminal()
                     word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
                     print(game_object["game_area"])
                     display_placeholder(word_placeholder)
                     print("More clues for you. Try again!\n".center(80))
                 else:
-                    os.system('cls||clear')
+                    clear_terminal()
                     print(game_object["game_area"])
                     display_placeholder(word_to_guess)
                     print("Sorry, you did not guess it!\n".center(80))
@@ -197,7 +204,7 @@ def play_game(game_mode):
         else:
             proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
             while proceed != "":
-                os.system('cls||clear')
+                clear_terminal()
                 print(game_object["game_area"])
                 display_placeholder(word_to_guess)
                 proceed = input("Press 'Enter' to proceed to the next word:\n".center(80))
@@ -213,7 +220,7 @@ while wants_instruction not in ['y', 'n']:
     wants_instruction = input("Please enter 'Y' to read the instruction; or, enter 'N' to proceed to the game:\n".center(80)).lower()
 
 if wants_instruction == 'y':
-    os.system('cls||clear')
+    clear_terminal()
     print(display_logo(LOGO))
     show_instruction()
 
@@ -222,16 +229,16 @@ if wants_instruction == 'y':
         proceed_to_menu = input("Please enter 'Y' to proceed; or 'N' to return home:\n".center(80))
     
     if proceed_to_menu == 'y':
-        os.system('cls||clear')
+        clear_terminal()
         print(display_logo(LOGO))
         show_game_modes()
     elif proceed_to_menu == 'n':
-        os.system('cls||clear')
+        clear_terminal()
         # return home
         os.execv(sys.executable, ['python'] + sys.argv)
 
 elif wants_instruction == 'n':
-    os.system('cls||clear')
+    clear_terminal()
     print(display_logo(LOGO))
     show_game_modes()
 # validates if user wants to read instruction <-- end
@@ -243,7 +250,7 @@ while game_mode_num not in [1, 2, 3]:
 # Game Mode <-- end
 
 # Play Game <-- start
-os.system('cls||clear')
+clear_terminal()
 play_game(game_mode_num)
 print("The End!")
 # Play Game <-- end
