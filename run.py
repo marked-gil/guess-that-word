@@ -18,6 +18,13 @@ def clear_terminal():
     print("\033c")
 
 
+def return_home():
+    """
+    Refreshes the game and goes back to home
+    """
+    os.execv(sys.executable, ['python'] + sys.argv)
+
+
 def display_logo(logo):
     """
     Returns the game ascii logo
@@ -292,8 +299,7 @@ if see_instruction == 'y':
         game_mode_num = game_mode_validator()
     elif see_modes == 'n':
         clear_terminal()
-        # return home
-        os.execv(sys.executable, ['python'] + sys.argv)
+        return_home()
 
 elif see_instruction == 'n':
     game_mode_num = game_mode_validator()
