@@ -1,5 +1,6 @@
 import math
 import os
+import sys
 from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
@@ -226,6 +227,8 @@ if wants_instruction == 'y':
         show_game_modes()
     elif proceed_to_menu == 'n':
         os.system('cls||clear')
+        # return home
+        os.execv(sys.executable, ['python'] + sys.argv)
 
 elif wants_instruction == 'n':
     os.system('cls||clear')
@@ -235,7 +238,6 @@ elif wants_instruction == 'n':
 
 # Game Mode <-- start
 game_mode_num = int(input("Choose a game mode by entering '1', '2', or '3':\n"))
-
 while game_mode_num not in [1, 2, 3]:
     game_mode_num = input("You need to enter '1', '2', or '3'\n")
 # Game Mode <-- end
