@@ -129,11 +129,12 @@ def display_game_area(word_def, total_answered, highscore_mode=False, score=0):
         space_between = " " * 15
     else:
         score_display = ""
-        space_between = " " * 30
+        space_between = " " * 20
 
     total_words = len(Word.used_words)
-    game_area_template = f"{MINOR_LOGO} {space_between} {score_display}      Correct Answers: {total_answered} of {total_words}\n"\
-        + "\n" * 2\
+    game_area_template = f"\n {MINOR_LOGO} {space_between} {score_display}    Correct Answers: {total_answered} of {total_words}\n"\
+        + "=" * 80\
+        + "\n" * 3\
         + "Definition:".center(80)\
         + "\n" * 2\
         + word_def.center(80)\
