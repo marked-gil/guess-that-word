@@ -10,7 +10,7 @@ def clear_terminal():
     """
     Clears the terminal
     """
-    os.system('cls||clear')
+    print("\033c")
 
 
 def display_logo(logo):
