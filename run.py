@@ -47,12 +47,9 @@ def show_game_modes():
     """
     Shows the different modes of the game to choose from
     """
-    print(
-        "GAME MODES:\n"
-        "  1. Easy Mode\n"
-        "  2. Hard Mode\n"
-        "  3. Beat the Highscore\n"
-        )
+    print("")
+    print("GAME MODES:\n".center(80))
+    print("[1] Easy Mode      [2] Hard Mode      [3] Beat the Highscore\n\n".center(80))
 
 
 def see_instruction_validator():
