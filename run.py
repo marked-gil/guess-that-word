@@ -118,15 +118,15 @@ def give_2nd_hint(word, placeholder):
     return placeholder
 
 
-def display_game_area(word_def, total_answered, highscore_mode=False, score=0):
+def display_game_area(word_def, total_answered, game_mode, score=0):
     """
     Displays the game area template and accepts arguments for the
     "word definition", "total correct guesses", "boolean for highscore_mode",
     and "score"
     """
-    if highscore_mode is True:
+    if game_mode == 3:
         score_display = f'Score: {score}'
-        space_between = " " * 15
+        space_between = " " * 12
     else:
         score_display = ""
         space_between = " " * 20
@@ -203,9 +203,9 @@ def game_mode_assembler(mode: int, answered_words: int, score: int):
         random_word = Word(easy_words) if len(Word.used_words) < 8 else Word(hard_words)
 
     if mode in (1, 2):
-        return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words)}
+        return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words, mode)}
 
-    return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words, True, score)}
+    return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words, mode, score)}
 
 
 def play_game(game_mode):
@@ -221,12 +221,11 @@ def play_game(game_mode):
 
         game_object = game_mode_assembler(game_mode, correct_guesses, score)
         word_to_guess = game_object["word_obj"].word.upper()
+        word_definition = game_object["word_obj"].definition
         word_placeholder = game_object["word_obj"].placeholder
 
         print(game_object["game_area"])
         display_placeholder(word_placeholder)
-
-        # print(f"Used Words Id: {Word.used_words}")
 
         not_guessed_yet = True
         num_guess = 0
@@ -240,6 +239,7 @@ def play_game(game_mode):
                 not_guessed_yet = False
                 correct_guesses += 1
                 score += scoring(num_guess)
+                game_object["game_area"] = display_game_area(word_definition, correct_guesses, game_mode, score)
                 print(game_object["game_area"])
                 display_placeholder(word_to_guess)
                 print("Correct!\n".center(80))
