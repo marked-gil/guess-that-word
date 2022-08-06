@@ -1,6 +1,7 @@
 import os
 import sys
 import random
+from localStoragePy import localStoragePy
 from colorama import init, Fore, Style
 from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
@@ -312,5 +313,22 @@ elif see_instruction == 'n':
 clear_terminal()
 correct_guesses, score = play_game(game_mode_num).values()
 print(f"You correctly guessed {correct_guesses} words out of 15.\n".center(80))
+
+if game_mode_num == 3:
+    local_storage = localStoragePy('guessthatword-hiscore', )
+    hi_score = local_storage.getItem("hi-score")
+    if hi_score is None:
+        local_storage.setItem("hi-score", score)
+        hi_score = local_storage.getItem("hi-score")
+        print(f"A highscore is set: {score}.".center(80))
+    elif int(hi_score) > score:
+        print(f"Your score is: {score} || the HIGHSCORE is {hi_score}.".center(80))
+    elif int(hi_score) < score:
+        local_storage.setItem("hi-score", score)
+        hi_score = local_storage.getItem("hi-score")
+        print(f"Congratulations! You've just set the NEW HIGHSCORE: {hi_score}.".center(80))
+    print("\n")
+
+
 print(Fore.YELLOW + "Press the 'Run Program' orange button at the top to play gain.".center(80))
 # Play Game <-- end
