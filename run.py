@@ -222,7 +222,8 @@ def game_mode_assembler(mode: int, answered_words: int, score: int):
 
 def play_game(game_mode):
     """
-    Runs the main game with specific game mode
+    Runs the game with specific game mode and returns the
+    "number of correct guesses" and "score"
     """
     game_on = True
     correct_guesses = 0
@@ -285,6 +286,8 @@ def play_game(game_mode):
                 display_placeholder(word_to_guess)
                 proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the next word:\n".center(80))
 
+    return {"correct_guesses": correct_guesses, "score": score}
+
 
 # Home <-- start
 display_logo(LOGO)
@@ -307,6 +310,7 @@ elif see_instruction == 'n':
 
 # Play Game <-- start
 clear_terminal()
-play_game(game_mode_num)
-print("You got ___ correctly guessed words out of 15".center(80))
+correct_guesses, score = play_game(game_mode_num).values()
+print(f"You correctly guessed {correct_guesses} words out of 15.\n".center(80))
+print(Fore.YELLOW + "Press the 'Run Program' orange button at the top to play gain.".center(80))
 # Play Game <-- end
