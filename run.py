@@ -258,6 +258,8 @@ def play_game(game_mode):
                 print(game_object["game_area"])
                 display_placeholder(word_to_guess)
                 print(Fore.YELLOW + "Correct!\n".center(80))
+                if game_mode == 3:
+                    print(f"You earned: {scoring(num_guess)} point{'s' if scoring(num_guess) > 1 else ''}\n".center(80))
             else:
                 if num_guess == 1:
                     clear_terminal()
@@ -353,5 +355,5 @@ if game_mode_num == 3:
             print(Fore.RED + "Enter only 'Y' for yes, or 'N' for no.".center(80))
 
 
-print(Fore.YELLOW + "Press the 'Run Program' orange button at the top to play gain.".center(80))
+print(Fore.YELLOW + "To play gain, press the 'Run Program' [orange] button at the top.".center(80))
 # Play Game <-- end
