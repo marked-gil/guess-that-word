@@ -229,6 +229,54 @@ def game_mode_assembler(mode: int, answered_words: int, score: int):
     return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words, mode, score)}
 
 
+def store_highscore(u_score):
+    """
+    Stores the highscore in the localStorage, and returns "message"
+    (about user's score and/or highscore) and the "local storage"
+    """
+    local_storage = localStoragePy('guessthatword-hiscore')
+    hi_score = local_storage.getItem("hi-score")
+    message = ""
+    if hi_score is None:
+        local_storage.setItem("hi-score", u_score)
+        hi_score = local_storage.getItem("hi-score")
+        message = f"Your score is: {u_score}.\n"
+    elif int(hi_score) > u_score:
+        message = f"Your score is: {u_score} || the HIGHSCORE is {hi_score}.\n"
+    elif int(hi_score) < u_score:
+        local_storage.setItem("hi-score", u_score)
+        hi_score = local_storage.getItem("hi-score")
+        message = f"Congratulations! You've just set the NEW HIGHSCORE: {hi_score}.\n"
+    return {"store_message": message, "local_storage": local_storage}
+
+
+def reset_highscore_validator(storage_name):
+    """
+    Prompts user to choose whether to reset highscore or not, and validates the input.
+    """
+    while True:
+        clear_hi_score = input("Do you want to reset the highscore? ['Y' | 'N']:\n".center(80)).lower()
+        if clear_hi_score == 'y':
+            storage_name.removeItem("hi-score")
+            clear_terminal()
+            print(
+                blank_lines(4) +
+                "Highscore reset!".center(80) +
+                blank_lines(2)
+                )
+            break
+        elif clear_hi_score == 'n':
+            clear_terminal()
+            print(blank_lines(8))
+            break
+        else:
+            clear_terminal()
+            print(
+                blank_lines(3) +
+                Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
+                )
+
+
 def play_game(game_mode):
     """
     Runs the game with specific game mode and returns the
@@ -332,42 +380,9 @@ print(blank_lines(3))
 print(Fore.MAGENTA + f"You correctly guessed {right_guesses} words out of 15.\n".center(80))
 
 if game_mode_num == 3:
-    local_storage = localStoragePy('guessthatword-hiscore', )
-    hi_score = local_storage.getItem("hi-score")
-
-    if hi_score is None:
-        local_storage.setItem("hi-score", user_score)
-        hi_score = local_storage.getItem("hi-score")
-        print(f"Your score is: {user_score}.".center(80))
-    elif int(hi_score) > user_score:
-        print(f"Your score is: {user_score} || the HIGHSCORE is {hi_score}.".center(80))
-    elif int(hi_score) < user_score:
-        local_storage.setItem("hi-score", user_score)
-        hi_score = local_storage.getItem("hi-score")
-        print(f"Congratulations! You've just set the NEW HIGHSCORE: {hi_score}.".center(80))
-    print(blank_lines(1))
-    
-    while True:
-        clear_hi_score = input("Do you want to reset the highscore? ['Y' | 'N']:\n".center(80)).lower()
-        if clear_hi_score == 'y':
-            local_storage.removeItem("hi-score")
-            clear_terminal()
-            print(
-                blank_lines(4)
-                + "Highscore reset!".center(80)
-                + blank_lines(2)
-            )
-            break
-        elif clear_hi_score == 'n':
-            clear_terminal()
-            print(blank_lines(8))
-            break
-        else:
-            clear_terminal()
-            print(
-                blank_lines(3)
-                + Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
-            )
+    store_message, localstorage = store_highscore(user_score).values()
+    print(store_message.center(80))
+    reset_highscore_validator(localstorage)
 
 print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] button at the top.".center(80))
 # Play Game <-- end
