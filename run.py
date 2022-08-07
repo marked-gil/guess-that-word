@@ -27,6 +27,13 @@ def return_home():
     os.execv(sys.executable, ['python'] + sys.argv)
 
 
+def blank_lines(num_lines):
+    """
+    Adds specific number of blank lines for style purposes
+    """
+    return "\n" * num_lines
+
+
 def display_logo(logo):
     """
     Returns the game ascii logo
@@ -61,7 +68,7 @@ def show_game_modes():
     """
     Shows the different modes of the game to choose from
     """
-    print("")
+    print(blank_lines(0))
     print("GAME MODES:\n".center(80))
     print("[1] Easy Mode      [2] Hard Mode      [3] Beat the Highscore\n\n".center(80))
 
@@ -72,7 +79,7 @@ def see_instruction_validator():
     proceed to Game Menu, and validates the input.
     Returns user input
     """
-    print("\n")
+    print(blank_lines(1))
     view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
@@ -148,11 +155,11 @@ def display_game_area(word_def, total_answered, game_mode, score=0):
     total_words = len(Word.used_words)
     game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between} {score_display}    Correct Answers: {total_answered} of {total_words}\n"\
         + Style.RESET_ALL + "=" * 80\
-        + "\n" * 3\
+        + blank_lines(3)\
         + "Definition:".center(80)\
-        + "\n" * 2\
+        + blank_lines(2)\
         + word_def.center(80)\
-        + "\n" * 2\
+        + blank_lines(2)\
 
     return game_area_template
 
@@ -162,7 +169,7 @@ def display_placeholder(placeholder):
     Displays the placeholder for the word
     """
     word_placeholder = '  '.join(placeholder).center(80)\
-        + "\n" * 3
+        + blank_lines(3)
 
     print(Fore.CYAN + word_placeholder)
 
@@ -317,46 +324,50 @@ elif see_instruction == 'n':
 
 # Play Game <-- start
 clear_terminal()
-correct_guesses, score = play_game(game_mode_num).values()
+right_guesses, user_score = play_game(game_mode_num).values()
 
-sleep(1.8)
+sleep(1.5)
 clear_terminal()
-print("\n" * 3)
-print(f"You correctly guessed {correct_guesses} words out of 15.\n".center(80))
+print(blank_lines(3))
+print(Fore.MAGENTA + f"You correctly guessed {right_guesses} words out of 15.\n".center(80))
 
 if game_mode_num == 3:
     local_storage = localStoragePy('guessthatword-hiscore', )
     hi_score = local_storage.getItem("hi-score")
+
     if hi_score is None:
-        local_storage.setItem("hi-score", score)
+        local_storage.setItem("hi-score", user_score)
         hi_score = local_storage.getItem("hi-score")
-        print(f"Your score is: {score}.".center(80))
-    elif int(hi_score) > score:
-        print(f"Your score is: {score} || the HIGHSCORE is {hi_score}.".center(80))
-    elif int(hi_score) < score:
-        local_storage.setItem("hi-score", score)
+        print(f"Your score is: {user_score}.".center(80))
+    elif int(hi_score) > user_score:
+        print(f"Your score is: {user_score} || the HIGHSCORE is {hi_score}.".center(80))
+    elif int(hi_score) < user_score:
+        local_storage.setItem("hi-score", user_score)
         hi_score = local_storage.getItem("hi-score")
         print(f"Congratulations! You've just set the NEW HIGHSCORE: {hi_score}.".center(80))
-    print("\n")
+    print(blank_lines(1))
     
     while True:
         clear_hi_score = input("Do you want to reset the highscore? ['Y' | 'N']:\n".center(80)).lower()
         if clear_hi_score == 'y':
             local_storage.removeItem("hi-score")
             clear_terminal()
-            print("\n" * 4)
-            print("Highscore reset!".center(80))
-            print("\n" * 2)
+            print(
+                blank_lines(4)
+                + "Highscore reset!".center(80)
+                + blank_lines(2)
+            )
             break
         elif clear_hi_score == 'n':
             clear_terminal()
-            print("\n" * 8)
+            print(blank_lines(8))
             break
         else:
             clear_terminal()
-            print("\n" * 3)
-            print(Fore.RED + "Enter only 'Y' for Yes, or 'N' for No.".center(80))
+            print(
+                blank_lines(3)
+                + Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
+            )
 
-
-print(Fore.YELLOW + "To play gain, press the 'Run Program' [orange] button at the top.".center(80))
+print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] button at the top.".center(80))
 # Play Game <-- end
