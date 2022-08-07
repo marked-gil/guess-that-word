@@ -1,6 +1,7 @@
 import os
 import sys
 import random
+from time import sleep
 from localStoragePy import localStoragePy
 from colorama import init, Fore, Style
 from arts import LOGO, MINOR_LOGO
@@ -312,6 +313,10 @@ elif see_instruction == 'n':
 # Play Game <-- start
 clear_terminal()
 correct_guesses, score = play_game(game_mode_num).values()
+
+sleep(2)
+clear_terminal()
+print("\n" * 3)
 print(f"You correctly guessed {correct_guesses} words out of 15.\n".center(80))
 
 if game_mode_num == 3:
@@ -328,6 +333,24 @@ if game_mode_num == 3:
         hi_score = local_storage.getItem("hi-score")
         print(f"Congratulations! You've just set the NEW HIGHSCORE: {hi_score}.".center(80))
     print("\n")
+    
+    while True:
+        clear_hi_score = input("Do you want to reset the highscore? ['Y' | 'N']:\n".center(80)).lower()
+        if clear_hi_score == 'y':
+            local_storage.removeItem("hi-score")
+            clear_terminal()
+            print("\n" * 4)
+            print("Highscore reset!".center(80))
+            print("\n" * 2)
+            break
+        elif clear_hi_score == 'n':
+            clear_terminal()
+            print("\n" * 8)
+            break
+        else:
+            clear_terminal()
+            print("\n" * 3)
+            print(Fore.RED + "Enter only 'Y' for yes, or 'N' for no.".center(80))
 
 
 print(Fore.YELLOW + "Press the 'Run Program' orange button at the top to play gain.".center(80))
