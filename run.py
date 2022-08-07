@@ -277,6 +277,32 @@ def reset_highscore_validator(storage_name):
                 )
 
 
+def feedback_to_wrong_guess(guess_num, placeholder, word, game_obj):
+    """
+    Responds to every wrong guess by the user by providing hints or
+    ending the chance to guess the current word
+    """
+    if guess_num == 1:
+        clear_terminal()
+        placeholder = give_1st_hint(word, placeholder)
+        print(game_obj["game_area"])
+        display_placeholder(placeholder)
+        print("Here are clues. Try again!\n".center(80))
+        print("[For hint, press 'Enter']".center(80))
+    elif guess_num == 2:
+        clear_terminal()
+        placeholder = give_2nd_hint(word, placeholder)
+        print(game_obj["game_area"])
+        display_placeholder(placeholder)
+        print("More clues for you. Try again!\n".center(80))
+        print("[If can't guess, press 'Enter']".center(80))
+    else:
+        clear_terminal()
+        print(game_obj["game_area"])
+        display_placeholder(word)
+        print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
+
+
 def play_game(game_mode):
     """
     Runs the game with specific game mode and returns the
@@ -317,26 +343,8 @@ def play_game(game_mode):
                 if game_mode == 3:
                     print(f"You earned: {scoring(num_guess)} point{'s' if scoring(num_guess) > 1 else ''}\n".center(80))
             else:
-                if num_guess == 1:
-                    clear_terminal()
-                    word_placeholder = give_1st_hint(word_to_guess, word_placeholder)
-                    print(game_object["game_area"])
-                    display_placeholder(word_placeholder)
-                    print("Here are clues. Try again!\n".center(80))
-                    print("[For hint, press 'Enter']".center(80))
-                elif num_guess == 2:
-                    clear_terminal()
-                    word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
-                    print(game_object["game_area"])
-                    display_placeholder(word_placeholder)
-                    print("More clues for you. Try again!\n".center(80))
-                    print("[If you can't guess, press 'Enter']".center(80))
-                else:
-                    clear_terminal()
-                    print(game_object["game_area"])
-                    display_placeholder(word_to_guess)
-                    print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
-
+                feedback_to_wrong_guess(num_guess, word_placeholder, word_to_guess, game_object)
+                
         # Game ends after 15 words
         if len(Word.used_words) == 15:
             game_on = False
