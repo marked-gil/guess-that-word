@@ -277,36 +277,37 @@ def reset_highscore_validator(storage_name):
                 )
 
 
-def feedback_to_wrong_guess(guess_num, placeholder, word, game_obj):
+def feedback_to_wrong_guess(guess_num, placeholder, word, game_zone):
     """
     Responds to every wrong guess by the user by providing hints or
-    ending the chance to guess the current word
+    ending the chance to guess the current word. This accepts "num_guess",
+    "word_placeholder", "word_to_guess", and "game_area" as arguments.
     """
     if guess_num == 1:
         clear_terminal()
         placeholder = give_1st_hint(word, placeholder)
-        print(game_obj["game_area"])
+        print(game_zone)
         display_placeholder(placeholder)
         print("Here are clues. Try again!\n".center(80))
         print("[For hint, press 'Enter']".center(80))
     elif guess_num == 2:
         clear_terminal()
         placeholder = give_2nd_hint(word, placeholder)
-        print(game_obj["game_area"])
+        print(game_zone)
         display_placeholder(placeholder)
         print("More clues for you. Try again!\n".center(80))
-        print("[If can't guess, press 'Enter']".center(80))
+        print("[If you can't guess, press 'Enter']".center(80))
     else:
         clear_terminal()
-        print(game_obj["game_area"])
+        print(game_zone)
         display_placeholder(word)
         print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
 
 
-def check_if_gameover(game_obj, word):
+def check_if_gameover(game_zone, word):
     """
-    Checks if the game has reached 15 words to end the game, requires the 
-    "game_object" and "word_to_guess" parameters and returns True or False
+    Checks if the game has reached 15 words to end the game, requires the
+    "game_area" and "word_to_guess" arguments and returns True or False
     """
     game_continues = True
     # Game ends after 15 words
@@ -316,7 +317,7 @@ def check_if_gameover(game_obj, word):
         proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the next word:\n".center(80))
         while proceed != "":
             clear_terminal()
-            print(game_obj["game_area"])
+            print(game_zone)
             display_placeholder(word)
             proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the next word:\n".center(80))
         game_continues = True
@@ -336,11 +337,12 @@ def play_game(game_mode):
         clear_terminal()
 
         game_object = game_mode_assembler(game_mode, correct_guesses, score)
+        game_area = game_object["game_area"]
         word_to_guess = game_object["word_obj"].word.upper()
         word_definition = game_object["word_obj"].definition
         word_placeholder = game_object["word_obj"].placeholder
 
-        print(game_object["game_area"])
+        print(game_area)
         display_placeholder(word_placeholder)
 
         not_guessed_yet = True
@@ -356,16 +358,16 @@ def play_game(game_mode):
                 not_guessed_yet = False
                 correct_guesses += 1
                 score += scoring(num_guess)
-                game_object["game_area"] = display_game_area(word_definition, correct_guesses, game_mode, score)
-                print(game_object["game_area"])
+                game_area = display_game_area(word_definition, correct_guesses, game_mode, score)
+                print(game_area)
                 display_placeholder(word_to_guess)
                 print(Fore.YELLOW + "Correct!\n".center(80))
                 if game_mode == 3:
                     print(f"You earned: {scoring(num_guess)} point{'s' if scoring(num_guess) > 1 else ''}\n".center(80))
             else:
-                feedback_to_wrong_guess(num_guess, word_placeholder, word_to_guess, game_object)
+                feedback_to_wrong_guess(num_guess, word_placeholder, word_to_guess, game_area)
 
-        game_on = check_if_gameover(game_object, word_to_guess)
+        game_on = check_if_gameover(game_area, word_to_guess)
 
     return {"correct_guesses": correct_guesses, "score": score}
 
