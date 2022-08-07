@@ -245,6 +245,7 @@ def play_game(game_mode):
         not_guessed_yet = True
         num_guess = 0
 
+        print("[For hint, press 'Enter']".center(80))
         while not_guessed_yet and num_guess != 3:
             guess = input(Fore.YELLOW + "Provide your guess:\n".center(80)).upper()
 
@@ -267,12 +268,14 @@ def play_game(game_mode):
                     print(game_object["game_area"])
                     display_placeholder(word_placeholder)
                     print("Here are clues. Try again!\n".center(80))
+                    print("[For hint, press 'Enter']".center(80))
                 elif num_guess == 2:
                     clear_terminal()
                     word_placeholder = give_2nd_hint(word_to_guess, word_placeholder)
                     print(game_object["game_area"])
                     display_placeholder(word_placeholder)
                     print("More clues for you. Try again!\n".center(80))
+                    print("[If you can't guess, press 'Enter']".center(80))
                 else:
                     clear_terminal()
                     print(game_object["game_area"])
@@ -316,7 +319,7 @@ elif see_instruction == 'n':
 clear_terminal()
 correct_guesses, score = play_game(game_mode_num).values()
 
-sleep(2)
+sleep(1.8)
 clear_terminal()
 print("\n" * 3)
 print(f"You correctly guessed {correct_guesses} words out of 15.\n".center(80))
@@ -327,7 +330,7 @@ if game_mode_num == 3:
     if hi_score is None:
         local_storage.setItem("hi-score", score)
         hi_score = local_storage.getItem("hi-score")
-        print(f"A highscore is set: {score}.".center(80))
+        print(f"Your score is: {score}.".center(80))
     elif int(hi_score) > score:
         print(f"Your score is: {score} || the HIGHSCORE is {hi_score}.".center(80))
     elif int(hi_score) < score:
@@ -352,7 +355,7 @@ if game_mode_num == 3:
         else:
             clear_terminal()
             print("\n" * 3)
-            print(Fore.RED + "Enter only 'Y' for yes, or 'N' for no.".center(80))
+            print(Fore.RED + "Enter only 'Y' for Yes, or 'N' for No.".center(80))
 
 
 print(Fore.YELLOW + "To play gain, press the 'Run Program' [orange] button at the top.".center(80))
