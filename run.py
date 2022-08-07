@@ -29,7 +29,7 @@ def return_home():
 
 def blank_lines(num_lines):
     """
-    Adds specific number of blank lines for style purposes
+    Adds specific number of blank lines for styling purposes
     """
     return "\n" * num_lines
 
@@ -377,7 +377,7 @@ right_guesses, user_score = play_game(game_mode_num).values()
 sleep(1.5)
 clear_terminal()
 print(blank_lines(3))
-print(Fore.MAGENTA + f"You correctly guessed {right_guesses} words out of 15.\n".center(80))
+print(Fore.MAGENTA + f"You correctly guessed {right_guesses} word{'s' if right_guesses > 1 else ''} out of 15.\n".center(80))
 
 if game_mode_num == 3:
     store_message, localstorage = store_highscore(user_score).values()
