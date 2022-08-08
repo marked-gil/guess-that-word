@@ -7,6 +7,7 @@ from colorama import init, Fore, Style
 from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
+from score_manager import Scorer
 
 
 # keeps color change within the text inside print statement
@@ -139,21 +140,21 @@ def give_2nd_hint(word, placeholder):
     return placeholder
 
 
-def display_game_area(word_def, total_answered, game_mode, score=0):
+def display_game_area(word_def, game_mode):
     """
     Displays the game area template and accepts arguments for the
     "word definition", "total correct guesses", "boolean for highscore_mode",
     and "score"
     """
     if game_mode == 3:
-        score_display = f'Score: {score}'
+        score_display = f'Score: {Scorer.total_score}'
         space_between = " " * 12
     else:
         score_display = ""
         space_between = " " * 20
 
     total_words = len(Word.used_words)
-    game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between} {score_display}    Correct Answers: {total_answered} of {total_words}\n"\
+    game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between} {score_display}    Correct Answers: {Scorer.total_correct_guesses} of {total_words}\n"\
         + Style.RESET_ALL + "=" * 80\
         + blank_lines(3)\
         + "Definition:".center(80)\
@@ -174,21 +175,21 @@ def display_placeholder(placeholder):
     print(Fore.CYAN + word_placeholder)
 
 
-def scoring(num_of_guesses):
-    """
-    Returns the points earned per correctly guessed word
-    for game mode 3 (Beat Your Highscore)
-    """
-    if num_of_guesses == 1:
-        points = 5
-    elif num_of_guesses == 2:
-        points = 3
-    elif num_of_guesses == 3:
-        points = 1
-    else:
-        points = 0
+# def scoring(num_of_guesses):
+#     """
+#     Returns the points earned per correctly guessed word
+#     for game mode 3 (Beat Your Highscore)
+#     """
+#     if num_of_guesses == 1:
+#         points = 5
+#     elif num_of_guesses == 2:
+#         points = 3
+#     elif num_of_guesses == 3:
+#         points = 1
+#     else:
+#         points = 0
 
-    return points
+#     return points
 
 
 def game_mode_validator():
@@ -211,7 +212,7 @@ def game_mode_validator():
     return game_mode_int
 
 
-def game_mode_assembler(mode: int, answered_words: int, score: int):
+def game_mode_assembler(mode: int):
     """
     Returns the "word object", and "game area" while accepting parameters such as:
     "game mode" (mode), "total of correctly answered words" (answered_words), and "score"
@@ -224,16 +225,17 @@ def game_mode_assembler(mode: int, answered_words: int, score: int):
         random_word = Word(easy_words) if len(Word.used_words) < 8 else Word(hard_words)
 
     if mode in (1, 2):
-        return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words, mode)}
+        return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, mode)}
 
-    return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, answered_words, mode, score)}
+    return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, mode)}
 
 
-def store_highscore(u_score):
+def store_highscore():
     """
     Stores the highscore in the localStorage, and returns "message"
     (about user's score and/or highscore) and the "local storage"
     """
+    u_score = Scorer.total_score
     local_storage = localStoragePy('guessthatword-hiscore')
     hi_score = local_storage.getItem("hi-score")
     message = ""
@@ -326,17 +328,14 @@ def check_if_gameover(game_zone, word):
 
 def play_game(game_mode):
     """
-    Runs the game with specific game mode and returns the
-    "number of correct guesses" and "score"
+    Runs the game with specific game mode
     """
     game_on = True
-    correct_guesses = 0
-    score = 0
 
     while game_on:
         clear_terminal()
 
-        game_object = game_mode_assembler(game_mode, correct_guesses, score)
+        game_object = game_mode_assembler(game_mode)
         game_area = game_object["game_area"]
         word_to_guess = game_object["word_obj"].word.upper()
         word_definition = game_object["word_obj"].definition
@@ -346,30 +345,27 @@ def play_game(game_mode):
         display_placeholder(word_placeholder)
 
         not_guessed_yet = True
-        num_guess = 0
+        tries_per_word = 0
 
         print("[For hint, press 'Enter']".center(80))
-        while not_guessed_yet and num_guess != 3:
+        while not_guessed_yet and tries_per_word != 3:
             guess = input(Fore.YELLOW + "Provide your guess:\n".center(80)).upper()
 
-            num_guess += 1
+            tries_per_word += 1
             if guess == word_to_guess:
                 clear_terminal()
                 not_guessed_yet = False
-                correct_guesses += 1
-                score += scoring(num_guess)
-                game_area = display_game_area(word_definition, correct_guesses, game_mode, score)
+                score = Scorer(tries_per_word)
+                game_area = display_game_area(word_definition, game_mode)
                 print(game_area)
                 display_placeholder(word_to_guess)
                 print(Fore.YELLOW + "Correct!\n".center(80))
                 if game_mode == 3:
-                    print(f"You earned: {scoring(num_guess)} point{'s' if scoring(num_guess) > 1 else ''}\n".center(80))
+                    print(f"You earned: {score.points} point{'s' if score.points > 1 else ''}\n".center(80))
             else:
-                feedback_to_wrong_guess(num_guess, word_placeholder, word_to_guess, game_area)
+                feedback_to_wrong_guess(tries_per_word, word_placeholder, word_to_guess, game_area)
 
         game_on = check_if_gameover(game_area, word_to_guess)
-
-    return {"correct_guesses": correct_guesses, "score": score}
 
 
 # Home <-- start
@@ -393,15 +389,17 @@ elif see_instruction == 'n':
 
 # Play Game <-- start
 clear_terminal()
-right_guesses, user_score = play_game(game_mode_num).values()
+play_game(game_mode_num)
 
 sleep(1.5)
 clear_terminal()
+total_right_guesses = Scorer.total_correct_guesses
+total_score = Scorer.total_score
 print(blank_lines(3))
-print(Fore.MAGENTA + f"You correctly guessed {right_guesses} word{'s' if right_guesses > 1 else ''} out of 15.\n".center(80))
+print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} word{'s' if total_right_guesses > 1 else ''} out of 15.\n".center(80))
 
 if game_mode_num == 3:
-    store_message, localstorage = store_highscore(user_score).values()
+    store_message, localstorage = store_highscore().values()
     print(store_message.center(80))
     reset_highscore_validator(localstorage)
 
