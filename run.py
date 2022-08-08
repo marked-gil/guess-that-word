@@ -197,7 +197,7 @@ def game_mode_validator():
 
 def game_mode_assembler(mode: int):
     """
-	Returns the "word object", and "game area" while accepting
+    Returns the "word object", and "game area" while accepting
     the "game mode" (mode) as argument.
     """
     if mode == 1:
@@ -357,40 +357,47 @@ def play_game(game_mode):
         game_on = check_if_gameover(game_area, word_to_guess)
 
 
-# Home <-- start
-display_logo(LOGO)
-# Home <-- end
+def main():
+    """
+    Runs the entire gaming program from start to finish
+    """
+    # Home <-- start
+    display_logo(LOGO)
+    # Home <-- end
 
-# validates if user wants to read instruction <-- start
-see_instruction = see_instruction_validator()
-if see_instruction == 'y':
-    show_instruction()
-    see_modes = see_modes_validator()
-    if see_modes == 'y':
+    # validates if user wants to read instruction <-- start
+    see_instruction = see_instruction_validator()
+    if see_instruction == 'y':
+        show_instruction()
+        see_modes = see_modes_validator()
+        if see_modes == 'y':
+            game_mode_num = game_mode_validator()
+        elif see_modes == 'n':
+            clear_terminal()
+            return_home()
+
+    elif see_instruction == 'n':
         game_mode_num = game_mode_validator()
-    elif see_modes == 'n':
-        clear_terminal()
-        return_home()
+    # validates if user wants to read instruction <-- end
 
-elif see_instruction == 'n':
-    game_mode_num = game_mode_validator()
-# validates if user wants to read instruction <-- end
+    # Play Game <-- start
+    clear_terminal()
+    play_game(game_mode_num)
 
-# Play Game <-- start
-clear_terminal()
-play_game(game_mode_num)
+    sleep(1.5)
+    clear_terminal()
+    total_right_guesses = Scorer.total_correct_guesses
+    print(blank_lines(3))
+    print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} word{'s' if total_right_guesses > 1 else ''} out of 15.\n".center(80))
 
-sleep(1.5)
-clear_terminal()
-total_right_guesses = Scorer.total_correct_guesses
-total_score = Scorer.total_score
-print(blank_lines(3))
-print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} word{'s' if total_right_guesses > 1 else ''} out of 15.\n".center(80))
+    if game_mode_num == 3:
+        store_message, localstorage = store_highscore().values()
+        print(store_message.center(80))
+        reset_highscore_validator(localstorage)
 
-if game_mode_num == 3:
-    store_message, localstorage = store_highscore().values()
-    print(store_message.center(80))
-    reset_highscore_validator(localstorage)
+    print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] button at the top.".center(80))
+    # Play Game <-- end
 
-print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] button at the top.".center(80))
-# Play Game <-- end
+
+if __name__ == '__main__':
+    main()
