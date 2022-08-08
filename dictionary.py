@@ -7,7 +7,8 @@ easy_words = [
     {
         "id": "e1",
         "word": "anger",
-        "definition": "A strong feeling of displeasure and usually of antagonism",
+        "definition": "A strong feeling of displeasure and usually of "
+        "antagonism",
     },
     {
         "id": "e2",
@@ -17,7 +18,8 @@ easy_words = [
     {
         "id": "e3",
         "word": "dream",
-        "definition": "A series of thoughts, images, or emotions occurring during sleep",
+        "definition": "A series of thoughts, images, or emotions occurring "
+        "during sleep",
     },
     {
         "id": "e4",
@@ -32,12 +34,14 @@ easy_words = [
     {
         "id": "e6",
         "word": "office",
-        "definition": "A position of responsibility or some degree of executive authority",
+        "definition": "A position of responsibility or some degree of "
+        "executive authority",
     },
     {
         "id": "e7",
         "word": "wedding",
-        "definition": "A marriage ceremony usually with its accompanying festivities",
+        "definition": "A marriage ceremony usually with its accompanying "
+        "festivities",
     },
     {
         "id": "e8",
@@ -52,12 +56,14 @@ easy_words = [
     {
         "id": "e10",
         "word": "village",
-        "definition": "A settlement usually larger than a hamlet and smaller than a town",
+        "definition": "A settlement usually larger than a hamlet and smaller "
+        "than a town",
     },
     {
         "id": "e11",
         "word": "freedom",
-        "definition": "The absence of necessity, coercion, or constraint in choice or action",
+        "definition": "The absence of necessity, coercion, or constraint in "
+        "choice or action",
     },
     {
         "id": "e12",
@@ -66,8 +72,8 @@ easy_words = [
     },
     {
         "id": "e13",
-        "word": "comfortable",
-        "definition": "Affording or enjoying contentment and security",
+        "word": "honest",
+        "definition": "Free from fraud or deception",
     },
     {
         "id": "e14",
@@ -77,17 +83,19 @@ easy_words = [
     {
         "id": "e15",
         "word": "problem",
-        "definition": "A question raised for inquiry, consideration, or solution",
+        "definition": "A question raised for inquiry, consideration, or "
+        "solution",
     },
     {
         "id": "e16",
-        "word": "substance",
-        "definition": "A fundamental or characteristic part or quality",
+        "word": "magazine",
+        "definition": "A print periodical containing miscellaneous pieces",
     },
     {
         "id": "e17",
         "word": "special",
-        "definition": "Readily distinguishable from others of the same category",
+        "definition": "Readily distinguishable from others of the same "
+        "category",
     },
     {
         "id": "e18",
@@ -112,17 +120,20 @@ easy_words = [
     {
         "id": "e22",
         "word": "promise",
-        "definition": "A declaration that one will do or refrain from doing something specified",
+        "definition": "A declaration that one will do or refrain from doing "
+        "something specified",
     },
     {
         "id": "e23",
         "word": "garden",
-        "definition": "A plot of ground where herbs, fruits, flowers, or vegetables are cultivated",
+        "definition": "A plot of ground where herbs, fruits, flowers, or "
+        "vegetables are cultivated",
     },
     {
         "id": "e24",
         "word": "destroy",
-        "definition": "To ruin the structure, organic existence, or condition of",
+        "definition": "To ruin the structure, organic existence, or condition "
+        "of",
     },
     {
         "id": "e25",
@@ -134,27 +145,8 @@ easy_words = [
         "word": "attack",
         "definition": "To set upon or work against forcefully",
     },
-    {
-        "id": "e27",
-        "word": "magazine",
-        "definition": "A print periodical containing miscellaneous pieces",
-    },
-    {
-        "id": "e28",
-        "word": "warehouse",
-        "definition": "A structure or room for the storage of merchandise or commodities",
-    },
-    {
-        "id": "e29",
-        "word": "honest",
-        "definition": "Free from fraud or deception",
-    },
-    {
-        "id": "e30",
-        "word": "accomplish",
-        "definition": "To bring to completion",
-    },
 ]
+
 
 # List of hard words
 hard_words = [
@@ -176,7 +168,8 @@ hard_words = [
     {
         "id": "h4",
         "word": "bailiwick",
-        "definition": "The sphere in which one has superior knowledge or authority",
+        "definition": "The sphere in which one has superior knowledge or "
+        "authority",
     },
     {
         "id": "h5",
@@ -196,7 +189,8 @@ hard_words = [
     {
         "id": "h8",
         "word": "ambiguous",
-        "definition": "Capable of being understood in two or more possible senses or ways",
+        "definition": "Capable of being understood in two or more possible "
+        "senses or ways",
     },
     {
         "id": "h9",
@@ -216,7 +210,8 @@ hard_words = [
     {
         "id": "h12",
         "word": "divergent",
-        "definition": "Moving or extending in different directions from a common point",
+        "definition": "Moving or extending in different directions from a "
+        "common point",
     },
     {
         "id": "h13",
@@ -231,7 +226,8 @@ hard_words = [
     {
         "id": "h15",
         "word": "epitaph",
-        "definition": "An inscription on or at a tomb or a grave in memory of the one buried there",
+        "definition": "An inscription on or at a tomb or a grave in memory of "
+        "the one buried there",
     },
     {
         "id": "h16",
@@ -261,12 +257,14 @@ hard_words = [
     {
         "id": "h21",
         "word": "identical",
-        "definition": "Having such close resemblance as to be essentially the same",
+        "definition": "Having such close resemblance as to be essentially the "
+        "same",
     },
     {
         "id": "h22",
         "word": "augment",
-        "definition": "To make greater, more numerous, larger, or more intense",
+        "definition": "To make greater, more numerous, larger, or more "
+        "intense",
     },
     {
         "id": "h23",
@@ -276,22 +274,26 @@ hard_words = [
     {
         "id": "h24",
         "word": "sufficient",
-        "definition": "Enough to meet the needs of a situation or a proposed end",
+        "definition": "Enough to meet the needs of a situation or a proposed "
+        "end",
     },
     {
         "id": "h25",
         "word": "extort",
-        "definition": "To obtain from a person by force, intimidation, or undue or illegal power",
+        "definition": "To obtain from a person by force, intimidation, or "
+        "undue or illegal power",
     },
     {
         "id": "h26",
         "word": "wayward",
-        "definition": "Following one's own capricious, wanton, or depraved inclinations",
+        "definition": "Following one's own capricious, wanton, or depraved "
+        "inclinations",
     },
     {
         "id": "h27",
         "word": "converge",
-        "definition": "To come together and unite in a common interest or focus",
+        "definition": "To come together and unite in a common interest or "
+        "focus",
     },
     {
         "id": "h28",
@@ -311,7 +313,28 @@ hard_words = [
     {
         "id": "h31",
         "word": "calamity",
-        "definition": "A disastrous event marked by great loss and lasting distress and suffering",
+        "definition": "A disastrous event marked by great loss and lasting "
+        "distress and suffering",
+    },
+    {
+        "id": "h32",
+        "word": "comfortable",
+        "definition": "Affording or enjoying contentment and security",
+    },
+    {
+        "id": "h33",
+        "word": "substance",
+        "definition": "A fundamental or characteristic part or quality",
+    },
+    {
+        "id": "h34",
+        "word": "accomplish",
+        "definition": "To bring to completion",
+    },
+    {
+        "id": "h35",
+        "word": "warehouse",
+        "definition": "A structure or room for the storage of merchandise or "
+        "commodities",
     },
 ]
-
