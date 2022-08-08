@@ -55,8 +55,10 @@ def show_instruction():
         "     1. There are 3 modes of the game you can choose to play:\n"
         "        a. Easy Mode - guess 15 EASY words\n"
         "        b. Hard Mode - guess 15 HARD words\n"
-        "        c. Beat the Highscore - guess 15 EASY & HARD words with scoring\n"
-        "     2. A definition will be shown, and you will guess the word it defines"
+        "        c. Beat the Highscore - guess 15 EASY & HARD words with "
+        "scoring\n"
+        "     2. A definition will be shown, and you will guess the word it "
+        "defines"
         "\n     3. You are allowed 3 attempts to guess the word.\n"
         "     4. Before each attempt, you will be provided with clues:\n"
         "        a. 1st clue = the number of letters in the word\n"
@@ -71,7 +73,8 @@ def show_game_modes():
     """
     print(blank_lines(0))
     print("GAME MODES:\n".center(80))
-    print("[1] Easy Mode      [2] Hard Mode      [3] Beat the Highscore\n\n".center(80))
+    print("[1] Easy Mode      [2] Hard Mode      "
+          "[3] Beat the Highscore\n\n".center(80))
 
 
 def see_instruction_validator():
@@ -81,10 +84,14 @@ def see_instruction_validator():
     Returns user input
     """
     print(blank_lines(1))
-    view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
+    view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, "
+                             "enter 'N' for Game Menu:\n".center(80)).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
-        view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, enter 'N' for Game Menu:\n".center(80)).lower()
+        print(blank_lines(1))
+        view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; "
+                                 "or, enter 'N' for Game Menu:\n"
+                                 .center(80)).lower()
 
     return view_instruction
 
@@ -95,11 +102,13 @@ def see_modes_validator():
     'n' to return home, and validates the input.
     Returns user input
     """
-    see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
+    see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, enter "
+                     "'N' to return home:\n".center(80)).lower()
     while see_menu not in ('y', 'n'):
         show_instruction()
-        see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, enter 'N' to return home:\n".center(80)).lower()
-    
+        see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, "
+                         "enter 'N' to return home:\n".center(80)).lower()
+
     return see_menu
 
 
@@ -148,13 +157,14 @@ def display_game_area(word_def, game_mode):
     """
     if game_mode == 3:
         score_display = f'Score: {Scorer.total_score}'
-        space_between = " " * 12
+        space_between = " " * 10
     else:
         score_display = ""
-        space_between = " " * 20
+        space_between = " " * 18
 
     total_words = len(Word.used_words)
-    game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between} {score_display}    Correct Answers: {Scorer.total_correct_guesses} of {total_words}\n"\
+    game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between}\
+    {score_display}    Correct Answers: {Scorer.total_correct_guesses} of {total_words}\n"\
         + Style.RESET_ALL + "=" * 80\
         + blank_lines(3)\
         + "Definition:".center(80)\
@@ -185,7 +195,8 @@ def game_mode_validator():
     show_game_modes()
 
     try:
-        game_mode_int = int(input(Fore.BLUE + "Choose a game mode by entering '1', '2', or '3':\n".center(80)))
+        game_mode_int = int(input(Fore.BLUE + "Choose a game mode by entering "
+                            "'1', '2', or '3':\n".center(80)))
     except ValueError:
         game_mode_int = game_mode_validator()
     else:
@@ -205,12 +216,15 @@ def game_mode_assembler(mode: int):
     elif mode == 2:
         random_word = Word(hard_words)
     elif mode == 3:
-        random_word = Word(easy_words) if len(Word.used_words) < 8 else Word(hard_words)
+        random_word = Word(easy_words) if len(Word.used_words) < 8 \
+            else Word(hard_words)
 
     if mode in (1, 2):
-        return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, mode)}
+        return {"word_obj": random_word, "game_area":
+                display_game_area(random_word.definition, mode)}
 
-    return {"word_obj": random_word, "game_area": display_game_area(random_word.definition, mode)}
+    return {"word_obj": random_word, "game_area":
+            display_game_area(random_word.definition, mode)}
 
 
 def store_highscore():
@@ -231,16 +245,19 @@ def store_highscore():
     elif int(hi_score) < u_score:
         local_storage.setItem("hi-score", u_score)
         hi_score = local_storage.getItem("hi-score")
-        message = f"Congratulations! You've just set the NEW HIGHSCORE: {hi_score}.\n"
+        message = "Congratulations! You've just set the NEW HIGHSCORE: "\
+            + hi_score
     return {"store_message": message, "local_storage": local_storage}
 
 
 def reset_highscore_validator(storage_name):
     """
-    Prompts user to choose whether to reset highscore or not, and validates the input.
+    Prompts user to choose whether to reset highscore or not,
+    and validates the input.
     """
     while True:
-        clear_hi_score = input("Do you want to reset the highscore? ['Y' | 'N']:\n".center(80)).lower()
+        clear_hi_score = input("Do you want to reset the highscore? "
+                               "['Y' | 'N']:\n".center(80)).lower()
         if clear_hi_score == 'y':
             storage_name.removeItem("hi-score")
             clear_terminal()
@@ -310,9 +327,11 @@ def check_user_guess(word, definition, placeholder, mode, game_zone):
             display_placeholder(word)
             print(Fore.YELLOW + "Correct!\n".center(80))
             if mode == 3:
-                print(f"You earned: {score.points} point{'s' if score.points > 1 else ''}\n".center(80))
+                print(f"You earned: {score.points}"
+                      f" point{'s' if score.points > 1 else ''}\n".center(80))
         else:
-            feedback_to_wrong_guess(tries_per_word, placeholder, word, game_zone)
+            feedback_to_wrong_guess(tries_per_word, placeholder, word,
+                                    game_zone)
 
 
 def check_if_gameover(game_zone, word):
@@ -325,12 +344,14 @@ def check_if_gameover(game_zone, word):
     if len(Word.used_words) == 15:
         game_continues = False
     else:
-        proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the next word:\n".center(80))
+        proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the "
+                        "next word:\n".center(80))
         while proceed != "":
             clear_terminal()
             print(game_zone)
             display_placeholder(word)
-            proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the next word:\n".center(80))
+            proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the "
+                            "next word:\n".center(80))
         game_continues = True
     return game_continues
 
@@ -353,7 +374,8 @@ def play_game(game_mode):
         print(game_area)
         display_placeholder(word_placeholder)
 
-        check_user_guess(word_to_guess, word_definition, word_placeholder, game_mode, game_area)
+        check_user_guess(word_to_guess, word_definition, word_placeholder,
+                         game_mode, game_area)
         game_on = check_if_gameover(game_area, word_to_guess)
 
 
@@ -388,14 +410,17 @@ def main():
     clear_terminal()
     total_right_guesses = Scorer.total_correct_guesses
     print(blank_lines(3))
-    print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} word{'s' if total_right_guesses > 1 else ''} out of 15.\n".center(80))
+    print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} "
+          f"word{'s' if total_right_guesses > 1 else ''} "
+          "out of 15.\n".center(80))
 
     if game_mode_num == 3:
         store_message, localstorage = store_highscore().values()
         print(store_message.center(80))
         reset_highscore_validator(localstorage)
 
-    print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] button at the top.".center(80))
+    print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] "
+          "button at the top.".center(80))
     # Play Game <-- end
 
 
