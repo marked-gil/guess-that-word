@@ -197,8 +197,8 @@ def game_mode_validator():
 
 def game_mode_assembler(mode: int):
     """
-    Returns the "word object", and "game area" while accepting parameters such as:
-    "game mode" (mode), "total of correctly answered words" (answered_words), and "score"
+	Returns the "word object", and "game area" while accepting
+    the "game mode" (mode) as argument.
     """
     if mode == 1:
         random_word = Word(easy_words)
@@ -289,6 +289,32 @@ def feedback_to_wrong_guess(guess_num, placeholder, word, game_zone):
         print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
 
 
+def check_user_guess(word, definition, placeholder, mode, game_zone):
+    """
+    Checks if the user's guess is correct or not and provides feedback.
+    Allows the user to have 3 attempts only for each word.
+    """
+    not_guessed_yet = True
+    tries_per_word = 0
+    print("[For hint, press 'Enter']".center(80))
+
+    while not_guessed_yet and tries_per_word != 3:
+        guess = input(Fore.YELLOW + "Provide your guess:\n".center(80)).upper()
+        tries_per_word += 1
+        if guess == word:
+            clear_terminal()
+            not_guessed_yet = False
+            score = Scorer(tries_per_word)
+            game_area = display_game_area(definition, mode)
+            print(game_area)
+            display_placeholder(word)
+            print(Fore.YELLOW + "Correct!\n".center(80))
+            if mode == 3:
+                print(f"You earned: {score.points} point{'s' if score.points > 1 else ''}\n".center(80))
+        else:
+            feedback_to_wrong_guess(tries_per_word, placeholder, word, game_zone)
+
+
 def check_if_gameover(game_zone, word):
     """
     Checks if the game has reached 15 words to end the game, requires the
@@ -327,27 +353,27 @@ def play_game(game_mode):
         print(game_area)
         display_placeholder(word_placeholder)
 
-        not_guessed_yet = True
-        tries_per_word = 0
+        # not_guessed_yet = True
+        # tries_per_word = 0
 
-        print("[For hint, press 'Enter']".center(80))
-        while not_guessed_yet and tries_per_word != 3:
-            guess = input(Fore.YELLOW + "Provide your guess:\n".center(80)).upper()
+        # print("[For hint, press 'Enter']".center(80))
+        # while not_guessed_yet and tries_per_word != 3:
+        #     guess = input(Fore.YELLOW + "Provide your guess:\n".center(80)).upper()
 
-            tries_per_word += 1
-            if guess == word_to_guess:
-                clear_terminal()
-                not_guessed_yet = False
-                score = Scorer(tries_per_word)
-                game_area = display_game_area(word_definition, game_mode)
-                print(game_area)
-                display_placeholder(word_to_guess)
-                print(Fore.YELLOW + "Correct!\n".center(80))
-                if game_mode == 3:
-                    print(f"You earned: {score.points} point{'s' if score.points > 1 else ''}\n".center(80))
-            else:
-                feedback_to_wrong_guess(tries_per_word, word_placeholder, word_to_guess, game_area)
-
+        #     tries_per_word += 1
+        #     if guess == word_to_guess:
+        #         clear_terminal()
+        #         not_guessed_yet = False
+        #         score = Scorer(tries_per_word)
+        #         game_area = display_game_area(word_definition, game_mode)
+        #         print(game_area)
+        #         display_placeholder(word_to_guess)
+        #         print(Fore.YELLOW + "Correct!\n".center(80))
+        #         if game_mode == 3:
+        #             print(f"You earned: {score.points} point{'s' if score.points > 1 else ''}\n".center(80))
+        #     else:
+        #         feedback_to_wrong_guess(tries_per_word, word_placeholder, word_to_guess, game_area)
+        check_user_guess(word_to_guess, word_definition, word_placeholder, game_mode, game_area)
         game_on = check_if_gameover(game_area, word_to_guess)
 
 
