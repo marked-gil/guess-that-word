@@ -83,15 +83,13 @@ def see_instruction_validator():
     proceed to Game Menu, and validates the input.
     Returns user input
     """
-    print(blank_lines(1))
     view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, "
-                             "enter 'N' for Game Menu:\n".center(80)).lower()
+                             "enter 'N' for Game Menu:\n".center(80) + Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
-        print(blank_lines(1))
-        view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; "
+        view_instruction = input(Fore.RED + "Enter 'Y' for the instruction; "
                                  "or, enter 'N' for Game Menu:\n"
-                                 .center(80)).lower()
+                                 .center(80) + Style.RESET_ALL).lower()
 
     return view_instruction
 
