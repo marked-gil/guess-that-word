@@ -10,18 +10,29 @@ ___
 
 ### STRATEGY
 #### Main Goal:
-<!-- content here -->
+* The main goal of this game is to test the English vocabulary of its users, and/or help them learn English words while enjoying the excitement and stress-relieving nature of an online game. [View live website here.](https://guess-that-word-game.herokuapp.com/)
+
 #### Target Audience:
-<!-- content here -->
+1. People who want to test and challenge their English vocabulary.
+2. People who enjoy learning the English language.
+3. People who want to improve their English vocabulary and, at the same time, want to do it in a fun way.
+
 #### User Stories:
-<!-- content here -->
+1. As a user, I want to test my vocabulary by playing a game that provides a definition and I will have to guess the word it defines.
+2. As a user, I want to learn new words to add to my vocabulary by playing a game.
+3. As a user, I want to be able to choose an easy game mode that will provide easy words to guess.
+4. As a user, I want to be able to choose a hard game mode that will provide hard words to guess.
+5. As a user, I want the game to track my progress in building my vocabulary by scoring my correct guesses.
+6. As a user, I want to challenge myself in the game by having the chance to beat my previous performance.
+7. As a user, I want to have some help in guessing a word if I find it difficult by providing hints.
+8. As a user,  I want to learn as I play by providing the correct answer immediately.
 
 ### SCOPE
 #### Planned Features:
 <!-- content here -->
 
 #### Design Choice:
-<!-- content here -->
+As this is a game played on a terminal, therefore the design option is limited, I still endeavoured to  make it as visually appealing, intuitive and simplistic as it can be. This is achieved by using ascii arts, making the terminal look uncluttered by clearing it after every group of displayed data/information, and providing only necessary data in the terminal at each moment.
 
 ### STRUCTURE
 #### Interaction Choice:
