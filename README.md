@@ -62,7 +62,22 @@ As this is a game played on a terminal, therefore the design option is limited, 
 <!-- content here -->
 
 ## TECHNOLOGIES USED
-<!-- include libraries -->
+The following are the technologies used in this project:
+* Programming Language:
+    * Python
+* Python Modules/Libraries:
+    * [os](https://docs.python.org/3/library/os.html) - a built-in module to use operating-system-dependent functionality
+    * [sys](https://docs.python.org/3/library/sys.html) - a built-in module where the sys.executable and sys.argv came from, which were passed into the os.execv method to restart the game.
+    * [random](https://docs.python.org/3/library/random.html) - a built-in the module that generates pseudo-randomness.
+    * [localStoragePy](https://pypi.org/project/localStoragePy/) - an external Python package that allows local storage of data
+    * [colorama](https://pypi.org/project/colorama/) - an external Python package that colors the terminal text
+* Gitpod — the cloud-based IDE (Integrated Developer Environment) used to build this site.
+* Git — as a version control system, was used to monitor and record changes made when building the site. This allowed for the restoration of an earlier version of the code when it was necessary.
+* GitHub — stores the source code repository for this website.
+* Diffchecker - used when comparing codes tested in another IDE to the codes in gitpod.
+* [Fsymbols](https://fsymbols.com/generators/carty/) - generates ascii text art
+* For test and validating:
+    * [pep8](http://pep8online.com/)
 
 ## CREDITS
 <!-- content here -->
