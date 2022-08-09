@@ -101,11 +101,11 @@ def see_modes_validator():
     Returns user input
     """
     see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, enter "
-                     "'N' to return home:\n".center(80)).lower()
+                     "'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
     while see_menu not in ('y', 'n'):
         show_instruction()
-        see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, "
-                         "enter 'N' to return home:\n".center(80)).lower()
+        see_menu = input(Fore.RED + "Enter 'Y' for Game Modes menu; or, "
+                         "enter 'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
 
     return see_menu
 
@@ -183,23 +183,23 @@ def display_placeholder(placeholder):
     print(Fore.CYAN + word_placeholder)
 
 
-def game_mode_validator():
+def game_mode_validator(fore_color):
     """
     Prompts user to select game mode and validates the input;
-    returns the game mode number
+    accepts colorama Fore color and returns the game mode number
     """
     clear_terminal()
     display_logo(LOGO)
     show_game_modes()
 
     try:
-        game_mode_int = int(input(Fore.BLUE + "Choose a game mode by entering "
-                            "'1', '2', or '3':\n".center(80)))
+        game_mode_int = int(input(fore_color + "Choose a game mode by entering "
+                            "'1', '2', or '3':\n".center(80) + Style.RESET_ALL))
     except ValueError:
-        game_mode_int = game_mode_validator()
+        game_mode_int = game_mode_validator(Fore.RED)
     else:
         if game_mode_int not in (1, 2, 3):
-            game_mode_int = game_mode_validator()
+            game_mode_int = game_mode_validator(Fore.RED)
 
     return game_mode_int
 
@@ -314,7 +314,7 @@ def check_user_guess(word, definition, placeholder, mode, game_zone):
     print("[For hint, press 'Enter']".center(80))
 
     while not_guessed_yet and tries_per_word != 3:
-        guess = input(Fore.YELLOW + "Provide your guess:\n".center(80)).upper()
+        guess = input(Fore.YELLOW + "Provide your guess:\n".center(80) + Style.RESET_ALL).upper()
         tries_per_word += 1
         if guess == word:
             clear_terminal()
@@ -342,14 +342,14 @@ def check_if_gameover(game_zone, word):
     if len(Word.used_words) == 15:
         game_continues = False
     else:
-        proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the "
-                        "next word:\n".center(80))
-        while proceed != "":
+        proceed = input(Fore.BLUE + "Enter 'Y' to proceed to the "
+                        "next word:\n".center(80) + Style.RESET_ALL).lower()
+        while proceed != "y":
             clear_terminal()
             print(game_zone)
             display_placeholder(word)
-            proceed = input(Fore.BLUE + "Press 'Enter' to proceed to the "
-                            "next word:\n".center(80))
+            proceed = input(Fore.RED + "Enter 'Y' to proceed to the "
+                            "next word:\n".center(80) + Style.RESET_ALL).lower()
         game_continues = True
     return game_continues
 
@@ -381,24 +381,22 @@ def main():
     """
     Runs the entire gaming program from start to finish
     """
-    # Home <-- start
+    # HOME <-- start
     display_logo(LOGO)
-    # Home <-- end
 
-    # validates if user wants to read instruction <-- start
+    # validates if user wants to read instruction
     see_instruction = see_instruction_validator()
     if see_instruction == 'y':
         show_instruction()
         see_modes = see_modes_validator()
         if see_modes == 'y':
-            game_mode_num = game_mode_validator()
+            game_mode_num = game_mode_validator(Fore.BLUE)
         elif see_modes == 'n':
             clear_terminal()
             return_home()
-
     elif see_instruction == 'n':
-        game_mode_num = game_mode_validator()
-    # validates if user wants to read instruction <-- end
+        game_mode_num = game_mode_validator(Fore.BLUE)
+    # HOME <-- end
 
     # Play Game <-- start
     clear_terminal()
