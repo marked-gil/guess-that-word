@@ -1,31 +1,60 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Guess That Word
+<!-- use ezgif -->
+<!-- Intro here -->
 
-Welcome marked-gil,
+## TABLE OF CONTENTS
+<!-- table of contents here -->
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+___
+## USER EXPERIENCE DESIGN (UXD)
 
-## Reminders
+### STRATEGY
+#### Main Goal:
+<!-- content here -->
+#### Target Audience:
+<!-- content here -->
+#### User Stories:
+<!-- content here -->
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+### SCOPE
+#### Planned Features:
+<!-- content here -->
 
-## Creating the Heroku app
+#### Design Choice:
+<!-- content here -->
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### STRUCTURE
+#### Interaction Choice:
+<!-- content here -->
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### SKELETON
+<!-- Flow Diagram -->
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### SURFACE
+<!-- content here -->
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
+## FEATURES
+<!-- content here -->
 
-## Constraints
+## FIXED BUGS
+<!-- content here -->
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## BUGS LEFT TO FIX
+<!-- content here -->
 
------
-Happy coding!
+## TESTING
+<!-- content here -->
+<!-- Pep8 online -->
+
+## DEPLOYMENT
+<!-- content here -->
+
+## TECHNOLOGIES USED
+<!-- include libraries -->
+
+## CREDITS
+<!-- content here -->
+
+## ACKNOWLEDGMENT
+<!-- content here -->
