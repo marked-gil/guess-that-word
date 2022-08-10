@@ -1,7 +1,6 @@
 import os
 import sys
 import random
-from time import sleep
 from localStoragePy import localStoragePy
 from colorama import init, Fore, Style
 from arts import LOGO, MINOR_LOGO
@@ -337,19 +336,28 @@ def check_if_gameover(game_zone, word):
     Checks if the game has reached 15 words to end the game, requires the
     "game_area" and "word_to_guess" arguments and returns True or False
     """
-    game_continues = True
-    # Game ends after 15 words
-    if len(Word.used_words) == 15:
-        game_continues = False
-    else:
-        proceed = input(Fore.BLUE + "Enter 'Y' to proceed to the "
-                        "next word:\n".center(80) + Style.RESET_ALL).lower()
-        while proceed != "y":
+    def wrong_input_feedback(proceed_input, msg):
+        """
+        Provides feedback to user if input is invalid
+        """
+        while proceed_input != "y":
             clear_terminal()
             print(game_zone)
             display_placeholder(word)
-            proceed = input(Fore.RED + "Enter 'Y' to proceed to the "
-                            "next word:\n".center(80) + Style.RESET_ALL).lower()
+            proceed_input = input(Fore.RED + msg.center(80) + Style.RESET_ALL).lower()
+
+    # Game ends after 15 words
+    game_continues = True
+    if len(Word.used_words) == 15:
+        game_continues = False
+        prompt_msg = "Enter 'Y' to see your performance: \n"
+        proceed = input(Fore.BLUE + prompt_msg.center(80) + Style.RESET_ALL).lower()
+        wrong_input_feedback(proceed, prompt_msg)
+    else:
+        prompt_msg = "Enter 'Y' to proceed to the next word:\n"
+        proceed = input(Fore.BLUE + prompt_msg.center(80) + Style.RESET_ALL).lower()
+        wrong_input_feedback(proceed, prompt_msg)
+
         game_continues = True
     return game_continues
 
@@ -402,7 +410,6 @@ def main():
     clear_terminal()
     play_game(game_mode_num)
 
-    sleep(1.5)
     clear_terminal()
     total_right_guesses = Scorer.total_correct_guesses
     print(blank_lines(3))
@@ -411,8 +418,8 @@ def main():
           "out of 15.\n".center(80))
 
     if game_mode_num == 3:
-        store_message, localstorage = store_highscore().values()
-        print(store_message.center(80))
+        storage_message, localstorage = store_highscore().values()
+        print(Fore.YELLOW + storage_message.center(80))
         reset_highscore_validator(localstorage)
 
     print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] "
