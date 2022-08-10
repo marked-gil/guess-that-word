@@ -76,6 +76,7 @@ As this is a game played on a terminal, therefore the design option is limited, 
 <!-- content here -->
 
 ### SKELETON
+#### Design Model
 <!-- Flow Diagram -->
 
 ### SURFACE
@@ -84,6 +85,35 @@ As this is a game played on a terminal, therefore the design option is limited, 
 
 ## FEATURES
 <!-- content here -->
+### **Home**    
+* The 'Home' section is the first display of texts/data in the terminal when the pogram runs. It contains the ascii art logo/title 'Guess that Word' with a line of text underneath it. Also, it shows a prompt for the user to enter an input either 'Y' to see the instruction on how to play, or 'N' to proceed to the Game Menu.
+<!-- screenshot -->
+### **How to Play** 
+* As the user enters the designated input (enter 'Y') to view the instruction while in the 'Home' section, the 'How to Play' content will be revealed below the ascii art logo inside the 'Home' section.
+<!-- screenshot -->
+### **Game Modes**
+* The different game modes will be shown under the ascii art logo/title, and the user will be prompted to choose among the options by entering either number '1', '2', or '3'.
+* There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the Highscore. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short', while the **Hard mode** will give relatively hard or uncommon words, and can sometimes be long. For the **Beat the Higschore** mode, this will be a combination of easy & hard words (first 8 words are easy, and the rest are hard) with the added feature of scoring system and highscore challenge.
+[See 'How to Play' section.](#how-to-play)
+<!-- screenshot -->
+### **Game Area**
+* The game area is where the game happens. It has a header which contains the game title (to the left) and the number of words left to guess. The 'Easy' and 'Hard' modes have an added display of correct guesses, while the 'Beat the Higshcore' mode has the score tracker display.
+* It also displays the definition of the word to guess and the word placeholders, which are underscores equivalent to the number of letters the word has.
+* Inside the game area, the user will be prompted to provide their guess to the definition. The answer (input) has to be the full word and correctly spelled. The input is not case-sensitive, so both upper and lower cases are accepted.
+<!-- screenshot -->
+### **Hints**
+<!-- screenshot -->
+### **Display of Correct Answer**
+<!-- screenshot -->
+### **Input prompts**
+<!-- screenshot -->
+### **Input Validations and Feedbacks**
+<!-- screenshot -->
+### **Performance Display**
+<!-- screenshot -->
+### **Re-running the Program**
+<!-- screenshot -->
+
 
 ## FIXED BUGS
 <!-- content here -->
