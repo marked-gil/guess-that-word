@@ -1,5 +1,5 @@
 """
-Docstring here
+This module contains utility functions
 """
 
 import os
