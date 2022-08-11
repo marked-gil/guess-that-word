@@ -30,7 +30,7 @@ ___
 
 ### SCOPE
 #### Planned Features:
-	* User Story:
+* User Story:
     > As a user, I want to test my English vocabulary by playing a game that provides a definition and I will have to guess the word it defines.
     * IMPLEMENTATION:
         * The game will show a word definition to the user and the they will be asked to guess the word it defines by typing it in the terminal.
