@@ -1,9 +1,6 @@
-import random
-from localStoragePy import localStoragePy
 from colorama import init, Fore, Style
-from arts import LOGO, MINOR_LOGO
-from dictionary import easy_words, hard_words
-from word_manager import Word
+from arts import LOGO
+from game_manager import Game
 from score_manager import Scorer
 from utility_manager import UtilityTools as utility
 
@@ -157,8 +154,9 @@ def main():
     # HOME <-- end
 
     # Play Game <-- start
+    game = Game(game_mode_num)
     utility.clear_terminal()
-    play_game(game_mode_num)
+    game.play_game()
 
     utility.clear_terminal()
     total_right_guesses = Scorer.total_correct_guesses
@@ -168,9 +166,9 @@ def main():
           "out of 15.\n".center(80))
 
     if game_mode_num == 3:
-        storage_message, localstorage = store_highscore().values()
+        storage_message, localstorage = Scorer.store_highscore().values()
         print(Fore.YELLOW + storage_message.center(80))
-        reset_highscore_validator(localstorage)
+        Scorer.validate_to_reset_highscore(localstorage)
 
     # Asks the user if they want to play again, and validates the input
     play_again_input_validator()
