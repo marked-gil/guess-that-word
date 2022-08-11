@@ -110,7 +110,7 @@ def see_howtoplay_input_validator():
     return view_instruction
 
 
-def see_modes_validator():
+def see_modes_input_validator():
     """
     Prompts user to enter 'y' to go to Game Modes menu, or
     'n' to return home, and validates the input.
@@ -413,7 +413,7 @@ def main():
     see_instruction = see_howtoplay_input_validator()
     if see_instruction == 'y':
         show_instruction()
-        see_modes = see_modes_validator()
+        see_modes = see_modes_input_validator()
         if see_modes == 'y':
             game_mode_num = game_mode_validator(Fore.BLUE)
         elif see_modes == 'n':
