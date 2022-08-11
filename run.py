@@ -315,26 +315,44 @@ def reset_highscore_validator(storage_name):
             )
 
 
-def feedback_to_wrong_guess(guess_num, placeholder, word, game_zone):
+def feedback_to_wrong_guess(guess_num, placeholder, word, game_zone, user_guess):
     """
     Responds to every wrong guess by the user by providing hints or
     ending the chance to guess the current word. This accepts "num_guess",
     "word_placeholder", "word_to_guess", and "game_area" as arguments.
     """
+    def feedback_msg():
+        """
+        Checks if user input contains only letters, or is blank;
+        and returns a feedback message.
+        """
+        if user_guess.isalpha() or user_guess == '':
+            if user_guess != "":
+                message = f"You answered '{user_guess}' which is incorrect. "
+            else:
+                message = ''
+        else:
+            message = "Only letters are allowed. "
+        return message
+
     if guess_num == 1:
         clear_terminal()
         placeholder = give_1st_hint(word, placeholder)
         print(game_zone)
         display_placeholder(placeholder)
-        print("Here are clues. Try again!\n".center(80))
+        feedback_msg = feedback_msg()
+        print(Fore.MAGENTA + f"{feedback_msg}CLUES ARE ADDED ABOVE.".center(80))
+        print(blank_lines(1))
         print("[For hint, press 'Enter']".center(80))
     elif guess_num == 2:
         clear_terminal()
         placeholder = give_2nd_hint(word, placeholder)
         print(game_zone)
         display_placeholder(placeholder)
-        print("More clues for you. Try again!\n".center(80))
-        print("[If you can't guess, press 'Enter']".center(80))
+        feedback_msg = feedback_msg()
+        print(Fore.MAGENTA + f"{feedback_msg}MORE CLUES ARE ADDED ABOVE.".center(80))
+        print(blank_lines(1))
+        print("[To reveal the word, press 'Enter']".center(80))
     else:
         clear_terminal()
         print(game_zone)
@@ -367,7 +385,7 @@ def check_user_guess(word, definition, placeholder, mode, game_zone):
                       f" point{'s' if score.points > 1 else ''}\n".center(80))
         else:
             feedback_to_wrong_guess(tries_per_word, placeholder, word,
-                                    game_zone)
+                                    game_zone, guess)
 
 
 def check_if_gameover(game_zone, word):
