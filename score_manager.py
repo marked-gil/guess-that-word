@@ -17,10 +17,15 @@ class Scorer():
     total_score = 0
     total_correct_guesses = 0
 
-    def __init__(self):
+    @staticmethod
+    def add_to_correct_guesses():
+        """
+        Adds each correct guess to the total number of correct guesses.
+        """
         Scorer.total_correct_guesses += 1
 
-    def earn_points(self, num_of_tries):
+    @staticmethod
+    def earn_points(num_of_tries):
         """
         Determines the points earned, adds it to the total score
         and returns the points
@@ -34,7 +39,8 @@ class Scorer():
         Scorer.total_score += points
         return points
 
-    def store_highscore(self):
+    @staticmethod
+    def store_highscore():
         """
         Stores the highscore in the localStorage, and returns "message"
         (about user's score and/or highscore) and the "local storage"
@@ -56,7 +62,8 @@ class Scorer():
                 + hi_score
         return {"store_message": message, "local_storage": local_storage}
 
-    def validate_to_reset_highscore(self, storage_name):
+    @staticmethod
+    def validate_to_reset_highscore(storage_name):
         """
         Prompts user to choose whether to reset highscore or not,
         and validates the input.
