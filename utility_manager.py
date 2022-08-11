@@ -1,7 +1,6 @@
 """
 This module contains utility functions
 """
-
 import os
 import sys
 
@@ -10,17 +9,18 @@ class UtilityTools():
     """
     Docstring here
     """
-
-    def clear_terminal(self):
+    @staticmethod
+    def clear_terminal():
         """
         Clears the terminal
         """
         print("\033c")
 
-    def blank_lines(self, num_lines, line_type="print_line"):
+    @staticmethod
+    def blank_lines(num_lines, line_type="print_line"):
         """
         Adds specific number of blank lines for styling purposes & has
-        2 parameters: "number of blank lines" and "line type". 
+        2 parameters: "number of blank lines" and "line type".
         "line_type" accepts "print_line", "inline", and after_line"
         as arguments. "print_line" (default) if the function is directly placed
         inside print(); "inline" if function is concatenated in a string but
@@ -37,7 +37,8 @@ class UtilityTools():
 
         return "\n" * num_lines
 
-    def return_home(self):
+    @staticmethod
+    def return_home():
         """
         Refreshes the game and goes back to home
         """
