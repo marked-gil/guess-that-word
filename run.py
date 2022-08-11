@@ -90,17 +90,20 @@ def show_game_modes():
           "[3] Beat the Highscore\n\n".center(80))
 
 
-def see_instruction_validator():
+def see_howtoplay_input_validator():
     """
     Prompts user to enter 'y' to see the instruction or 'n' to
     proceed to Game Menu, and validates the input.
     Returns user input
     """
-    view_instruction = input(Fore.BLUE + "Enter 'Y' for the instruction; or, "
-                             "enter 'N' for Game Menu:\n".center(80) + Style.RESET_ALL).lower()
+    print(blank_lines(1))
+    view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
+                             "or, enter 'N' for Game Menu:\n".center(80) +
+                             Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
-        view_instruction = input(Fore.RED + "Enter 'Y' for the instruction; "
+        print(Fore.RED + "Wrong input. Please try again!".center(80))
+        view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                                  "or, enter 'N' for Game Menu:\n"
                                  .center(80) + Style.RESET_ALL).lower()
 
@@ -407,7 +410,7 @@ def main():
     display_logo(LOGO)
 
     # validates if user wants to read instruction
-    see_instruction = see_instruction_validator()
+    see_instruction = see_howtoplay_input_validator()
     if see_instruction == 'y':
         show_instruction()
         see_modes = see_modes_validator()
