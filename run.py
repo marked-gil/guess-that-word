@@ -27,10 +27,24 @@ def return_home():
     os.execv(sys.executable, ['python'] + sys.argv)
 
 
-def blank_lines(num_lines):
+def blank_lines(num_lines, line_type="print_line"):
     """
-    Adds specific number of blank lines for styling purposes
+    Adds specific number of blank lines for styling purposes & has
+    2 parameters: "number of blank lines" (num_lines) and "line type"
+    (line_type). "line_type" accepts "print_line", "inline", and after_line"
+    as arguments. "print_line" (default) if the function is directly placed
+    inside print(); "inline" if function is concatenated in a string but
+    not at the end; and "after_line" if function is concatenated at end
+    of a string. This function eturns the number of blank lines to be printed
+    in the terminal.
     """
+    if line_type == "print_line":
+        num_lines -= 1
+    elif line_type == "inline":
+        num_lines += 1
+    elif line_type == "after_line":
+        num_lines += 0
+
     return "\n" * num_lines
 
 
@@ -70,7 +84,7 @@ def show_game_modes():
     """
     Shows the different modes of the game to choose from
     """
-    print(blank_lines(0))
+    print(blank_lines(1))
     print("GAME MODES:\n".center(80))
     print("[1] Easy Mode      [2] Hard Mode      "
           "[3] Beat the Highscore\n\n".center(80))
@@ -163,11 +177,11 @@ def display_game_area(word_def, game_mode):
     game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between}\
     {score_display}    Correct Answers: {Scorer.total_correct_guesses} of {total_words}\n"\
         + Style.RESET_ALL + "=" * 80\
-        + blank_lines(3)\
+        + blank_lines(2, "inline")\
         + "Definition:".center(80)\
-        + blank_lines(2)\
+        + blank_lines(1, "inline")\
         + word_def.center(80)\
-        + blank_lines(2)\
+        + blank_lines(2, "after_line")\
 
     return game_area_template
 
@@ -177,7 +191,7 @@ def display_placeholder(placeholder):
     Displays the placeholder for the word
     """
     word_placeholder = '  '.join(placeholder).center(80)\
-        + blank_lines(3)
+        + blank_lines(3, "after_line")
 
     print(Fore.CYAN + word_placeholder)
 
@@ -259,9 +273,9 @@ def reset_highscore_validator(storage_name):
             storage_name.removeItem("hi-score")
             clear_terminal()
             print(
-                blank_lines(4) +
+                blank_lines(6) +
                 "Highscore reset!".center(80) +
-                blank_lines(2)
+                blank_lines(2, "after_line")
                 )
             break
         elif clear_hi_score == 'n':
@@ -271,7 +285,7 @@ def reset_highscore_validator(storage_name):
         else:
             clear_terminal()
             print(
-                blank_lines(3) +
+                blank_lines(8) +
                 Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
                 )
 
@@ -412,7 +426,7 @@ def main():
 
     clear_terminal()
     total_right_guesses = Scorer.total_correct_guesses
-    print(blank_lines(3))
+    print(blank_lines(4))
     print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} "
           f"word{'s' if total_right_guesses > 1 else ''} "
           "out of 15.\n".center(80))
