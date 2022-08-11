@@ -1,5 +1,3 @@
-import os
-import sys
 import random
 from localStoragePy import localStoragePy
 from colorama import init, Fore, Style
@@ -9,11 +7,10 @@ from word_manager import Word
 from score_manager import Scorer
 from utility_manager import UtilityTools
 
-
-utility = UtilityTools()
-
 # keeps color change within the text inside print statement
 init(autoreset=True)
+
+utility = UtilityTools()
 
 
 def display_logo(logo):
@@ -346,14 +343,15 @@ def check_user_guess(word, definition, placeholder, mode, game_zone):
         if guess == word:
             utility.clear_terminal()
             not_guessed_yet = False
-            score = Scorer(tries_per_word)
+            Scorer.add_to_correct_guesses()
+            points = Scorer.earn_points(tries_per_word)
             game_area = display_game_area(definition, mode)
             print(game_area)
             display_placeholder(word)
             print(Fore.YELLOW + "Correct!\n".center(80))
             if mode == 3:
-                print(f"You earned: {score.points}"
-                      f" point{'s' if score.points > 1 else ''}\n".center(80))
+                print(f"You earned: {points}"
+                      f" point{'s' if points > 1 else ''}\n".center(80))
         else:
             feedback_to_wrong_guess(tries_per_word, placeholder, word,
                                     game_zone, guess)
