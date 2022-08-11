@@ -50,7 +50,7 @@ def blank_lines(num_lines, line_type="print_line"):
 
 def display_logo(logo):
     """
-    Returns the game ascii logo
+    Returns the game ascii logo after clearing the terminal
     """
     clear_terminal()
     print(Fore.GREEN + logo)
