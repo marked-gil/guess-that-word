@@ -126,6 +126,24 @@ def see_modes_input_validator():
     return see_menu
 
 
+def play_again_input_validator():
+    """
+    Prompts user to play again by entering designated input or following the described instruction;
+    it validates the user input, provides feedback if input invalid, and refreshes the game if
+    input valid.
+    """
+    play_again_input = input(Fore.YELLOW + "To play again, enter 'Y' or press the 'Run Progran' button at the top.\n".center(80)).lower()
+    while play_again_input != 'y':
+        clear_terminal()
+        print(blank_lines(8))
+        if play_again_input == "":
+            play_again_input = "a blank input"
+        print(Fore.RED + f"You entered '{play_again_input}' which is invalid. Try again!".center(80))
+        play_again_input = input(Fore.YELLOW + "To play again, enter 'Y'; or, press the 'Run Progran' button at the top.\n".center(80) + Style.RESET_ALL).lower()
+    
+    return_home()
+
+
 def give_1st_hint(word, placeholder):
     """
     Gives hint by adding the first and last letters of the word to
@@ -439,8 +457,8 @@ def main():
         print(Fore.YELLOW + storage_message.center(80))
         reset_highscore_validator(localstorage)
 
-    print(Fore.YELLOW + "To play again, press the 'Run Program' [orange] "
-          "button at the top.".center(80))
+    # Asks the user if they want to play again, and validates the input
+    play_again_input_validator()
     # Play Game <-- end
 
 
