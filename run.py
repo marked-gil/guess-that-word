@@ -96,12 +96,13 @@ def see_howtoplay_input_validator():
     proceed to Game Menu, and validates the input.
     Returns user input
     """
-    print(blank_lines(1))
+    print(blank_lines(3))
     view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                              "or, enter 'N' for Game Menu:\n".center(80) +
                              Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
+        print(blank_lines(2))
         print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only.".center(80))
         view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                                  "or, enter 'N' for Game Menu:\n"
@@ -405,7 +406,7 @@ def check_if_gameover(game_zone, word: str, max_num: int):
             clear_terminal()
             print(game_zone)
             display_placeholder(word)
-            print(Fore.RED + "Wrong input. Please try again!".center(80))
+            print(Fore.RED + "Wrong input. Please enter 'Y' only.".center(80))
             print(blank_lines(1))
             proceed_input = input(Fore.YELLOW + msg.center(80) + Style.RESET_ALL).lower()
 
