@@ -5,12 +5,10 @@ from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
 from score_manager import Scorer
-from utility_manager import UtilityTools
+from utility_manager import UtilityTools as utility
 
 # keeps color change within the text inside print statement
 init(autoreset=True)
-
-utility = UtilityTools()
 
 
 def display_logo(logo):
