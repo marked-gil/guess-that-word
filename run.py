@@ -188,15 +188,15 @@ def display_game_area(word_def, game_mode):
     and "score"
     """
     if game_mode == 3:
-        score_display = f'Score: {Scorer.total_score}'
-        space_between = " " * 10
+        score_display = f"Score: {Scorer.total_score}"
+        space = " " * 16
     else:
-        score_display = ""
-        space_between = " " * 18
+        score_display = f"Correct Answer: {Scorer.total_correct_guesses}"
+        space = " " * 6
 
     total_words = len(Word.used_words)
-    game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space_between}\
-    {score_display}    Correct Answers: {Scorer.total_correct_guesses} of {total_words}\n"\
+    game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space}\
+    {score_display}        Words Left: {15 - total_words}\n"\
         + Style.RESET_ALL + "=" * 80\
         + blank_lines(2, "inline")\
         + "Definition:".center(80)\
