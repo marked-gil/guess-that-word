@@ -7,52 +7,20 @@ from arts import LOGO, MINOR_LOGO
 from dictionary import easy_words, hard_words
 from word_manager import Word
 from score_manager import Scorer
+from utility_manager import UtilityTools
 
+
+utility = UtilityTools()
 
 # keeps color change within the text inside print statement
 init(autoreset=True)
-
-
-def clear_terminal():
-    """
-    Clears the terminal
-    """
-    print("\033c")
-
-
-def return_home():
-    """
-    Refreshes the game and goes back to home
-    """
-    os.execv(sys.executable, ['python'] + sys.argv)
-
-
-def blank_lines(num_lines, line_type="print_line"):
-    """
-    Adds specific number of blank lines for styling purposes & has
-    2 parameters: "number of blank lines" (num_lines) and "line type"
-    (line_type). "line_type" accepts "print_line", "inline", and after_line"
-    as arguments. "print_line" (default) if the function is directly placed
-    inside print(); "inline" if function is concatenated in a string but
-    not at the end; and "after_line" if function is concatenated at end
-    of a string. This function eturns the number of blank lines to be printed
-    in the terminal.
-    """
-    if line_type == "print_line":
-        num_lines -= 1
-    elif line_type == "inline":
-        num_lines += 1
-    elif line_type == "after_line":
-        num_lines += 0
-
-    return "\n" * num_lines
 
 
 def display_logo(logo):
     """
     Returns the game ascii logo after clearing the terminal
     """
-    clear_terminal()
+    utility.clear_terminal()
     print(Fore.GREEN + logo)
     print("Welcome to the game that will test your vocabulary.\n".center(80))
     print(('=' * 70).center(80))
@@ -84,7 +52,7 @@ def show_game_modes():
     """
     Shows the different modes of the game to choose from
     """
-    print(blank_lines(1))
+    print(utility.blank_lines(1))
     print("GAME MODES:\n".center(80))
     print("[1] Easy Mode      [2] Hard Mode      "
           "[3] Beat the Highscore\n\n".center(80))
@@ -96,13 +64,13 @@ def see_howtoplay_input_validator():
     proceed to Game Menu, and validates the input.
     Returns user input
     """
-    print(blank_lines(3))
+    print(utility.blank_lines(3))
     view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                              "or, enter 'N' for Game Menu:\n".center(80) +
                              Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
-        print(blank_lines(2))
+        print(utility.blank_lines(2))
         print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only.".center(80))
         view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                                  "or, enter 'N' for Game Menu:\n"
@@ -117,7 +85,7 @@ def see_modes_input_validator():
     'n' to return home, and validates the input.
     Returns user input
     """
-    print(blank_lines(1))
+    print(utility.blank_lines(1))
     see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, enter "
                      "'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
     while see_menu not in ('y', 'n'):
@@ -137,14 +105,14 @@ def play_again_input_validator():
     """
     play_again_input = input(Fore.YELLOW + "To play again, enter 'Y' or press the 'Run Progran' button at the top.\n".center(80)).lower()
     while play_again_input != 'y':
-        clear_terminal()
-        print(blank_lines(8))
+        utility.clear_terminal()
+        print(utility.blank_lines(8))
         if play_again_input == "":
             play_again_input = "a blank input"
         print(Fore.RED + f"You entered '{play_again_input}' which is invalid. Try again!".center(80))
         play_again_input = input(Fore.YELLOW + "To play again, enter 'Y'; or, press the 'Run Progran' button at the top.\n".center(80) + Style.RESET_ALL).lower()
     
-    return_home()
+    utility.return_home()
 
 
 def give_1st_hint(word, placeholder):
@@ -201,11 +169,11 @@ def display_game_area(word_def, game_mode):
     game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space}\
     {score_display}        Words Left: {15 - total_words}\n"\
         + Style.RESET_ALL + "=" * 80\
-        + blank_lines(2, "inline")\
+        + utility.blank_lines(2, "inline")\
         + "Definition:".center(80)\
-        + blank_lines(1, "inline")\
+        + utility.blank_lines(1, "inline")\
         + word_def.center(80)\
-        + blank_lines(2, "after_line")\
+        + utility.blank_lines(2, "after_line")\
 
     return game_area_template
 
@@ -215,7 +183,7 @@ def display_placeholder(placeholder):
     Displays the placeholder for the word
     """
     word_placeholder = '  '.join(placeholder).center(80)\
-        + blank_lines(3, "after_line")
+        + utility.blank_lines(3, "after_line")
 
     print(Fore.CYAN + word_placeholder)
 
@@ -299,21 +267,21 @@ def reset_highscore_validator(storage_name):
                                "['Y' | 'N']:\n".center(80)).lower()
         if clear_hi_score == 'y':
             storage_name.removeItem("hi-score")
-            clear_terminal()
+            utility.clear_terminal()
             print(
-                blank_lines(6) +
+                utility.blank_lines(6) +
                 "Highscore reset!".center(80) +
-                blank_lines(2, "after_line")
+                utility.blank_lines(2, "after_line")
                 )
             break
         if clear_hi_score == 'n':
-            clear_terminal()
-            print(blank_lines(8))
+            utility.clear_terminal()
+            print(utility.blank_lines(8))
             break
 
-        clear_terminal()
+        utility.clear_terminal()
         print(
-            blank_lines(8) +
+            utility.blank_lines(8) +
             Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
             )
 
@@ -339,25 +307,25 @@ def feedback_to_wrong_guess(guess_num, placeholder, word, game_zone, user_guess)
         return message
 
     if guess_num == 1:
-        clear_terminal()
+        utility.clear_terminal()
         placeholder = give_1st_hint(word, placeholder)
         print(game_zone)
         display_placeholder(placeholder)
         feedback_msg = feedback_msg()
         print(Fore.MAGENTA + f"{feedback_msg}CLUES ARE ADDED ABOVE.".center(80))
-        print(blank_lines(1))
+        print(utility.blank_lines(1))
         print("[For hint, press 'Enter']".center(80))
     elif guess_num == 2:
-        clear_terminal()
+        utility.clear_terminal()
         placeholder = give_2nd_hint(word, placeholder)
         print(game_zone)
         display_placeholder(placeholder)
         feedback_msg = feedback_msg()
         print(Fore.MAGENTA + f"{feedback_msg}MORE CLUES ARE ADDED ABOVE.".center(80))
-        print(blank_lines(1))
+        print(utility.blank_lines(1))
         print("[To reveal the word, press 'Enter']".center(80))
     else:
-        clear_terminal()
+        utility.clear_terminal()
         print(game_zone)
         display_placeholder(word)
         print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
@@ -376,7 +344,7 @@ def check_user_guess(word, definition, placeholder, mode, game_zone):
         guess = input(Fore.YELLOW + "Provide your guess (type the word):\n".center(80) + Style.RESET_ALL).upper()
         tries_per_word += 1
         if guess == word:
-            clear_terminal()
+            utility.clear_terminal()
             not_guessed_yet = False
             score = Scorer(tries_per_word)
             game_area = display_game_area(definition, mode)
@@ -403,11 +371,11 @@ def check_if_gameover(game_zone, word: str, max_num: int):
         Provides feedback to user if input is invalid
         """
         while proceed_input != "y":
-            clear_terminal()
+            utility.clear_terminal()
             print(game_zone)
             display_placeholder(word)
             print(Fore.RED + "Wrong input. Please enter 'Y' only.".center(80))
-            print(blank_lines(1))
+            print(utility.blank_lines(1))
             proceed_input = input(Fore.YELLOW + msg.center(80) + Style.RESET_ALL).lower()
 
     # Game ends after 15 words
@@ -434,7 +402,7 @@ def play_game(game_mode):
     max_words = 15
 
     while game_on:
-        clear_terminal()
+        utility.clear_terminal()
 
         game_object = game_mode_assembler(game_mode)
         game_area = game_object["game_area"]
@@ -465,19 +433,19 @@ def main():
         if see_modes == 'y':
             game_mode_num = game_mode_input_validator()
         elif see_modes == 'n':
-            clear_terminal()
-            return_home()
+            utility.clear_terminal()
+            utility.return_home()
     elif see_instruction == 'n':
         game_mode_num = game_mode_input_validator()
     # HOME <-- end
 
     # Play Game <-- start
-    clear_terminal()
+    utility.clear_terminal()
     play_game(game_mode_num)
 
-    clear_terminal()
+    utility.clear_terminal()
     total_right_guesses = Scorer.total_correct_guesses
-    print(blank_lines(4))
+    print(utility.blank_lines(4))
     print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} "
           f"word{'s' if total_right_guesses > 1 else ''} "
           "out of 15.\n".center(80))
