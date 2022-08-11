@@ -76,7 +76,7 @@ def show_instruction():
         "     4. Before each attempt, you will be provided with clues:\n"
         "        a. 1st clue = the number of letters in the word\n"
         "        b. 2nd clue = the first and last letters\n"
-        "        c. 3rd clue = additional letters within the word\n"
+        "        c. 3rd clue = additional letters within the word"
     )
 
 
@@ -102,7 +102,7 @@ def see_howtoplay_input_validator():
                              Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
-        print(Fore.RED + "Wrong input. Please try again!".center(80))
+        print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only.".center(80))
         view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                                  "or, enter 'N' for Game Menu:\n"
                                  .center(80) + Style.RESET_ALL).lower()
@@ -116,11 +116,13 @@ def see_modes_input_validator():
     'n' to return home, and validates the input.
     Returns user input
     """
-    see_menu = input(Fore.BLUE + "Enter 'Y' for Game Modes menu; or, enter "
+    print(blank_lines(1))
+    see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, enter "
                      "'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
     while see_menu not in ('y', 'n'):
         show_instruction()
-        see_menu = input(Fore.RED + "Enter 'Y' for Game Modes menu; or, "
+        print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only.".center(80))
+        see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, "
                          "enter 'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
 
     return see_menu
@@ -236,7 +238,7 @@ def game_mode_input_validator(feedback=None):
         game_mode_int = game_mode_input_validator(message)
     else:
         if game_mode_int not in (1, 2, 3):
-            message = Fore.RED + "Your input out of range.".center(80)
+            message = Fore.RED + "Your input is out of range.".center(80)
             game_mode_int = game_mode_input_validator(message)
 
     return game_mode_int
