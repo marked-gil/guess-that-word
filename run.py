@@ -217,23 +217,27 @@ def display_placeholder(placeholder):
     print(Fore.CYAN + word_placeholder)
 
 
-def game_mode_validator(fore_color):
+def game_mode_input_validator(feedback=None):
     """
     Prompts user to select game mode and validates the input;
-    accepts colorama Fore color and returns the game mode number
+    returns the game mode number
     """
-    clear_terminal()
     display_logo(LOGO)
     show_game_modes()
 
+    if feedback is not None:
+        print(feedback)
+
     try:
-        game_mode_int = int(input(fore_color + "Choose a game mode by entering "
+        game_mode_int = int(input(Fore.YELLOW + "Choose a game mode by entering "
                             "'1', '2', or '3':\n".center(80) + Style.RESET_ALL))
     except ValueError:
-        game_mode_int = game_mode_validator(Fore.RED)
+        message = Fore.RED + "Your input should be a number.".center(80)
+        game_mode_int = game_mode_input_validator(message)
     else:
         if game_mode_int not in (1, 2, 3):
-            game_mode_int = game_mode_validator(Fore.RED)
+            message = Fore.RED + "Your input out of range.".center(80)
+            game_mode_int = game_mode_input_validator(message)
 
     return game_mode_int
 
@@ -433,12 +437,12 @@ def main():
         show_instruction()
         see_modes = see_modes_input_validator()
         if see_modes == 'y':
-            game_mode_num = game_mode_validator(Fore.BLUE)
+            game_mode_num = game_mode_input_validator(Fore.BLUE)
         elif see_modes == 'n':
             clear_terminal()
             return_home()
     elif see_instruction == 'n':
-        game_mode_num = game_mode_validator(Fore.BLUE)
+        game_mode_num = game_mode_input_validator(Fore.BLUE)
     # HOME <-- end
 
     # Play Game <-- start
