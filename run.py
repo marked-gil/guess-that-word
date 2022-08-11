@@ -303,16 +303,16 @@ def reset_highscore_validator(storage_name):
                 blank_lines(2, "after_line")
                 )
             break
-        elif clear_hi_score == 'n':
+        if clear_hi_score == 'n':
             clear_terminal()
             print(blank_lines(8))
             break
-        else:
-            clear_terminal()
-            print(
-                blank_lines(8) +
-                Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
-                )
+
+        clear_terminal()
+        print(
+            blank_lines(8) +
+            Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
+            )
 
 
 def feedback_to_wrong_guess(guess_num, placeholder, word, game_zone):
