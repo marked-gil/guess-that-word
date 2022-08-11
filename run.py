@@ -370,7 +370,7 @@ def check_user_guess(word, definition, placeholder, mode, game_zone):
     print("[For hint, press 'Enter']".center(80))
 
     while not_guessed_yet and tries_per_word != 3:
-        guess = input(Fore.YELLOW + "Provide your guess:\n".center(80) + Style.RESET_ALL).upper()
+        guess = input(Fore.YELLOW + "Provide your guess (type the word):\n".center(80) + Style.RESET_ALL).upper()
         tries_per_word += 1
         if guess == word:
             clear_terminal()
@@ -388,10 +388,12 @@ def check_user_guess(word, definition, placeholder, mode, game_zone):
                                     game_zone, guess)
 
 
-def check_if_gameover(game_zone, word):
+def check_if_gameover(game_zone, word: str, max_num: int):
     """
-    Checks if the game has reached 15 words to end the game, requires the
-    "game_area" and "word_to_guess" arguments and returns True or False
+    Checks if the game has reached the maximum words to end the game, and
+    requires the arguments: "game area object" (game_zone), the "word to
+    guess" (word) and the "maximum number of words before game over" (max_num).
+    Returns True or False
     """
     def wrong_input_feedback(proceed_input, msg):
         """
@@ -401,18 +403,20 @@ def check_if_gameover(game_zone, word):
             clear_terminal()
             print(game_zone)
             display_placeholder(word)
-            proceed_input = input(Fore.RED + msg.center(80) + Style.RESET_ALL).lower()
+            print(Fore.RED + "Wrong input. Please try again!".center(80))
+            print(blank_lines(1))
+            proceed_input = input(Fore.YELLOW + msg.center(80) + Style.RESET_ALL).lower()
 
     # Game ends after 15 words
     game_continues = True
-    if len(Word.used_words) == 15:
+    if len(Word.used_words) == max_num:
         game_continues = False
         prompt_msg = "Enter 'Y' to see your performance: \n"
-        proceed = input(Fore.BLUE + prompt_msg.center(80) + Style.RESET_ALL).lower()
+        proceed = input(Fore.YELLOW + prompt_msg.center(80) + Style.RESET_ALL).lower()
         wrong_input_feedback(proceed, prompt_msg)
     else:
         prompt_msg = "Enter 'Y' to proceed to the next word:\n"
-        proceed = input(Fore.BLUE + prompt_msg.center(80) + Style.RESET_ALL).lower()
+        proceed = input(Fore.YELLOW + prompt_msg.center(80) + Style.RESET_ALL).lower()
         wrong_input_feedback(proceed, prompt_msg)
 
         game_continues = True
