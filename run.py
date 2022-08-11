@@ -428,6 +428,7 @@ def play_game(game_mode):
     Runs the game with specific game mode
     """
     game_on = True
+    max_words = 15
 
     while game_on:
         clear_terminal()
@@ -443,7 +444,7 @@ def play_game(game_mode):
 
         check_user_guess(word_to_guess, word_definition, word_placeholder,
                          game_mode, game_area)
-        game_on = check_if_gameover(game_area, word_to_guess)
+        game_on = check_if_gameover(game_area, word_to_guess, max_words)
 
 
 def main():
@@ -459,12 +460,12 @@ def main():
         show_instruction()
         see_modes = see_modes_input_validator()
         if see_modes == 'y':
-            game_mode_num = game_mode_input_validator(Fore.BLUE)
+            game_mode_num = game_mode_input_validator()
         elif see_modes == 'n':
             clear_terminal()
             return_home()
     elif see_instruction == 'n':
-        game_mode_num = game_mode_input_validator(Fore.BLUE)
+        game_mode_num = game_mode_input_validator()
     # HOME <-- end
 
     # Play Game <-- start
