@@ -113,14 +113,17 @@ As this is a game played on a terminal, therefore the design option is limited, 
 ### **Home**    
 * The 'Home' section is the first display of texts/data in the terminal when the pogram runs. It contains the ascii art logo/title 'Guess that Word' with a line of text underneath it. Also, it shows a prompt for the user to enter an input either 'Y' to see the instruction on how to play, or 'N' to proceed to the Game Menu.
 <!-- screenshot -->
+
 ### **How to Play** 
 * As the user enters the designated input (enter 'Y') to view the instruction while in the 'Home' section, the 'How to Play' content will be revealed below the ascii art logo inside the 'Home' section.
 <!-- screenshot -->
+
 ### **Game Modes**
 * The different game modes will be shown under the ascii art logo/title, and the user will be prompted to choose among the options by entering either number '1', '2', or '3'.
 * There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the Highscore. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short', while the **Hard mode** will give relatively hard or uncommon words, and can sometimes be long. For the **Beat the Higschore** mode, this will be a combination of easy & hard words (first 8 words are easy, and the rest are hard) with the added feature of scoring system and highscore challenge.
 [See 'How to Play' section.](#how-to-play)
 <!-- screenshot -->
+
 ### **Game Area**
 * The game area is where the game happens. It has a header which contains the game title (to the left) and the number of words left to guess. The 'Easy' and 'Hard' modes have an added display of correct guesses, while the 'Beat the Higshcore' mode has the score tracker display.
 * It also displays the definition of the word to guess and the word placeholders, which are underscores equivalent to the number of letters the word has.
@@ -133,26 +136,39 @@ To make the game more fun and less arduous, hints to the answer are provided. Fo
 * 2nd hint - 1st and last letters of the word. These are provided after the 1st failed try.
 * 3rd hint - more supplied letters within the word: 2 letters for words with less than 8 characters; and 3 letters for words with 8 or more characters.
 <!-- screenshot -->
+
 ### **Display of Correct Answer**
 The correct answer is revealed immediately after 3 failed guesses.
 <!-- screenshot -->
+
 ### **Input prompts**
 As this is a Python terminal game, the user is required to use their keyboard to type in an input to the program. Prompts are provided, which are yellow-coloured texts, and will specify the required input to proceed in the game.
 <!-- screenshot -->
+
 ### **Input Validations and Feedbacks**
 All inputs that the user will enter in the program as prompted will be validated to check if it follows the specified and required data input. If the user's input fails the validation, the game will return a feedback message which will be a red-coloured text to inform that user that they have entered an invalid input. These feedback messages will show at the top of the input prompt.
 <!-- screenshot -->
+
 ### **Input Case-Insensitivity**
 Upper case or lower case or a combination of both are allowed as input.
 <!-- screenshot -->
+
 ### **Scoring System**
 The 'Beat the Highscore' game mode has a scoring system in place. For each word challenge, when the user correctly guesses the word on the first try, they earn 5 points; on the 2nd try (with 2nd hint), 3 points is awarded; and on the 3rd try (with 3rd hint), 1 point is added to their total score. A score tracker is displayed at the header of the game area.
 <!-- screenshot -->
+
+### **Saving of Highscore**
+* On the 'Beat the Highscore' mode, the highscore in the game played in the user's computer will be saved locally. This highscore will be compared with the current player's score at the end of the game, and will be shown as a text feedback.
+* If current user's score is higher than the last recorded highscore, it will be replaced with the user's current score as the new highscore. A text feedback confirming this will also be shown on the terminal.
+* If there are no recorded highscore, the current user's score will be recorded as the highscore.
+<!-- screenshot -->
+
 ### **Performance Display**
 When the user finishes the 15-word challenge, a prompt will ask the user to see their performance result by entering a specified key. When the required input is entered, the following will be displayed:
 * For 'Easy' and 'Hard' game modes, their total number of correct guesses will be revealed.
 * For the 'Beat the Highscore' game mode, the program will show total number of their correct guesses, and their total score.
 <!-- screenshot -->
+
 ### **Re-running the Program**
 As the user finishes the game, they are asked if they want to play again. And if they wish to re-run the game to play, they will need to enter the letter 'Y' to proceed.
 <!-- screenshot -->
