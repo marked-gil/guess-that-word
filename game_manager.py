@@ -115,21 +115,25 @@ class Game():
         placeholder[indx_list[1]] = word[indx_list[1]]
         return placeholder
 
-
-    def feedback_to_wrong_guess(self, guess_num, placeholder, word, game_zone, user_guess):
+    def feedback_to_wrong_guess(self, guess_num, word_holder_dict, game_zone, user_guess):
         """
         Responds to every wrong guess by the user by providing hints or
         ending the chance to guess the current word. This accepts "num_guess",
         "word_placeholder", "word_to_guess", and "game_area" as arguments.
         """
+        word = word_holder_dict["word"]
+        placeholder = word_holder_dict["placeholder"]
+
         def feedback_msg():
             """
             Checks if user input contains only letters, or is blank;
             and returns the feedback message.
             """
             if user_guess.isalpha() or user_guess == '':
-                if user_guess != "":
-                    message = f"You answered '{user_guess}' which is incorrect. "
+                if len(user_guess) > (len(word)):
+                    message = "Your input is longer than the expected answer."
+                elif user_guess != "":
+                    message = f"You answered '{user_guess}' which is incorrect."
                 else:
                     message = ''
             else:
@@ -142,7 +146,9 @@ class Game():
             print(game_zone)
             self.display_placeholder(placeholder)
             feedback_msg = feedback_msg()
-            print(Fore.MAGENTA + f"{feedback_msg}CLUES ARE ADDED ABOVE.".center(80))
+            if feedback_msg != '':
+                print(Fore.RED + feedback_msg.center(80))
+            print(Fore.MAGENTA + "CLUES ARE ADDED ABOVE.".center(80))
             print(utility.blank_lines(1))
             print("[For hint, press 'Enter']".center(80))
         elif guess_num == 2:
@@ -151,7 +157,9 @@ class Game():
             print(game_zone)
             self.display_placeholder(placeholder)
             feedback_msg = feedback_msg()
-            print(Fore.MAGENTA + f"{feedback_msg}MORE CLUES ARE ADDED ABOVE.".center(80))
+            if feedback_msg != '':
+                print(Fore.RED + feedback_msg.center(80))
+            print(Fore.MAGENTA + "MORE CLUES ARE ADDED ABOVE.".center(80))
             print(utility.blank_lines(1))
             print("[To reveal the word, press 'Enter']".center(80))
         else:
@@ -159,7 +167,6 @@ class Game():
             print(game_zone)
             self.display_placeholder(word)
             print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
-
 
     def check_user_guess(self, word, definition, placeholder, game_zone):
         """
@@ -187,10 +194,10 @@ class Game():
                     print(f"You earned: {points}"
                         f" point{'s' if points > 1 else ''}\n".center(80))
             else:
-                self.feedback_to_wrong_guess(tries_per_word, placeholder, word,
+                word_and_holder_dict = {"placeholder": placeholder, "word": word}
+                self.feedback_to_wrong_guess(tries_per_word, word_and_holder_dict,
                                         game_zone, guess)
         return game_zone
-
 
     def check_if_gameover(self, game_zone, word: str, max_num: int):
         """
