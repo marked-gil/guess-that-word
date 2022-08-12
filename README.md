@@ -84,7 +84,6 @@ As this is a game played on a terminal, therefore the design option is limited, 
 
 
 ## FEATURES
-<!-- content here -->
 ### **Home**    
 * The 'Home' section is the first display of texts/data in the terminal when the pogram runs. It contains the ascii art logo/title 'Guess that Word' with a line of text underneath it. Also, it shows a prompt for the user to enter an input either 'Y' to see the instruction on how to play, or 'N' to proceed to the Game Menu.
 <!-- screenshot -->
@@ -101,17 +100,35 @@ As this is a game played on a terminal, therefore the design option is limited, 
 * It also displays the definition of the word to guess and the word placeholders, which are underscores equivalent to the number of letters the word has.
 * Inside the game area, the user will be prompted to provide their guess to the definition. The answer (input) has to be the full word and correctly spelled. The input is not case-sensitive, so both upper and lower cases are accepted.
 <!-- screenshot -->
+
 ### **Hints**
+To make the game more fun and less arduous, hints to the answer are provided. For every word challenge, there are 3 hints provided:   
+* 1st hint - the "number of characters" the word has through the placeholders (underscores) that are displayed on the game area.    
+* 2nd hint - 1st and last letters of the word. These are provided after the 1st failed try.
+* 3rd hint - more supplied letters within the word: 2 letters for words with less than 8 characters; and 3 letters for words with 8 or more characters.
 <!-- screenshot -->
 ### **Display of Correct Answer**
+The correct answer is revealed immediately after 3 failed guesses.
 <!-- screenshot -->
 ### **Input prompts**
+As this is a Python terminal game, the user is required to use their keyboard to type in an input to the program. Prompts are provided, which are yellow-coloured texts, and will specify the required input to proceed in the game.
 <!-- screenshot -->
 ### **Input Validations and Feedbacks**
+All inputs that the user will enter in the program as prompted will be validated to check if it follows the specified and required data input. If the user's input fails the validation, the game will return a feedback message which will be a red-coloured text to inform that user that they have entered an invalid input. These feedback messages will show at the top of the input prompt.
+<!-- screenshot -->
+### **Input Case-Insensitivity**
+Upper case or lower case or a combination of both are allowed as input.
+<!-- screenshot -->
+### **Scoring System**
+The 'Beat the Highscore' game mode has a scoring system in place. For each word challenge, when the user correctly guesses the word on the first try, they earn 5 points; on the 2nd try (with 2nd hint), 3 points is awarded; and on the 3rd try (with 3rd hint), 1 point is added to their total score. A score tracker is displayed at the header of the game area.
 <!-- screenshot -->
 ### **Performance Display**
+When the user finishes the 15-word challenge, a prompt will ask the user to see their performance result by entering a specified key. When the required input is entered, the following will be displayed:
+* For 'Easy' and 'Hard' game modes, their total number of correct guesses will be revealed.
+* For the 'Beat the Highscore' game mode, the program will show total number of their correct guesses, and their total score.
 <!-- screenshot -->
 ### **Re-running the Program**
+As the user finishes the game, they are asked if they want to play again. And if they wish to re-run the game to play, they will need to enter the letter 'Y' to proceed.
 <!-- screenshot -->
 
 
