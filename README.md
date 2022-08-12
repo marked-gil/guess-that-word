@@ -185,7 +185,30 @@ As the user finishes the game, they are asked if they want to play again. And if
 <!-- Pep8 online -->
 
 ## DEPLOYMENT
-<!-- content here -->
+	
+### **Version Control**
+**Git** was a crucial tool used to track changes that were made in the repository. The following git commands were mainly used in developing this program:
+
+* `git status` — to show the status of the repository by displaying the files that have been staged and are ready for commit, those that are not, and those that are untracked.
+* `git add <file name>` — to add file or changes in the file to the staging area before they can be commited
+* `git commit -m "message"` — to add/record file or changes to the local repository
+* `git push` — to upload the local repository to the remote repository, such as GitHub
+
+### **Heroku Deployment**
+<!-- Content here-->
+
+### **Cloning from Github**
+To clone the repository for this site, do the following steps:  
+1. Go to this url: https://github.com/marked-gil/guess-that-word
+2. Inside the repository, look for the button labeled as '**Code**', which is along the rows with other buttons such as 'Go to file' and 'Add file'.
+3. Click on the '**Code**' button, and a small popup box will show up with a top heading of '**Clone**'.
+4. In the popup box, click on the 'HTTPS' link and copy the url just below it.
+5. Then, go to your computer's terminal and type `git clone https://github.com/marked-gil/guess-that-word`
+6. A copy of the repository is now saved in your computer.
+
+### **Running the Project Locally**
+<!-- Content here -->
+
 
 ## TECHNOLOGIES USED
 The following are the technologies used in this project:
