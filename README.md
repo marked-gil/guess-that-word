@@ -196,7 +196,16 @@ As the user finishes the game, they are asked if they want to play again. And if
 * `git push` — to upload the local repository to the remote repository, such as GitHub
 
 ### **Heroku Deployment**
-<!-- Content here-->
+This website is published on [Heroku](https://www.heroku.com). The following were the steps I took for this project's deployment.
+1. I logged in to my Heroku account.
+2. Then, I was redirected into this url `https://dashboard.heroku.com/apps`. Inside, I clicked the 'New' button which was a dropdown menu. Between the two (2) options it showed, I clicked on 'Create new app'.
+3. Then, on the 'Create New App' page, I typed in my 'app name' and 'region' on their respected input fields. Then I clicked the 'create app' button that is sitting at the bottom of the aforementioned fields. This then redirected me to my new app's page in Heroku.
+4. On my new app's page, there is a row of links, which includes: Overview, Resources, Deploy, Metrics, Activity, Access, and Settings. 
+5. I first went to 'Settings' by clicking its link. Inside the 'Settings', I clicked on 'Reveal Config Vars' and added 'PORT' in the key field, and '8000' in the value field, then clicked on the 'add' button beside them.
+6. Then, on the 'Buildpacks' section, I clicked the 'Add buildpack' button and added python (1st) and nodejs (2nd) - the ordering is important.
+7. Then, I went to the 'Deploy' link and clicked on Github as the Deployment Method.
+8. Below the Deployment Method section is the Connect to Github section. Here I searched for the name of my new app in Github using the search input field provided. When the name of the repository was displayed, I clicked on 'connet' button.
+9. After few minutes, it revealed a button to view the deployed website.
 
 ### **Cloning from Github**
 To clone the repository for this site, do the following steps:  
@@ -235,7 +244,7 @@ The following are the technologies used in this project:
 * Words & Definitions   
 The  words and definitions used in this game is taken from [Merriam-Webster](https://www.merriam-webster.com/).
 
-* Ascii Arts    
+* Ascii Arts 
     * [fsymbols](https://fsymbols.com/generators/carty/) - where the all the ascii arts used as logos in this game are taken from.
 
 ### **References**
