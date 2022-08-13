@@ -59,7 +59,7 @@ class Scorer():
             local_storage.setItem("hi-score", u_score)
             hi_score = local_storage.getItem("hi-score")
             message = "Congratulations! You've just set the NEW HIGHSCORE: "\
-                + hi_score
+                + hi_score + "\n"
         return {"store_message": message, "local_storage": local_storage}
 
     @staticmethod
