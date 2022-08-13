@@ -231,7 +231,30 @@ The following are the technologies used in this project:
     * [pep8](http://pep8online.com/)
 
 ## CREDITS
-<!-- content here -->
+### **Content**
+* Words & Definitions   
+The  words and definitions used in this game is taken from [Merriam-Webster](https://www.merriam-webster.com/).
+
+* Ascii Arts    
+    * [fsymbols](https://fsymbols.com/generators/carty/) - where the all the ascii arts used as logos in this game are taken from.
+
+### **References**
+* Main Python references:
+    * [W3Schools](https://www.w3schools.com/)
+    * [Geeks for Geeks](https://www.geeksforgeeks.org/)
+    * [Python.org](https://docs.python.org/3/)
+    * [Code Institute Lessons](https://codeinstitute.net/ie/)
+    * [100 Days of Code: The Python Pro Bootcamp by Dr. Angela Yu](https://www.udemy.com/course/100-days-of-code/)      
+
+* Static vs Class Methods   
+    * [Tech with Tim Youtube video](https://www.youtube.com/watch?v=MpuOuZKWUWw) - for static vs class methods  
+
+* [Stackoverflow](https://stackoverflow.com/), especially for the following links:
+    * [A simple method to clear the terminal using](https://stackoverflow.com/questions/2084508/clear-terminal-in-python) `print(“\033c")`
+    * [Restarting Python script using](https://stackoverflow.com/questions/11329917/restart-python-script-from-within-itself) `os.execv(sys.executable, ['python'] + sys.argv)` 
+
+* [Bobby Handz Blog](https://bobbyhadz.com/blog/python-importerror-cannot-import-name) - Shows reason and solution to my issue on `ImportError: cannot import name 'Game' from partially initialized module 'game_manager' (most likely due to a circular import)`.
 
 ## ACKNOWLEDGMENT
-<!-- content here -->
+* Ms. Daisy McGirr, my Code Institute mentor, of her guidance and suggestions in this project.
+* My wife, Kyle, for the full support even as I burn the midnight oil.
