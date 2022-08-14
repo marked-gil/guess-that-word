@@ -2,7 +2,7 @@ from colorama import init, Fore, Style
 from arts import LOGO
 from game_manager import Game
 from score_manager import Scorer
-from utility_manager import UtilityTools as utility
+from utility_manager import clear_terminal, blank_lines, return_home
 
 # keeps color change within the text inside print statement
 init(autoreset=True)
@@ -12,7 +12,7 @@ def display_logo(logo):
     """
     Returns the game ascii logo after clearing the terminal
     """
-    utility.clear_terminal()
+    clear_terminal()
     print(Fore.GREEN + logo)
     print("Welcome to the game that will test your vocabulary.\n".center(80))
     print(('=' * 70).center(80))
@@ -44,7 +44,7 @@ def show_game_modes():
     """
     Shows the different modes of the game to choose from
     """
-    print(utility.blank_lines(1))
+    print(blank_lines(1))
     print("GAME MODES:\n".center(80))
     print("[1] Easy Mode      [2] Hard Mode      "
           "[3] Beat the Highscore\n\n".center(80))
@@ -56,13 +56,13 @@ def see_howtoplay_input_validator():
     proceed to Game Menu, and validates the input.
     Returns user input
     """
-    print(utility.blank_lines(3))
+    print(blank_lines(3))
     view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                              "or, enter 'N' for Game Menu:\n".center(80) +
                              Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
-        print(utility.blank_lines(2))
+        print(blank_lines(2))
         print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only.".center(80))
         view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
                                  "or, enter 'N' for Game Menu:\n"
@@ -77,7 +77,7 @@ def see_modes_input_validator():
     'n' to return home, and validates the input.
     Returns user input
     """
-    print(utility.blank_lines(1))
+    print(blank_lines(1))
     see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, enter "
                      "'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
     while see_menu not in ('y', 'n'):
@@ -97,14 +97,14 @@ def play_again_input_validator():
     """
     play_again_input = input(Fore.YELLOW + "To play again, enter 'Y' or press the 'Run Progran' button at the top.\n".center(80)).lower()
     while play_again_input != 'y':
-        utility.clear_terminal()
-        print(utility.blank_lines(8))
+        clear_terminal()
+        print(blank_lines(8))
         if play_again_input == "":
             play_again_input = "a blank input"
         print(Fore.RED + f"You entered '{play_again_input}' which is invalid. Try again!".center(80))
         play_again_input = input(Fore.YELLOW + "To play again, enter 'Y'; or, press the 'Run Progran' button at the top.\n".center(80) + Style.RESET_ALL).lower()
     
-    utility.return_home()
+    return_home()
 
 
 def game_mode_input_validator(feedback=None):
@@ -147,20 +147,20 @@ def main():
         if see_modes == 'y':
             game_mode_num = game_mode_input_validator()
         elif see_modes == 'n':
-            utility.clear_terminal()
-            utility.return_home()
+            clear_terminal()
+            return_home()
     elif see_instruction == 'n':
         game_mode_num = game_mode_input_validator()
     # HOME <-- end
 
     # Play Game <-- start
     game = Game(game_mode_num)
-    utility.clear_terminal()
+    clear_terminal()
     game.play_game()
 
-    utility.clear_terminal()
+    clear_terminal()
     total_right_guesses = Scorer.total_correct_guesses
-    print(utility.blank_lines(4))
+    print(blank_lines(4))
     print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} "
           f"word{'s' if total_right_guesses > 1 else ''} "
           "out of 15.\n".center(80))

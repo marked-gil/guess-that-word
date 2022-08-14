@@ -4,9 +4,7 @@ score and number of correct guesses
 """
 from colorama import Fore
 from localStoragePy import localStoragePy
-from utility_manager import UtilityTools
-
-utility = UtilityTools()
+from utility_manager import clear_terminal, blank_lines
 
 
 class Scorer():
@@ -73,20 +71,20 @@ class Scorer():
                                    "['Y' | 'N']:\n".center(80)).lower()
             if clear_hi_score == 'y':
                 storage_name.removeItem("hi-score")
-                utility.clear_terminal()
+                clear_terminal()
                 print(
-                    utility.blank_lines(6) +
+                    blank_lines(6) +
                     "Highscore reset!".center(80) +
-                    utility.blank_lines(2, "after_line")
+                    blank_lines(2, "after_line")
                     )
                 break
             if clear_hi_score == 'n':
-                utility.clear_terminal()
-                print(utility.blank_lines(8))
+                clear_terminal()
+                print(blank_lines(8))
                 break
 
-            utility.clear_terminal()
+            clear_terminal()
             print(
-                utility.blank_lines(8) +
+                blank_lines(8) +
                 Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
                 )

@@ -7,7 +7,7 @@ from word_manager import Word
 from dictionary import easy_words, hard_words
 from score_manager import Scorer
 from arts import MINOR_LOGO
-from utility_manager import UtilityTools as utility
+from utility_manager import clear_terminal, blank_lines
 
 
 # keeps color change within the text inside print statement
@@ -41,11 +41,11 @@ class Game():
         game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space}\
         {score_display}        Words Left: {15 - total_words}\n"\
             + Style.RESET_ALL + "=" * 80\
-            + utility.blank_lines(2, "inline")\
+            + blank_lines(2, "inline")\
             + "Definition:".center(80)\
-            + utility.blank_lines(1, "inline")\
+            + blank_lines(1, "inline")\
             + word_def.center(80)\
-            + utility.blank_lines(2, "after_line")\
+            + blank_lines(2, "after_line")\
 
         return game_area_template
 
@@ -55,7 +55,7 @@ class Game():
         Displays the placeholder of the word
         """
         word_placeholder = '  '.join(placeholder).center(80)\
-            + utility.blank_lines(3, "after_line")
+            + blank_lines(3, "after_line")
 
         print(Fore.CYAN + word_placeholder)
 
@@ -138,7 +138,7 @@ class Game():
             return message
 
         if guess_num == 1:
-            utility.clear_terminal()
+            clear_terminal()
             placeholder = self._give_1st_hint(word, placeholder)
             print(game_zone)
             self._display_placeholder(placeholder)
@@ -146,10 +146,10 @@ class Game():
             if feedback_msg != '':
                 print(Fore.RED + feedback_msg.center(80))
             print(Fore.MAGENTA + "CLUES ARE ADDED ABOVE.".center(80))
-            print(utility.blank_lines(1))
+            print(blank_lines(1))
             print("[For hint, press 'Enter']".center(80))
         elif guess_num == 2:
-            utility.clear_terminal()
+            clear_terminal()
             placeholder = self._give_2nd_hint(word, placeholder)
             print(game_zone)
             self._display_placeholder(placeholder)
@@ -157,10 +157,10 @@ class Game():
             if feedback_msg != '':
                 print(Fore.RED + feedback_msg.center(80))
             print(Fore.MAGENTA + "MORE CLUES ARE ADDED ABOVE.".center(80))
-            print(utility.blank_lines(1))
+            print(blank_lines(1))
             print("[To reveal the word, press 'Enter']".center(80))
         else:
-            utility.clear_terminal()
+            clear_terminal()
             print(game_zone)
             self._display_placeholder(word)
             print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
@@ -179,7 +179,7 @@ class Game():
             guess = input(Fore.YELLOW + "Provide your guess (type the word):\n".center(80) + Style.RESET_ALL).upper()
             tries_per_word += 1
             if guess == word:
-                utility.clear_terminal()
+                clear_terminal()
                 not_guessed_yet = False
                 Scorer.add_to_correct_guesses()
                 points = Scorer.earn_points(tries_per_word)
@@ -208,11 +208,11 @@ class Game():
             Provides feedback to user if input is invalid
             """
             while proceed_input != "y":
-                utility.clear_terminal()
+                clear_terminal()
                 print(game_zone)
                 self._display_placeholder(word)
                 print(Fore.RED + "Invalid input. Please enter 'Y' only.".center(80))
-                print(utility.blank_lines(1))
+                print(blank_lines(1))
                 proceed_input = input(Fore.YELLOW + msg.center(80) + Style.RESET_ALL).lower()
 
         # Game ends after 15 words
@@ -237,7 +237,7 @@ class Game():
         game_on = True
 
         while game_on:
-            utility.clear_terminal()
+            clear_terminal()
 
             game_object = self._game_mode_assembler()
             game_area = game_object["game_area"]
