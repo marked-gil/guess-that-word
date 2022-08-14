@@ -10,7 +10,7 @@ init(autoreset=True)
 
 def display_logo(logo):
     """
-    Returns the game ascii logo after clearing the terminal
+    Returns the ascii logo after clearing the terminal
     """
     clear_terminal()
     print(Fore.GREEN + logo)
@@ -20,7 +20,7 @@ def display_logo(logo):
 
 def show_instruction():
     """
-    Shows the game mechanics
+    Shows the game mechanics with logo on top
     """
     display_logo(LOGO)
     print(
@@ -42,7 +42,7 @@ def show_instruction():
 
 def show_game_modes():
     """
-    Shows the different modes of the game to choose from
+    Shows the modes of the game to choose from
     """
     print(blank_lines(1))
     print("GAME MODES:\n".center(80))
@@ -63,9 +63,10 @@ def see_howtoplay_input_validator():
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
         print(blank_lines(2))
-        print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only.".center(80))
-        view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
-                                 "or, enter 'N' for Game Menu:\n"
+        print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only."
+              .center(80))
+        view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction;"
+                                 " or, enter 'N' for Game Menu:\n"
                                  .center(80) + Style.RESET_ALL).lower()
 
     return view_instruction
@@ -74,42 +75,49 @@ def see_howtoplay_input_validator():
 def see_modes_input_validator():
     """
     Prompts user to enter 'y' to go to Game Modes menu, or
-    'n' to return home, and validates the input.
+    'n' to return home; and validates the input.
     Returns user input
     """
     print(blank_lines(1))
     see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, enter "
-                     "'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
+                     "'N' to return home:\n".center(80) +
+                     Style.RESET_ALL).lower()
     while see_menu not in ('y', 'n'):
         show_instruction()
-        print(Fore.RED + "Invalid input. Please enter 'Y' or 'N' only.".center(80))
+        print(Fore.RED + "Invalid input. Please enter 'Y' or 'N' "
+              "only.".center(80))
         see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, "
-                         "enter 'N' to return home:\n".center(80) + Style.RESET_ALL).lower()
+                         "enter 'N' to return home:\n".center(80) +
+                         Style.RESET_ALL).lower()
 
     return see_menu
 
 
 def play_again_input_validator():
     """
-    Prompts user to play again by entering designated input or following the described instruction;
-    it validates the user input, provides feedback if input invalid, and refreshes the game if
-    input valid.
+    Prompts user to play again; validates user input, and provides feedback if
+    input invalid. If input valid, game is refreshed.
     """
-    play_again_input = input(Fore.YELLOW + "To play again, enter 'Y' or press the 'Run Progran' button at the top.\n".center(80)).lower()
+    play_again_input = input(Fore.YELLOW + "To play again, enter 'Y' or press "
+                             "the 'Run Progran' button at the top."
+                             "\n".center(80)).lower()
     while play_again_input != 'y':
         clear_terminal()
         print(blank_lines(8))
         if play_again_input == "":
             play_again_input = "a blank input"
-        print(Fore.RED + f"You entered '{play_again_input}' which is invalid. Try again!".center(80))
-        play_again_input = input(Fore.YELLOW + "To play again, enter 'Y'; or, press the 'Run Progran' button at the top.\n".center(80) + Style.RESET_ALL).lower()
+        print(Fore.RED + f"You entered '{play_again_input}' which is invalid. "
+              "Try again!".center(80))
+        play_again_input = input(Fore.YELLOW + "To play again, enter 'Y'; or, "
+                                 "press the 'Run Progran' button at the top."
+                                 "\n".center(80) + Style.RESET_ALL).lower()
     
     return_home()
 
 
 def game_mode_input_validator(feedback=None):
     """
-    Prompts user to select game mode and validates the input;
+    Prompts user to select game mode and validates their input;
     returns the game mode number
     """
     display_logo(LOGO)
@@ -119,8 +127,9 @@ def game_mode_input_validator(feedback=None):
         print(feedback)
 
     try:
-        game_mode_int = int(input(Fore.YELLOW + "Choose a game mode by entering "
-                            "'1', '2', or '3':\n".center(80) + Style.RESET_ALL))
+        game_mode_int = int(input(Fore.YELLOW + "Choose a game mode by "
+                                  "entering '1', '2', or '3':\n".center(80) +
+                                  Style.RESET_ALL))
     except ValueError:
         message = Fore.RED + "Your input should be a number.".center(80)
         game_mode_int = game_mode_input_validator(message)
@@ -136,24 +145,27 @@ def main():
     """
     Runs the entire gaming program from start to finish
     """
-    # HOME <-- start
+    # ***** HOME [start] *****
     display_logo(LOGO)
 
-    # validates if user wants to read instruction
+    # checks if user wants to read instruction and valids input
     see_instruction = see_howtoplay_input_validator()
     if see_instruction == 'y':
         show_instruction()
         see_modes = see_modes_input_validator()
         if see_modes == 'y':
+            # shows game modes menu and validates user's choice
             game_mode_num = game_mode_input_validator()
         elif see_modes == 'n':
+            # refreshes script
             clear_terminal()
             return_home()
     elif see_instruction == 'n':
+        # shows game modes menu and validates user's choice
         game_mode_num = game_mode_input_validator()
-    # HOME <-- end
+    # ***** HOME [end] *****
 
-    # Play Game <-- start
+    # ***** MAIN GAME [start] *****
     game = Game(game_mode_num)
     clear_terminal()
     game.play_game()
@@ -165,14 +177,16 @@ def main():
           f"word{'s' if total_right_guesses > 1 else ''} "
           "out of 15.\n".center(80))
 
+    # for 'Beat the Highscore' mode (Game Mode 3):
+    # stores highscore, gives feedback, and asks if wants to reset highscore
     if game_mode_num == 3:
         storage_message, localstorage = Scorer.store_highscore().values()
         print(Fore.YELLOW + storage_message.center(80))
         Scorer.validate_to_reset_highscore(localstorage)
 
-    # Asks the user if they want to play again, and validates the input
+    # Asks user if they want to play again, and validates their input
     play_again_input_validator()
-    # Play Game <-- end
+    # ***** MAIN GAME [start] *****
 
 
 if __name__ == '__main__':
