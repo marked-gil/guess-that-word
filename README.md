@@ -99,11 +99,27 @@ Using the user stories, I have planned the following features:
 As this is a game played on a terminal, therefore the design option is limited, I still endeavoured to  make it as visually appealing, intuitive and simplistic as it can be. This is achieved by using ascii arts, making the terminal look uncluttered by clearing it after every group of displayed data/information, and providing only necessary data in the terminal at each moment.
 
 ### STRUCTURE
-#### Interaction Choice:
-<!-- content here -->
+#### **Interaction Design**
+	* Clear & Intuitive Feedback
+    * All invalid inputs to the prompts are handled with appropriate and clear feedback messages that usually hint the user on how to correct it. In any case that the feedback message does not inform the user of what to do to have a valid input, the original prompt is displayed for the user to read again.
+    * In the word challenge, if the user enters a wrong answer (including a single letter, but not longer than the correct word) their input will be displayed, and they will be asked to try again; if they enter a word or group of letters longer than the correct word, the feedback will specify this issue; and if they enter a character that is not in the English alphabet, the feedback message will also specify this.
+* Consistent
+    * Consistency is seen various features of the program.
+    * How the feedback messages are displayed is consistent. Its colour is always red and rests on top of the original prompt. And all displayed data/information are centre-aligned.
+* Predictable
+    * Predictability is evident on this program. When an input is entered, the user can predict that a feedback message will show if the input is invalid; and if it is valid, the program  will continue.
+    * On the game area, the definition, placeholder, prompts and feedbacks are always expected to be displayed on the same spots due to the single-screen and no-scrolling feature of the program. This helps user to locate these datas easily and avoids confusion and enhances the user-friendly interface of the program.
+    * The program always does what its prompt tells the user that it will do if a valid input is entered.
+* Learnability
+    * The user is provided a specific, easy-to-understand, and succint prompts as the user runs the program. This enhances the learnability of the program and the game itself.
+    * The game is also designed to be simple and intuitive, and, thus, learnable.
+    * Due to its clean, uncluttered and simplified layout, the user can easily see all the data/information in the terminal screen.
+* Functional Minimalism
+    * The program prevents overwhelming of the user by many displayed data on the screen through keeping the program clean, simple, uncluttered, and minimalist. Only appropriate and needed groups of information are provided at each time. This is made possible by the clear_terminal function that this program utilizes, which keeps the terminal screen from being a long scrollable screen.
+    * As this is a terminal game, the user can only provide input when it is prompted.
 
 ### SKELETON
-#### Design Model
+#### **Design Model**
 <!-- Flow Diagram -->
 
 ### SURFACE
