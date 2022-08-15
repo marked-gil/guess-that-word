@@ -100,7 +100,7 @@ As this is a game played on a terminal, therefore the design option is limited, 
 
 ### STRUCTURE
 #### **Interaction Design**
-	* Clear & Intuitive Feedback
+* Clear & Intuitive Feedback
     * All invalid inputs to the prompts are handled with appropriate and clear feedback messages that usually hint the user on how to correct it. In any case that the feedback message does not inform the user of what to do to have a valid input, the original prompt is displayed for the user to read again.
     * In the word challenge, if the user enters a wrong answer (including a single letter, but not longer than the correct word) their input will be displayed, and they will be asked to try again; if they enter a word or group of letters longer than the correct word, the feedback will specify this issue; and if they enter a character that is not in the English alphabet, the feedback message will also specify this.
 * Consistent
@@ -123,7 +123,19 @@ As this is a game played on a terminal, therefore the design option is limited, 
 <!-- Flow Diagram -->
 
 ### SURFACE
-<!-- content here -->
+* **Ascii arts**    
+The following ascii arts are taken from: [fsymbols](https://fsymbols.com/generators/carty/)
+<!-- screenshots of ascii arts here -->
+
+* **Colorama**  
+The Colorama module is used to provide color to the terminal texts. Aside from its aesthetic purpose, it also enhances the meaning and importance of the displayed message or information.
+<!-- screenshot here -->
+
+* **No-scrolling screen feature.**
+This program prevents the tendency of scrolling by displaying only a group of data that can fit the screen at each moment. It does not allow for texts to be repeated printed on the screen, which could make it look untidy, and overwhelming to the user.
+<!-- gif -->
+
+* To see features of the final product, go to [FEATURES](#features).
 
 
 ## FEATURES
