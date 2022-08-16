@@ -32,13 +32,13 @@ class Game:
         """
         if game_mode == 3:
             score_display = f"Score: {Scorer.total_score}"
-            space = " " * 16
+            space = " " * 10
         else:
-            score_display = f"Correct Answer: {Scorer.total_correct_guesses}"
-            space = " " * 6
+            score_display = f"Correct Answers: {Scorer.total_correct_guesses}"
+            space = " "
 
         total_words = len(Word.used_words)
-        game_area_template = f"\n {Fore.GREEN + MINOR_LOGO} {space}\
+        game_area_template = f"\n { Fore.GREEN + MINOR_LOGO} {space}\
         {score_display}        Words Left: {15 - total_words}\n"\
             + Style.RESET_ALL + "=" * 80\
             + blank_lines(2, "inline")\
