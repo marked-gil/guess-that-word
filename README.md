@@ -204,10 +204,29 @@ As the user finishes the game, they are asked if they want to play again. And if
 
 
 ## FIXED BUGS
-<!-- content here -->
+* **ISSUE:**  
+When I ran the program after refactoring the script into different modules, an error showed up which states `ImportError: cannot import name 'Game' from partially initialized module 'game_manager' (most likely due to a circular import)`.  
+
+    * **INTENDED OUTCOME:**    
+    I expect the script to still run as smoothly as it had without any error before I refactored the code.    
+
+    * **SOLUTION:**     
+    After some research in the web, [bobbyhadz blog](https://bobbyhadz.com/blog/python-importerror-cannot-import-name) gave me the idea to solve the problem.
+    I realized that the problem occured because I imported score_manager module in the game_manager module, and vice versa. This resulted to the ImportError due to a circular import. So to solve, I removed the accidentally imported game_manager module from score_manager module, and the program ran perfectly.   
+
+* **ISSUE:**       
+I noticed that when I played the 'Beat the Highscore' game mode, the score tracker being displayed at the top of the terminal screen would revert the score to the previous result when a wrong input is entered to proceed to the next word challenge. 
+
+    * **INTENDED OUTCOME:**     
+    I expect the score tracker to display the score consistently without fail. The added points should be reflected in the score as soon as the player correctly guessed the word, and it should not change until another point is added into it.   
+
+    * **SOLUTION:**     
+    As this was a logical error, I traced back the code, especially the validator for wrong inputs on that certain section. After some deep thoughts and analysis, I found the cause, updated the passed in argument to the involved function, and it finally worked perfectly as intended.
+
 
 ## BUGS LEFT TO FIX
 <!-- content here -->
+
 
 ## TESTING
 <!-- content here -->
@@ -243,9 +262,6 @@ To clone the repository for this site, do the following steps:
 4. In the popup box, click on the 'HTTPS' link and copy the url just below it.
 5. Then, go to your computer's terminal and type `git clone https://github.com/marked-gil/guess-that-word`
 6. A copy of the repository is now saved in your computer.
-
-### **Running the Project Locally**
-<!-- Content here -->
 
 
 ## TECHNOLOGIES USED
