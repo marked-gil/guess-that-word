@@ -14,7 +14,7 @@ from utility_manager import clear_terminal, blank_lines
 init(autoreset=True)
 
 
-class Game():
+class Game:
     """
     Docstring here
     """
@@ -211,7 +211,7 @@ class Game():
                 clear_terminal()
                 print(game_zone)
                 self._display_placeholder(word)
-                print(Fore.RED + "Invalid input. Please enter 'Y' only.".center(80))
+                print(Fore.RED + "Invalid input. Please enter Y only.".center(80))
                 print(blank_lines(1))
                 proceed_input = input(Fore.YELLOW + msg.center(80) + Style.RESET_ALL).lower()
 
@@ -219,11 +219,11 @@ class Game():
         game_continues = True
         if len(Word.used_words) == max_num:
             game_continues = False
-            prompt_msg = "Enter 'Y' to see your performance: \n"
+            prompt_msg = "Enter Y to see your performance: \n"
             proceed = input(Fore.YELLOW + prompt_msg.center(80) + Style.RESET_ALL).lower()
             wrong_input_feedback(proceed, prompt_msg)
         else:
-            prompt_msg = "Enter 'Y' to proceed to the next word:\n"
+            prompt_msg = "Enter Y to proceed to the next word:\n"
             proceed = input(Fore.YELLOW + prompt_msg.center(80) + Style.RESET_ALL).lower()
             wrong_input_feedback(proceed, prompt_msg)
 

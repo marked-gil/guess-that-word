@@ -52,21 +52,21 @@ def show_game_modes():
 
 def see_howtoplay_input_validator():
     """
-    Prompts user to enter 'y' to see the instruction or 'n' to
+    Prompts user to enter Y to see the instruction or N to
     proceed to Game Menu, and validates the input.
     Returns user input
     """
     print(blank_lines(3))
-    view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction; "
-                             "or, enter 'N' for Game Menu:\n".center(80) +
+    view_instruction = input(Fore.YELLOW + "Enter Y for the instruction; "
+                             "or, enter N for Game Menu:\n".center(80) +
                              Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
         print(blank_lines(2))
-        print(Fore.RED + "Wrong input. Please enter 'Y' or 'N' only."
+        print(Fore.RED + "Wrong input. Please enter Y or N only."
               .center(80))
-        view_instruction = input(Fore.YELLOW + "Enter 'Y' for the instruction;"
-                                 " or, enter 'N' for Game Menu:\n"
+        view_instruction = input(Fore.YELLOW + "Enter Y for the instruction;"
+                                 " or, enter N for Game Menu:\n"
                                  .center(80) + Style.RESET_ALL).lower()
 
     return view_instruction
@@ -74,20 +74,20 @@ def see_howtoplay_input_validator():
 
 def see_modes_input_validator():
     """
-    Prompts user to enter 'y' to go to Game Modes menu, or
-    'n' to return home; and validates the input.
+    Prompts user to enter Y to go to Game Modes menu, or
+    N to return home; and validates the input.
     Returns user input
     """
     print(blank_lines(1))
-    see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, enter "
-                     "'N' to return home:\n".center(80) +
+    see_menu = input(Fore.YELLOW + "Enter Y for Game Modes menu; or, enter "
+                     "N to return home:\n".center(80) +
                      Style.RESET_ALL).lower()
     while see_menu not in ('y', 'n'):
         show_instruction()
-        print(Fore.RED + "Invalid input. Please enter 'Y' or 'N' "
+        print(Fore.RED + "Invalid input. Please enter Y or N "
               "only.".center(80))
-        see_menu = input(Fore.YELLOW + "Enter 'Y' for Game Modes menu; or, "
-                         "enter 'N' to return home:\n".center(80) +
+        see_menu = input(Fore.YELLOW + "Enter Y for Game Modes menu; or, "
+                         "enter N to return home:\n".center(80) +
                          Style.RESET_ALL).lower()
 
     return see_menu
@@ -98,7 +98,7 @@ def play_again_input_validator():
     Prompts user to play again; validates user input, and provides feedback if
     input invalid. If input valid, game is refreshed.
     """
-    play_again_input = input(Fore.YELLOW + "To play again, enter 'Y' or press "
+    play_again_input = input(Fore.YELLOW + "To play again, enter Y or press "
                              "the 'Run Progran' button at the top."
                              "\n".center(80)).lower()
     while play_again_input != 'y':
@@ -108,7 +108,7 @@ def play_again_input_validator():
             play_again_input = "a blank input"
         print(Fore.RED + f"You entered '{play_again_input}' which is invalid. "
               "Try again!".center(80))
-        play_again_input = input(Fore.YELLOW + "To play again, enter 'Y'; or, "
+        play_again_input = input(Fore.YELLOW + "To play again, enter Y; or, "
                                  "press the 'Run Progran' button at the top."
                                  "\n".center(80) + Style.RESET_ALL).lower()
     
@@ -128,7 +128,7 @@ def game_mode_input_validator(feedback=None):
 
     try:
         game_mode_int = int(input(Fore.YELLOW + "Choose a game mode by "
-                                  "entering '1', '2', or '3':\n".center(80) +
+                                  "entering 1, 2, or 3:\n".center(80) +
                                   Style.RESET_ALL))
     except ValueError:
         message = Fore.RED + "Your input should be a number.".center(80)
