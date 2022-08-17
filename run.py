@@ -72,7 +72,6 @@ def start_hiscore_input_validator(mode):
     Parameter: game mode number
     """
     if mode == 3:
-
         try:
             start_game = input(Fore.YELLOW + "Are you ready? Enter Y to "
                                "proceed, or N to return home.\n".center(80) +
@@ -140,7 +139,7 @@ def play_again_input_validator():
     """
     try:
         play_again_input = input(Fore.YELLOW + "To play again, enter Y; or, "
-                                 "press the 'Run Program' button at the top."
+                                 "click the 'Run Program' button at the top."
                                  "\n".center(80) +
                                  Style.RESET_ALL).lower()
         if play_again_input not in ('y', 'n'):
@@ -213,21 +212,14 @@ def main():
     clear_terminal()
     game.play_game()
 
-    clear_terminal()
-    total_right_guesses = Scorer.total_correct_guesses
-    print(blank_lines(4))
-    print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} "
-          f"word{'s' if total_right_guesses > 1 else ''} "
-          "out of 15.\n".center(80))
+    Scorer.show_performance(game_mode_num)
 
-    # for 'Beat the Highscore' mode (Game Mode 3):
-    # stores highscore, gives feedback, and asks if wants to reset highscore
     if game_mode_num == 3:
-        storage_message, localstorage = Scorer.store_highscore().values()
-        print(Fore.YELLOW + storage_message.center(80))
-        Scorer.validate_to_reset_highscore(localstorage)
+        Scorer.store_highscore()
+        Scorer.validate_to_reset_highscore(game_mode_num)
 
     # Asks user if they want to play again, and validates their input
+    print(blank_lines(2))
     play_again_input_validator()
     # ***** MAIN GAME [start] *****
 
