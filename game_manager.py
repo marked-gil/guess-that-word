@@ -170,7 +170,7 @@ class Game:
             self._display_placeholder(word)
             print(Fore.RED + "Sorry, you did not guess it!\n".center(80))
 
-    def check_user_guess(self, word, definition, placeholder, game_zone):
+    def _check_user_guess(self, word, definition, placeholder, game_zone):
         """
         Checks if the user's guess is correct or not and provides feedback.
         Allows the user to have 3 attempts only for each word, and returns
@@ -201,7 +201,7 @@ class Game:
                                         game_zone, guess)
         return game_zone
 
-    def check_if_gameover(self, game_zone, word: str, max_num: int):
+    def _check_if_gameover(self, game_zone, word: str, max_num: int):
         """
         Checks if the game has reached the maximum words to end the game, and
         requires the arguments: "game area object" (game_zone), the "word to
@@ -253,7 +253,7 @@ class Game:
             print(game_area)
             self._display_placeholder(word_placeholder)
 
-            game_area = self.check_user_guess(word_to_guess, word_definition, word_placeholder,
+            game_area = self._check_user_guess(word_to_guess, word_definition, word_placeholder,
                                   game_area)
-            game_on = self.check_if_gameover(game_area, word_to_guess, Game.max_words)
+            game_on = self._check_if_gameover(game_area, word_to_guess, Game.max_words)
 
