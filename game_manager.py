@@ -31,15 +31,21 @@ class Game:
         """
         if game_mode == 3:
             score_display = f"Score: {Scorer.total_score}"
-            space = " " * 10
+            space = " " * 8
+            mode = "BEAT THE HIGHSCORE"
         else:
             score_display = f"Correct Answers: {Scorer.total_correct_guesses}"
             space = " "
+            if game_mode == 1:
+                mode = "EASY MODE"
+            elif game_mode == 2:
+                mode = "HARD MODE"
 
         total_words = len(Word.used_words)
-        game_area_template = f"\n { Fore.GREEN + MINOR_LOGO} {space}\
-        {score_display}        Words Left: {15 - total_words}\n"\
+        game_area_template = f"\n  {Fore.GREEN + MINOR_LOGO} {space}\
+        {score_display}       Words Left: {15 - total_words}\n"\
             + Style.RESET_ALL + "=" * 80\
+            + "\n  " + mode\
             + blank_lines(2, "inline")\
             + "Definition:".center(80)\
             + blank_lines(1, "inline")\
@@ -210,8 +216,8 @@ class Game:
                 clear_terminal()
                 print(game_zone)
                 self._display_placeholder(word)
-                print(Fore.RED + "Invalid input. Please enter Y only.".center(80))
                 print(blank_lines(1))
+                print(Fore.RED + "Invalid input. Please enter Y only.".center(80))
                 proceed_input = input(Fore.YELLOW + msg.center(80) + Style.RESET_ALL).lower()
 
         # Game ends after 15 words
