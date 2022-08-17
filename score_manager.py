@@ -7,7 +7,7 @@ from localStoragePy import localStoragePy
 from utility_manager import clear_terminal, blank_lines
 
 
-class Scorer():
+class Scorer:
     """
     Provides the user's total score, total number of correct guesses,
     and the created instance's current points earned
@@ -36,6 +36,15 @@ class Scorer():
             points = 1
         Scorer.total_score += points
         return points
+
+    @staticmethod
+    def get_highscore():
+        """
+        Gets highscore from the local storage and returns it
+        """
+        local_storage = localStoragePy('guessthatword-hiscore')
+        hi_score = local_storage.getItem("hi-score")
+        return hi_score
 
     @staticmethod
     def store_highscore():
