@@ -23,7 +23,7 @@ class Scorer:
         Scorer.total_correct_guesses += 1
 
     @staticmethod
-    def earn_points(num_of_tries):
+    def earn_points(num_of_tries: int):
         """
         Determines the points earned, adds it to the total score
         and returns the points
@@ -49,37 +49,58 @@ class Scorer:
     @staticmethod
     def store_highscore():
         """
-        Stores the highscore in the localStorage, and returns "message"
-        (about user's score and/or highscore) and the "local storage"
+        Stores the highscore in the localStorage, and returns the local storage
         """
         u_score = Scorer.total_score
         local_storage = localStoragePy('guessthatword-hiscore')
         hi_score = local_storage.getItem("hi-score")
-        message = ""
+
         if hi_score is None:
             local_storage.setItem("hi-score", u_score)
             hi_score = local_storage.getItem("hi-score")
-            message = f"Your score is: {u_score}. (Saved as highscore.)\n"
-        elif int(hi_score) > u_score:
-            message = f"Your score is: {u_score} || HIGHSCORE is {hi_score}\n"
         elif int(hi_score) < u_score:
             local_storage.setItem("hi-score", u_score)
-            hi_score = local_storage.getItem("hi-score")
-            message = "Congratulations! You've just set the NEW HIGHSCORE: "\
-                + hi_score + "\n"
-        return {"store_message": message, "local_storage": local_storage}
+        return local_storage
 
     @staticmethod
-    def validate_to_reset_highscore(storage_name):
+    def show_performance(mode: int):
+        """
+        Shows performance of the user.
+        Parameter: game mode number
+        """
+        clear_terminal()
+        total_right_guesses = Scorer.total_correct_guesses
+        print(blank_lines(6))
+        print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} "
+              f"word{'s' if total_right_guesses > 1 else ''} "
+              "out of 15.\n".center(80))
+        if mode == 3:
+            u_score = Scorer.total_score
+            hi_score = Scorer.get_highscore()
+            if hi_score is None:
+                print(Fore.YELLOW + f"Your score is: {u_score}. (Saved as \
+                      highscore.)\n".center(80))
+            elif int(hi_score) > u_score:
+                print(Fore.YELLOW + f"Your score is: {u_score} || HIGHSCORE is \
+                      {hi_score}\n".center(80))
+            elif int(hi_score) < u_score:
+                print(Fore.YELLOW + f"Congratulations! You've just set the NEW \
+                      HIGHSCORE: {hi_score}\n".center(80))
+
+    @staticmethod
+    def validate_to_reset_highscore(mode: int):
         """
         Prompts user to choose whether to reset highscore or not,
         and validates the input.
         """
+        local_storage = localStoragePy('guessthatword-hiscore')
+
+        print(blank_lines(3))
         while True:
             clear_hi_score = input("Do you want to reset the highscore? "
                                    "['Y' | 'N']:\n".center(80)).lower()
             if clear_hi_score == 'y':
-                storage_name.removeItem("hi-score")
+                local_storage.removeItem("hi-score")
                 clear_terminal()
                 print(
                     blank_lines(6) +
@@ -93,7 +114,8 @@ class Scorer:
                 break
 
             clear_terminal()
+            Scorer.show_performance(mode)
             print(
-                blank_lines(8) +
+                blank_lines(3) +
                 Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
                 )
