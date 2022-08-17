@@ -26,8 +26,8 @@ class Game:
     def _display_game_area(word_def, game_mode):
         """
         Displays the game area template and accepts arguments for the
-        "word definition", "total correct guesses", "boolean for highscore_mode",
-        and "score"
+        "word definition", "total correct guesses", "boolean for
+        highscore_mode", and "score"
         """
         if game_mode == 3:
             score_display = f"Score: {Scorer.total_score}"
@@ -35,7 +35,7 @@ class Game:
             mode = "BEAT THE HIGHSCORE"
             hi_score = Scorer.get_highscore()
             if hi_score is None:
-                hi_score_display = "No Highscore Yet"
+                hi_score_display = "No Saved Highscore"
             else:
                 hi_score_display = f"Highscore: {hi_score}"
         else:
@@ -48,6 +48,7 @@ class Game:
             hi_score_display = ""
 
         total_words = len(Word.used_words)
+
         game_area_template = f"\n  {Fore.GREEN + MINOR_LOGO} {space}\
         {score_display}       Words Left: {15 - total_words}\n"\
             + Style.RESET_ALL + "=" * 80\
@@ -86,10 +87,12 @@ class Game:
 
         if self.game_mode in (1, 2):
             return {"word_obj": random_word, "game_area":
-                    self._display_game_area(random_word.definition, self.game_mode)}
+                    self._display_game_area(random_word.definition,
+                                            self.game_mode)}
 
         return {"word_obj": random_word, "game_area":
-                self._display_game_area(random_word.definition, self.game_mode)}
+                self._display_game_area(random_word.definition,
+                                        self.game_mode)}
 
     @staticmethod
     def _give_1st_hint(word, placeholder):
@@ -127,7 +130,8 @@ class Game:
         placeholder[indx_list[1]] = word[indx_list[1]]
         return placeholder
 
-    def _feedback_to_wrong_guess(self, guess_num, word_holder_dict, game_zone, user_guess):
+    def _feedback_to_wrong_guess(self, guess_num, word_holder_dict, game_zone,
+                                 user_guess):
         """
         Responds to every wrong guess by the user by providing hints or
         ending the chance to guess the current word. This accepts "num_guess",
@@ -142,7 +146,8 @@ class Game:
                 if len(user_guess) > (len(word)):
                     message = "Your input is longer than the expected answer."
                 elif user_guess != "":
-                    message = f"You answered '{user_guess}' which is incorrect."
+                    message = f"You answered '{user_guess}' which is incorrect\
+                                ."
                 else:
                     message = ''
             else:
@@ -188,7 +193,8 @@ class Game:
         print("[For hint, press 'Enter']".center(80))
 
         while not_guessed_yet and tries_per_word != 3:
-            guess = input(Fore.YELLOW + "Provide your guess (type the word):\n".center(80) + Style.RESET_ALL).upper()
+            guess = input(Fore.YELLOW + "Provide your guess (type the word):\n"
+                          .center(80) + Style.RESET_ALL).upper()
             tries_per_word += 1
             if guess == word:
                 clear_terminal()
@@ -203,16 +209,18 @@ class Game:
                     print(f"You earned: {points}"
                           f" point{'s' if points > 1 else ''}\n".center(80))
             else:
-                word_and_holder_dict = {"placeholder": placeholder, "word": word}
-                self._feedback_to_wrong_guess(tries_per_word, word_and_holder_dict,
-                                        game_zone, guess)
+                word_and_holder = {"placeholder": placeholder, "word": word}
+                self._feedback_to_wrong_guess(tries_per_word, word_and_holder,
+                                              game_zone, guess)
         return game_zone
 
     def _check_if_gameover(self, game_zone, word: str, max_num: int):
         """
-        Checks if the game has reached the maximum words to end the game, and
-        requires the arguments: "game area object" (game_zone), the "word to
-        guess" (word) and the "maximum number of words before game over" (max_num).
+        Checks if game has reached the maximum words to end game, and requires.
+
+        Parameters: "game area object" (game_zone), the "word to guess" (word),
+        and "maximum number of words before game over" (max_num).
+
         Returns True or False
         """
         def wrong_input_feedback(proceed_input, msg):
@@ -224,19 +232,23 @@ class Game:
                 print(game_zone)
                 self._display_placeholder(word)
                 print(blank_lines(1))
-                print(Fore.RED + "Invalid input. Please enter Y only.".center(80))
-                proceed_input = input(Fore.YELLOW + msg.center(80) + Style.RESET_ALL).lower()
+                print(Fore.RED + "Invalid input. Please enter Y only."
+                      .center(80))
+                proceed_input = input(Fore.YELLOW + msg.center(80) +
+                                      Style.RESET_ALL).lower()
 
         # Game ends after 15 words
         game_continues = True
         if len(Word.used_words) == max_num:
             game_continues = False
             prompt_msg = "Enter Y to see your performance: \n"
-            proceed = input(Fore.YELLOW + prompt_msg.center(80) + Style.RESET_ALL).lower()
+            proceed = input(Fore.YELLOW + prompt_msg.center(80) +
+                            Style.RESET_ALL).lower()
             wrong_input_feedback(proceed, prompt_msg)
         else:
             prompt_msg = "Enter Y to proceed to the next word:\n"
-            proceed = input(Fore.YELLOW + prompt_msg.center(80) + Style.RESET_ALL).lower()
+            proceed = input(Fore.YELLOW + prompt_msg.center(80) +
+                            Style.RESET_ALL).lower()
             wrong_input_feedback(proceed, prompt_msg)
 
             game_continues = True
@@ -260,7 +272,7 @@ class Game:
             print(game_area)
             self._display_placeholder(word_placeholder)
 
-            game_area = self._check_user_guess(word_to_guess, word_definition, word_placeholder,
-                                  game_area)
-            game_on = self._check_if_gameover(game_area, word_to_guess, Game.max_words)
-
+            game_area = self._check_user_guess(word_to_guess, word_definition,
+                                               word_placeholder, game_area)
+            game_on = self._check_if_gameover(game_area, word_to_guess,
+                                              Game.max_words)
