@@ -144,10 +144,9 @@ class Game:
             # Returns the feedback message
             if user_guess.isalpha() or user_guess == '':
                 if len(user_guess) > (len(word)):
-                    message = "Your input is longer than the expected answer."
+                    message = "Your input is longer than the expected answer"
                 elif user_guess != "":
-                    message = f"You answered '{user_guess}' which is incorrect\
-                                ."
+                    message = f"You answered '{user_guess}' which is incorrect"
                 else:
                     message = ''
             else:

@@ -78,14 +78,15 @@ class Scorer:
             u_score = Scorer.total_score
             hi_score = Scorer.get_highscore()
             if hi_score is None:
-                print(Fore.YELLOW + f"Your score is: {u_score}. (Saved as \
-                      highscore.)\n".center(80))
+                msg = f"Your score is: {u_score}. (Saved as highscore.)\n"
+                print(Fore.YELLOW + msg.center(80))
             elif int(hi_score) > u_score:
-                print(Fore.YELLOW + f"Your score is: {u_score} || HIGHSCORE is \
-                      {hi_score}\n".center(80))
+                msg = f"Your score is: {u_score} || HIGHSCORE is {hi_score}\n"
+                print(Fore.YELLOW + msg.center(80))
             elif int(hi_score) < u_score:
-                print(Fore.YELLOW + f"Congratulations! You've just set the NEW \
-                      HIGHSCORE: {hi_score}\n".center(80))
+                msg = f"Congratulations! You've just set the NEW HIGHSCORE: \
+                    {hi_score}\n"
+                print(Fore.YELLOW + msg.center(80))
 
     @staticmethod
     def validate_to_reset_highscore(mode: int):
