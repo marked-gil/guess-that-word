@@ -58,7 +58,7 @@ def see_howtoplay_input_validator():
     """
     print(blank_lines(3))
     view_instruction = input(Fore.YELLOW + "Enter Y for the instruction; "
-                             "or, enter N for Game Menu:\n".center(80) +
+                             "or, enter N for Game Modes menu:\n".center(80) +
                              Style.RESET_ALL).lower()
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
@@ -66,7 +66,7 @@ def see_howtoplay_input_validator():
         print(Fore.RED + "Wrong input. Please enter Y or N only."
               .center(80))
         view_instruction = input(Fore.YELLOW + "Enter Y for the instruction;"
-                                 " or, enter N for Game Menu:\n"
+                                 " or, enter N for Game Modes menu:\n"
                                  .center(80) + Style.RESET_ALL).lower()
 
     return view_instruction
@@ -98,21 +98,20 @@ def play_again_input_validator():
     Prompts user to play again; validates user input, and provides feedback if
     input invalid. If input valid, game is refreshed.
     """
-    play_again_input = input(Fore.YELLOW + "To play again, enter Y or press "
-                             "the 'Run Progran' button at the top."
-                             "\n".center(80)).lower()
-    while play_again_input != 'y':
+    try:
+        play_again_input = input(Fore.YELLOW + "To play again, enter Y; or, "
+                                 "press the 'Run Program' button at the top."
+                                 "\n".center(80) +
+                                 Style.RESET_ALL).lower()
+        if play_again_input not in ('y', 'n'):
+            raise ValueError("Invalid input. Please enter Y only.")
+    except ValueError as err:
         clear_terminal()
         print(blank_lines(8))
-        if play_again_input == "":
-            play_again_input = "a blank input"
-        print(Fore.RED + f"You entered '{play_again_input}' which is invalid. "
-              "Try again!".center(80))
-        play_again_input = input(Fore.YELLOW + "To play again, enter Y; or, "
-                                 "press the 'Run Progran' button at the top."
-                                 "\n".center(80) + Style.RESET_ALL).lower()
-    
-    return_home()
+        print(Fore.RED + str(err).center(80))
+        play_again_input_validator()
+    else:
+        return_home()
 
 
 def game_mode_input_validator(feedback=None):
