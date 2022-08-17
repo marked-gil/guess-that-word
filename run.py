@@ -50,6 +50,46 @@ def show_game_modes():
           "[3] Beat the Highscore\n\n".center(80))
 
 
+def show_scoring_system(mode):
+    """
+    Shows the scoring system of the Beat the Highscore game mode
+    """
+    if mode == 3:
+        display_logo(LOGO)
+        print(blank_lines(2))
+        print("In the 'Beat the Highscore' mode, you earn:".center(80))
+        print(blank_lines(1))
+        print("5 points -- if guess is correct on the 1st try".center(80))
+        print("3 points -- if guess is correct on the 2nd try".center(80))
+        print("1 point -- if guess is correct on the 3rd try".center(80))
+        print(blank_lines(1))
+
+
+def start_hiscore_input_validator(mode):
+    """
+    Prompts user to proceed or return home after viewing the scoring system,
+    and validates their input.
+    Parameter: game mode number
+    """
+    if mode == 3:
+
+        try:
+            start_game = input(Fore.YELLOW + "Are you ready? Enter Y to "
+                               "proceed, or N to return home.\n".center(80) +
+                               Style.RESET_ALL).lower()
+            if start_game not in ('y', 'n'):
+                raise ValueError("Invalid input. Enter Y or N only.")
+        except ValueError as err:
+            display_logo(LOGO)
+            show_scoring_system(mode)
+            print(Fore.RED + str(err).center(80))
+            start_hiscore_input_validator(mode)
+
+        # refreshes the program
+        if start_game == 'n':
+            return_home()
+
+
 def see_howtoplay_input_validator():
     """
     Prompts user to enter Y to see the instruction or N to
@@ -63,7 +103,7 @@ def see_howtoplay_input_validator():
     while view_instruction not in ('y', 'n'):
         display_logo(LOGO)
         print(blank_lines(2))
-        print(Fore.RED + "Wrong input. Please enter Y or N only."
+        print(Fore.RED + "Invalid input. Please enter Y or N only."
               .center(80))
         view_instruction = input(Fore.YELLOW + "Enter Y for the instruction;"
                                  " or, enter N for Game Modes menu:\n"
@@ -155,6 +195,8 @@ def main():
         if see_modes == 'y':
             # shows game modes menu and validates user's choice
             game_mode_num = game_mode_input_validator()
+            show_scoring_system(game_mode_num)
+            start_hiscore_input_validator(game_mode_num)
         elif see_modes == 'n':
             # refreshes script
             clear_terminal()
@@ -162,6 +204,8 @@ def main():
     elif see_instruction == 'n':
         # shows game modes menu and validates user's choice
         game_mode_num = game_mode_input_validator()
+        show_scoring_system(game_mode_num)
+        start_hiscore_input_validator(game_mode_num)
     # ***** HOME [end] *****
 
     # ***** MAIN GAME [start] *****
