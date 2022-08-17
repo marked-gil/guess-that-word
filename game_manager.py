@@ -9,7 +9,6 @@ from score_manager import Scorer
 from arts import MINOR_LOGO
 from utility_manager import clear_terminal, blank_lines
 
-
 # keeps color change within the text inside print statement
 init(autoreset=True)
 
@@ -67,7 +66,7 @@ class Game:
         if self.game_mode == 1:
             random_word = Word(easy_words)
         elif self.game_mode == 2:
-            random_word = Word(easy_words)
+            random_word = Word(hard_words)
         elif self.game_mode == 3:
             random_word = Word(easy_words) if len(Word.used_words) < 8 \
                 else Word(hard_words)
