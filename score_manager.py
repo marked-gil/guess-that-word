@@ -50,9 +50,9 @@ class Scorer():
         if hi_score is None:
             local_storage.setItem("hi-score", u_score)
             hi_score = local_storage.getItem("hi-score")
-            message = f"Your score is: {u_score}. Saved as highscore.\n"
+            message = f"Your score is: {u_score}. (Saved as highscore.)\n"
         elif int(hi_score) > u_score:
-            message = f"Your score is: {u_score} || the HIGHSCORE is {hi_score}.\n"
+            message = f"Your score is: {u_score} || HIGHSCORE is {hi_score}\n"
         elif int(hi_score) < u_score:
             local_storage.setItem("hi-score", u_score)
             hi_score = local_storage.getItem("hi-score")
