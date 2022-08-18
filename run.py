@@ -146,7 +146,7 @@ def play_again_input_validator():
             raise ValueError("Invalid input. Please enter Y only.")
     except ValueError as err:
         clear_terminal()
-        print(blank_lines(8))
+        print(blank_lines(9))
         print(Fore.RED + str(err).center(80))
         play_again_input_validator()
     else:
@@ -212,11 +212,11 @@ def main():
     clear_terminal()
     game.play_game()
 
-    Scorer.show_performance(game_mode_num)
+    score_msg = Scorer.show_performance(game_mode_num)
 
     if game_mode_num == 3:
         Scorer.store_highscore()
-        Scorer.validate_to_reset_highscore(game_mode_num)
+        Scorer.validate_to_reset_highscore(score_msg)
 
     # Asks user if they want to play again, and validates their input
     print(blank_lines(2))
