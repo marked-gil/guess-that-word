@@ -119,8 +119,16 @@ As this is a game played on a terminal, therefore the design option is limited, 
     * As this is a terminal game, the user can only provide input when it is prompted.
 
 ### SKELETON
-#### **Design Model**
-<!-- Flow Diagram -->
+#### **Data Model**
+
+* **Program Flowchart**     
+Below is the flowchart of the main process of this Python program. It starts with the Home section, which displays the main LOGO, and ends to the prompt for the user to play again. It shows the entire cycle of the program.
+![Program Flowchart](docs/charts/program-flowchart.png)
+
+* **Functions, Classes, & Imports Relational Diagram**  
+The following diagram shows the flow of the functions inside the main() function, which holds the entire process of the program - from start to finish and back. It also reveals the relationship of the functions, classes and imported modules with each other.   
+The **solid arrow lines** imply the sequential flow of the functions, while the **broken arrow lines** symbolize the direct relationship of the classes, modules, and libraries (internal & external) to each other.
+![Relational Diagram](docs/charts/relational-diagram.png)
 
 ### SURFACE
 * **Ascii arts**    
