@@ -77,24 +77,27 @@ class Scorer:
         if mode == 3:
             u_score = Scorer.total_score
             hi_score = Scorer.get_highscore()
+            s_msg = ""
             if hi_score is None:
-                msg = f"Your score is: {u_score}. (Saved as highscore.)\n"
-                print(Fore.YELLOW + msg.center(80))
-            elif int(hi_score) > u_score:
-                msg = f"Your score is: {u_score} || HIGHSCORE is {hi_score}\n"
-                print(Fore.YELLOW + msg.center(80))
+                s_msg = f"Your score is: {u_score}. (Saved as highscore.)\n"
+                print(Fore.YELLOW + s_msg.center(80))
+            elif int(hi_score) >= u_score:
+                s_msg = f"Your score is: {u_score} || HIGHSCORE: {hi_score}\n"
+                print(Fore.YELLOW + s_msg.center(80))
             elif int(hi_score) < u_score:
-                msg = f"Congratulations! You've just set the NEW HIGHSCORE: \
-                    {hi_score}\n"
-                print(Fore.YELLOW + msg.center(80))
+                s_msg = "Congratulations! You've just set the NEW HIGHSCORE: "\
+                      + f"{u_score}\n"
+                print(Fore.YELLOW + s_msg.center(80))
+            return s_msg
 
     @staticmethod
-    def validate_to_reset_highscore(mode: int):
+    def validate_to_reset_highscore(score_msg):
         """
         Prompts user to choose whether to reset highscore or not,
         and validates the input.
         """
         local_storage = localStoragePy('guessthatword-hiscore')
+        total_right_guesses = Scorer.total_correct_guesses
 
         print(blank_lines(3))
         while True:
@@ -105,7 +108,9 @@ class Scorer:
                 clear_terminal()
                 print(
                     blank_lines(6) +
+                    "++++++++++++++++++++".center(80) +
                     "Highscore reset!".center(80) +
+                    "++++++++++++++++++++".center(80) +
                     blank_lines(2, "after_line")
                     )
                 break
@@ -115,7 +120,12 @@ class Scorer:
                 break
 
             clear_terminal()
-            Scorer.show_performance(mode)
+            print(blank_lines(6))
+            print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses}"
+                  f" word{'s' if total_right_guesses > 1 else ''} "
+                  "out of 15.\n".center(80))
+            print(Fore.YELLOW + score_msg.center(80))
+
             print(
                 blank_lines(3) +
                 Fore.RED + "[Enter only 'Y' for Yes, or 'N' for No]".center(80)
