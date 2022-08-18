@@ -308,19 +308,19 @@ The following are the technologies used in this project:
 * Programming Language:
     * Python
 * Python Modules/Libraries:
-    * [os](https://docs.python.org/3/library/os.html) - a built-in module to use operating-system-dependent functionality
+    * [os](https://docs.python.org/3/library/os.html) - a built-in module to use operating-system-dependent functionality. This is used in the program, along the with `sys` module, to refresh/re-start the program.
     * [sys](https://docs.python.org/3/library/sys.html) - a built-in module where the sys.executable and sys.argv came from, which were passed into the os.execv method to restart the game.
-    * [random](https://docs.python.org/3/library/random.html) - a built-in module that generates pseudo-randomness.
-    * [localStoragePy](https://pypi.org/project/localStoragePy/) - an external Python package that allows local storage of data
-    * [colorama](https://pypi.org/project/colorama/) - an external Python package that colors the terminal text
+    * [random](https://docs.python.org/3/library/random.html) - a built-in module that generates pseudo-randomness. This was used in adding randomness to the selection of words from the custom dictionary module, and to the randomness of the provision of letters as hints.
+    * [localStoragePy](https://pypi.org/project/localStoragePy/) - an external Python package that allows local storage of data. This is used to locally store the highscore in the Beat the Highscore mode.
+    * [colorama](https://pypi.org/project/colorama/) - an external Python package that colors the terminal text. This adds to the aesthetic appeal of the game.
 * Gitpod — the cloud-based IDE (Integrated Developer Environment) used to build this site.
 * Git — as a version control system, was used to monitor and record changes made when building the site. This allowed for the restoration of an earlier version of the code when it was necessary.
 * GitHub — stores the source code repository for this website.
-* LucidCharts
-* Diffchecker - used when comparing codes tested in another IDE to the codes in gitpod.
+* [LucidCharts](https://www.lucidchart.com/) - used in creating the flowcharts/diagram for the data model.
+* [Diffchecker](https://www.diffchecker.com/) - used when comparing codes tested in another IDE to the codes in gitpod.
 * [Fsymbols](https://fsymbols.com/generators/carty/) - generates ascii text art
-* For test and validating:
-    * [pep8](http://pep8online.com/)
+* [pep8](http://pep8online.com/) - used to check the Python script for compliance to PEP8 requirements
+* [TinyPng](https://tinypng.com/) - used to compress the images displayed in the README file.
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -334,16 +334,15 @@ The  words and definitions used in this game is taken from [Merriam-Webster](htt
 
 ### **References**
 * Main Python references:
+    * [Code Institute Lessons](https://codeinstitute.net/ie/)
     * [W3Schools](https://www.w3schools.com/)
     * [Geeks for Geeks](https://www.geeksforgeeks.org/)
-    * [Python.org](https://docs.python.org/3/)
-    * [Code Institute Lessons](https://codeinstitute.net/ie/)
-    * [100 Days of Code: The Python Pro Bootcamp by Dr. Angela Yu](https://www.udemy.com/course/100-days-of-code/)      
+    * [Python.org](https://docs.python.org/3/) 
 
 * Static vs Class Methods   
-    * [Tech with Tim Youtube video](https://www.youtube.com/watch?v=MpuOuZKWUWw) - for static vs class methods  
+    * [Tech with Tim Youtube video](https://www.youtube.com/watch?v=MpuOuZKWUWw) - for static vs class methods      
 
-* [Stackoverflow](https://stackoverflow.com/), especially for the following links:
+* [Stackoverflow](https://stackoverflow.com/), especially for the following links:      
     * [A simple method to clear the terminal using](https://stackoverflow.com/questions/2084508/clear-terminal-in-python) `print(“\033c")`
     * [Restarting Python script using](https://stackoverflow.com/questions/11329917/restart-python-script-from-within-itself) `os.execv(sys.executable, ['python'] + sys.argv)` 
 
@@ -352,5 +351,5 @@ The  words and definitions used in this game is taken from [Merriam-Webster](htt
 [Back to Table of Contents](#table-of-contents)
 
 ## ACKNOWLEDGMENT
-* Ms. Daisy McGirr, my Code Institute mentor, of her guidance and suggestions in this project.
-* My wife, Kyle, for the full support even as I burn the midnight oil.
+* Ms. Daisy McGirr, my Code Institute mentor, of her guidance and valuable suggestions in this project.
+* My wife, Kyle, for the full support especially as I burn the midnight oil.
