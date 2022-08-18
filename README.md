@@ -144,16 +144,12 @@ The **solid arrow lines** imply the sequential flow of the functions, while the 
 
 ### SURFACE
 * **Ascii arts**    
-The following ascii arts are taken from: [fsymbols](https://fsymbols.com/generators/carty/)
-<!-- screenshots of ascii arts here -->
+The following ascii arts are taken from: [fsymbols](https://fsymbols.com/generators/carty/). The first one is used as the main welcome logo, and the second one is displayed on the heading of the game area.       
+![ascii logo 1](docs/screeshots/ascii-logo-1.png)
+![ascii logo 2](docs/screeshots/ascii-logo-2.png)
 
 * **Colorama**  
-The Colorama module is used to provide color to the terminal texts. Aside from its aesthetic purpose, it also enhances the meaning and importance of the displayed message or information.
-<!-- screenshot here -->
-
-* **No-scrolling screen feature.**
-This program prevents the tendency of scrolling by displaying only a group of data that can fit the screen at each moment. It does not allow for texts to be repeated printed on the screen, which could make it look untidy, and overwhelming to the user.
-<!-- gif -->
+The [Colorama](https://pypi.org/project/colorama/) library is used to provide color to the terminal texts. Aside from its aesthetic purpose, it also enhances the meaning and importance of the displayed message or information.
 
 * To see features of the final product, go to [FEATURES](#features).
 
@@ -172,7 +168,8 @@ This program prevents the tendency of scrolling by displaying only a group of da
 * The different game modes will be shown under the ascii art logo/title, and the user will be prompted to choose among the options by entering either number '1', '2', or '3'.
 * There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the Highscore. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short', while the **Hard mode** will give relatively hard or uncommon words, and can sometimes be long. For the **Beat the Higschore** mode, this will be a combination of easy & hard words (first 8 words are easy, and the rest are hard) with the added feature of scoring system and highscore challenge.
 [See 'How to Play' section.](#how-to-play)
-![Game modes screenshot](docs/screeshots/game-modes.png)
+![Game modes screenshot](docs/screeshots/game-modes.png)    
+
 ### **Game Area**
 * The game area is where the game happens. It has a header which contains the game title (to the left) and the number of words left to guess. The 'Easy' and 'Hard' modes have an added display of correct guesses, while the 'Beat the Higshcore' mode has the score tracker display.
 * It also displays the definition of the word to guess and the word placeholders, which are underscores equivalent to the number of letters the word has.
@@ -234,6 +231,9 @@ On the 'Beat the Highscore' mode, the user is given the control to choose to res
 ### **Re-running the Program**
 As the user finishes the game, they are asked if they want to play again. And if they wish to re-run the game to play, they will need to enter the letter 'Y' to proceed.       
 ![Re-running the program](docs/screeshots/rerunning-program.png)
+
+### **No-scrolling screen**
+This program prevents the tendency of scrolling the screen by displaying only a group of data that can fit the screen at each moment. It does not allow for texts to be repeatedly printed on the screen, which could make it look untidy, and overwhelming to the user. This feature creates a more user-friendly and intuitive interface.
 
 [Back to Table of Contents](#table-of-contents)
 
