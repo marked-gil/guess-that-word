@@ -240,7 +240,7 @@ class Game:
         game_continues = True
         if len(Word.used_words) == max_num:
             game_continues = False
-            prompt_msg = "Enter Y to see your performance: \n"
+            prompt_msg = "Enter Y to see your PERFORMANCE: \n"
             proceed = input(Fore.YELLOW + prompt_msg.center(80) +
                             Style.RESET_ALL).lower()
             wrong_input_feedback(proceed, prompt_msg)
