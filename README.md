@@ -162,66 +162,78 @@ This program prevents the tendency of scrolling by displaying only a group of da
 ## FEATURES
 ### **Home**    
 * The 'Home' section is the first display of texts/data in the terminal when the pogram runs. It contains the ascii art logo/title 'Guess that Word' with a line of text underneath it. Also, it shows a prompt for the user to enter an input either 'Y' to see the instruction on how to play, or 'N' to proceed to the Game Menu.
-<!-- screenshot -->
+![Home screenshot](docs/screeshots/home.png)
 
 ### **How to Play** 
 * As the user enters the designated input (enter 'Y') to view the instruction while in the 'Home' section, the 'How to Play' content will be revealed below the ascii art logo inside the 'Home' section.
-<!-- screenshot -->
+![How to Play screenshot](docs/screeshots/how-to-play.png)
 
 ### **Game Modes**
 * The different game modes will be shown under the ascii art logo/title, and the user will be prompted to choose among the options by entering either number '1', '2', or '3'.
 * There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the Highscore. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short', while the **Hard mode** will give relatively hard or uncommon words, and can sometimes be long. For the **Beat the Higschore** mode, this will be a combination of easy & hard words (first 8 words are easy, and the rest are hard) with the added feature of scoring system and highscore challenge.
 [See 'How to Play' section.](#how-to-play)
-<!-- screenshot -->
-
+![Game modes screenshot](docs/screeshots/game-modes.png)
 ### **Game Area**
 * The game area is where the game happens. It has a header which contains the game title (to the left) and the number of words left to guess. The 'Easy' and 'Hard' modes have an added display of correct guesses, while the 'Beat the Higshcore' mode has the score tracker display.
 * It also displays the definition of the word to guess and the word placeholders, which are underscores equivalent to the number of letters the word has.
 * Inside the game area, the user will be prompted to provide their guess to the definition. The answer (input) has to be the full word and correctly spelled. The input is not case-sensitive, so both upper and lower cases are accepted.
-<!-- screenshot -->
+    * **'Easy Mode' game area**     
+    ![Easy Mode game area](docs/screeshots/game-area-1.png)
+    * **'Hard Mode' game area**     
+    ![Hard Mode game area](docs/screeshots/game-area-2.png)
+    * **'Beat the Highscore' game area**        
+    ![Beat the Highscore game area](docs/screeshots/game-area-3.png)
 
 ### **Hints**
 To make the game more fun and less arduous, hints to the answer are provided. For every word challenge, there are 3 hints provided:   
 * 1st hint - the "number of characters" the word has through the placeholders (underscores) that are displayed on the game area.    
 * 2nd hint - 1st and last letters of the word. These are provided after the 1st failed try.
 * 3rd hint - more supplied letters within the word: 2 letters for words with less than 8 characters; and 3 letters for words with 8 or more characters.
-<!-- screenshot -->
+![Hints screenshot](docs/screeshots/hints.png)
 
 ### **Display of Correct Answer**
 The correct answer is revealed immediately after 3 failed guesses.
-<!-- screenshot -->
+![Display of correct answer](docs/screeshots/correct-answer.png)
 
 ### **Input prompts**
-As this is a Python terminal game, the user is required to use their keyboard to type in an input to the program. Prompts are provided, which are yellow-coloured texts, and will specify the required input to proceed in the game.
-<!-- screenshot -->
+As this is a Python terminal game, the user is required to use their keyboard to type in an input to the program. Prompts are provided, which are yellow-coloured texts, and will specify the required input to proceed in the game.    
+![Input prompt 1](docs/screeshots/prompt-1.png)     
+![Input prompt 2](docs/screeshots/prompt-2.png)     
 
 ### **Input Validations and Feedbacks**
-All inputs that the user will enter in the program as prompted will be validated to check if it follows the specified and required data input. If the user's input fails the validation, the game will return a feedback message which will be a red-coloured text to inform that user that they have entered an invalid input. These feedback messages will show at the top of the input prompt.
-<!-- screenshot -->
+All inputs that the user will enter in the program as prompted will be validated to check if it follows the specified and required data input. If the user's input fails the validation, the game will return a feedback message which will be a red-coloured text to inform that user that they have entered an invalid input. These feedback messages will show at the top of the input prompt.       
+* Sample 1:
+    * ![Input feedback 1](docs/screeshots/input-feedback-1.png)   
+* Sample 2:
+    * ![Input feedback 2](docs/screeshots/input-feedback-2.png)
 
 ### **Input Case-Insensitivity**
-Upper case or lower case or a combination of both are allowed as input.
-<!-- screenshot -->
+Upper case or lower case or a combination of both are allowed as input.     
+* ![case-insensitive input](docs/screeshots/case-insensitive.png)     
 
 ### **Scoring System**
-The 'Beat the Highscore' game mode has a scoring system in place. For each word challenge, when the user correctly guesses the word on the first try, they earn 5 points; on the 2nd try (with 2nd hint), 3 points is awarded; and on the 3rd try (with 3rd hint), 1 point is added to their total score. A score tracker is displayed at the header of the game area.
-<!-- screenshot -->
+The 'Beat the Highscore' game mode has a scoring system in place. For each word challenge, when the user correctly guesses the word on the first try, they earn 5 points; on the 2nd try (with 2nd hint), 3 points is awarded; and on the 3rd try (with 3rd hint), 1 point is added to their total score. A score tracker is displayed at the header of the game area.  
+![scoring system](docs/screeshots/scoring.png)
 
 ### **Saving of Highscore**
 * On the 'Beat the Highscore' mode, the highscore in the game played in the user's computer will be saved locally. This highscore will be compared with the current player's score at the end of the game, and will be shown as a text feedback.
 * If current user's score is higher than the last recorded highscore, it will be replaced with the user's current score as the new highscore. A text feedback confirming this will also be shown on the terminal.
-* If there are no recorded highscore, the current user's score will be recorded as the highscore.
-<!-- screenshot -->
+* If there are no recorded highscore, the current user's score will be recorded as the highscore.   
+![Highscore local saving](docs/screeshots/hi-score-saving.png)
 
 ### **Performance Display**
 When the user finishes the 15-word challenge, a prompt will ask the user to see their performance result by entering a specified key. When the required input is entered, the following will be displayed:
 * For 'Easy' and 'Hard' game modes, their total number of correct guesses will be revealed.
-* For the 'Beat the Highscore' game mode, the program will show total number of their correct guesses, and their total score.
-<!-- screenshot -->
+* For the 'Beat the Highscore' game mode, the program will show total number of their correct guesses, and their total score.       
+![Performance display](docs/screeshots/performance_display.png)
+
+### **Re-setting the Highscore**
+On the 'Beat the Highscore' mode, the user is given the control to choose to reset the highscore at the end of the game.
+![Reset highscore](docs/screeshots/reset-highscore.png)
 
 ### **Re-running the Program**
-As the user finishes the game, they are asked if they want to play again. And if they wish to re-run the game to play, they will need to enter the letter 'Y' to proceed.
-<!-- screenshot -->
+As the user finishes the game, they are asked if they want to play again. And if they wish to re-run the game to play, they will need to enter the letter 'Y' to proceed.       
+![Re-running the program](docs/screeshots/rerunning-program.png)
 
 [Back to Table of Contents](#table-of-contents)
 
