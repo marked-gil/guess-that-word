@@ -13,6 +13,7 @@
         * [Design Choice](#design-choice)
     * [Structure](#structure)
     * [Skeleton](#skeleton)
+        * [Data Model](#data-model)
     * [Surface](#surface)
 * [Features](#features)
     * [Home](#home)
@@ -29,7 +30,12 @@
     * [Performance Display](#performance-display)
     * [Re-running the Program](#re-running-the-program)
 * [Fixed Bugs](#fixed-bugs)
-<!-- add more contents here -->
+* [Bugs Left To Fix](#bugs-left-to-fix)
+* [Testing](#testing)
+* [Deployment](#deployment)
+* [Technologies Used](#technologies-used)
+* [Credits](#credits)
+* [Acknowledgment](#acknowledgment)
 
 ___
 ## USER EXPERIENCE DESIGN (UXD)
@@ -53,6 +59,8 @@ ___
 * As a user, I want to challenge myself in the game by having the chance to beat my previous performance.
 * As a user, I want the highscore to be saved and be reset if desired.
 * As a user,  I want to learn as I play by providing the correct answer immediately.
+
+[Back to Table of Contents](#table-of-contents)
 
 ### SCOPE
 #### **Planned Features:**
@@ -94,9 +102,10 @@ Using the user stories, I have planned the following features:
     * IMPLEMENTATION:
         * After each word challenge, the correct word will be displayed along with its definition before proceeding to the next word to guess.
 
-
 #### **Design Choice:**
 As this is a game played on a terminal, therefore the design option is limited, I still endeavoured to  make it as visually appealing, intuitive and simplistic as it can be. This is achieved by using ascii arts, making the terminal look uncluttered by clearing it after every group of displayed data/information, and providing only necessary data in the terminal at each moment.
+
+[Back to Table of Contents](#table-of-contents)
 
 ### STRUCTURE
 #### **Interaction Design**
@@ -118,9 +127,10 @@ As this is a game played on a terminal, therefore the design option is limited, 
     * The program prevents overwhelming of the user by many displayed data on the screen through keeping the program clean, simple, uncluttered, and minimalist. Only appropriate and needed groups of information are provided at each time. This is made possible by the clear_terminal function that this program utilizes, which keeps the terminal screen from being a long scrollable screen.
     * As this is a terminal game, the user can only provide input when it is prompted.
 
+[Back to Table of Contents](#table-of-contents)
+
 ### SKELETON
 #### **Data Model**
-
 * **Program Flowchart**     
 Below is the flowchart of the main process of this Python program. It starts with the Home section, which displays the main LOGO, and ends to the prompt for the user to play again. It shows the entire cycle of the program.
 ![Program Flowchart](docs/charts/program-flowchart.png)
@@ -129,6 +139,8 @@ Below is the flowchart of the main process of this Python program. It starts wit
 The following diagram shows the flow of the functions inside the main() function, which holds the entire process of the program - from start to finish and back. It also reveals the relationship of the functions, classes and imported modules with each other.   
 The **solid arrow lines** imply the sequential flow of the functions, while the **broken arrow lines** symbolize the direct relationship of the classes, modules, and libraries (internal & external) to each other.
 ![Relational Diagram](docs/charts/relational-diagram.png)
+
+[Back to Table of Contents](#table-of-contents)
 
 ### SURFACE
 * **Ascii arts**    
@@ -145,6 +157,7 @@ This program prevents the tendency of scrolling by displaying only a group of da
 
 * To see features of the final product, go to [FEATURES](#features).
 
+[Back to Table of Contents](#table-of-contents)
 
 ## FEATURES
 ### **Home**    
@@ -210,6 +223,7 @@ When the user finishes the 15-word challenge, a prompt will ask the user to see 
 As the user finishes the game, they are asked if they want to play again. And if they wish to re-run the game to play, they will need to enter the letter 'Y' to proceed.
 <!-- screenshot -->
 
+[Back to Table of Contents](#table-of-contents)
 
 ## FIXED BUGS
 * **ISSUE:**  
@@ -231,17 +245,21 @@ I noticed that when I played the 'Beat the Highscore' game mode, the score track
     * **SOLUTION:**     
     As this was a logical error, I traced back the code, especially the validator for wrong inputs on that certain section. After some deep thoughts and analysis, I found the cause, updated the passed in argument to the involved function, and it finally worked perfectly as intended.
 
+[Back to Table of Contents](#table-of-contents)
 
 ## BUGS LEFT TO FIX
-<!-- content here -->
-
+After thorough manual testing of the site, there were no bugs that I found.
 
 ## TESTING
+### Test Cases
 <!-- content here -->
+### Pep8 Online Checker
 <!-- Pep8 online -->
 
+[Back to Table of Contents](#table-of-contents)
+
 ## DEPLOYMENT
-	
+
 ### **Version Control**
 **Git** was a crucial tool used to track changes that were made in the repository. The following git commands were mainly used in developing this program:
 
@@ -271,6 +289,7 @@ To clone the repository for this site, do the following steps:
 5. Then, go to your computer's terminal and type `git clone https://github.com/marked-gil/guess-that-word`
 6. A copy of the repository is now saved in your computer.
 
+[Back to Table of Contents](#table-of-contents)
 
 ## TECHNOLOGIES USED
 The following are the technologies used in this project:
@@ -290,6 +309,8 @@ The following are the technologies used in this project:
 * [Fsymbols](https://fsymbols.com/generators/carty/) - generates ascii text art
 * For test and validating:
     * [pep8](http://pep8online.com/)
+
+[Back to Table of Contents](#table-of-contents)
 
 ## CREDITS
 ### **Content**
@@ -315,6 +336,8 @@ The  words and definitions used in this game is taken from [Merriam-Webster](htt
     * [Restarting Python script using](https://stackoverflow.com/questions/11329917/restart-python-script-from-within-itself) `os.execv(sys.executable, ['python'] + sys.argv)` 
 
 * [Bobby Handz Blog](https://bobbyhadz.com/blog/python-importerror-cannot-import-name) - Shows reason and solution to my issue on `ImportError: cannot import name 'Game' from partially initialized module 'game_manager' (most likely due to a circular import)`.
+
+[Back to Table of Contents](#table-of-contents)
 
 ## ACKNOWLEDGMENT
 * Ms. Daisy McGirr, my Code Institute mentor, of her guidance and suggestions in this project.
