@@ -264,7 +264,15 @@ After thorough manual testing of the site, there were no bugs that I found.
 
 ## TESTING
 ### Test Cases
-<!-- content here -->
+![Test cases 1](docs/test-cases/test-cases-1.png)
+![Test cases 2](docs/test-cases//test-cases-2.png)
+![Test cases 3](docs/test-cases//test-cases-3.png)
+![Test cases 4](docs/test-cases//test-cases-4.png)
+![Test cases 5](docs/test-cases//test-cases-5.png)
+![Test cases 6](docs/test-cases//test-cases-6.png)
+![Test cases 7](docs/test-cases//test-cases-7.png)
+![Test cases 8](docs/test-cases//test-cases-8.png)
+
 ### Pep8 Online Checker
 <!-- Pep8 online -->
 
