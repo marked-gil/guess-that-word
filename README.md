@@ -345,6 +345,8 @@ The following are the technologies used in this project:
 * [Fsymbols](https://fsymbols.com/generators/carty/) - generates ascii text art
 * [pep8](http://pep8online.com/) - used to check the Python script for compliance to PEP8 requirements
 * [TinyPng](https://tinypng.com/) - used to compress the images displayed in the README file.
+* [Ezgif](https://ezgif.com/) - used to create the snippet of this program's functionality by converting the video into gif.
+
 
 [Back to Table of Contents](#table-of-contents)
 
