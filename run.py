@@ -1,3 +1,7 @@
+"""
+This file runs the main() function which runs the entire program
+from start to finish.
+"""
 from colorama import init, Fore, Style
 from arts import LOGO
 from game_manager import Game
