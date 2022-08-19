@@ -1,5 +1,5 @@
 """
-This module contains the words and their definitions that are used in the game
+This module contains the words and their definitions that are used in the game.
 """
 
 # List of easy words

@@ -1,5 +1,5 @@
 """
-This module contains utility functions
+This module contains utility functions.
 """
 import os
 import sys

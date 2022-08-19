@@ -1,5 +1,5 @@
 """
-This file contains ascii arts
+This file contains ascii arts.
 """
 
 LOGO = f"""{' ' * 17}╔═══╗────────────╔════╦╗────╔╗─╔╗╔╗╔╗──────╔╗
