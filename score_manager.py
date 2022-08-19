@@ -1,6 +1,6 @@
 """
 This module contains the Scorer class which tracks the user's
-score and number of correct guesses
+score and the number of correct guesses
 """
 from colorama import Fore
 from localStoragePy import localStoragePy
@@ -9,8 +9,9 @@ from utility_manager import clear_terminal, blank_lines
 
 class Scorer:
     """
-    Provides the user's total score, total number of correct guesses,
-    and the created instance's current points earned
+    Tracks the user's score and number of correct guesses; and provides
+    methods to locally store, retrieve, and reset the highscore; and to
+    show user's performance.
     """
     total_score = 0
     total_correct_guesses = 0
@@ -25,8 +26,8 @@ class Scorer:
     @staticmethod
     def earn_points(num_of_tries: int):
         """
-        Determines the points earned, adds it to the total score
-        and returns the points
+        Determines the points earned, adds it to the total score.
+        Returns: the points earned
         """
         if num_of_tries == 1:
             points = 5
@@ -40,7 +41,8 @@ class Scorer:
     @staticmethod
     def get_highscore():
         """
-        Gets highscore from the local storage and returns it
+        Retrieves the highscore from the local storage.
+        Returns: saved highscore
         """
         local_storage = localStoragePy('guessthatword-hiscore')
         hi_score = local_storage.getItem("hi-score")
@@ -49,7 +51,8 @@ class Scorer:
     @staticmethod
     def store_highscore():
         """
-        Stores the highscore in the localStorage, and returns the local storage
+        Stores the highscore in the localStorage.
+        Returns: the local storage
         """
         u_score = Scorer.total_score
         local_storage = localStoragePy('guessthatword-hiscore')
@@ -63,10 +66,11 @@ class Scorer:
         return local_storage
 
     @staticmethod
-    def show_performance(mode: int):
+    def show_performance(game_mode: int):
         """
-        Shows performance of the user.
-        Parameter: game mode number
+        Displays the performance of the user.
+        Parameter: game_mode
+        Returns: score performance of user (in 'Beat the Highscore' mode)
         """
         clear_terminal()
         total_right_guesses = Scorer.total_correct_guesses
@@ -74,7 +78,9 @@ class Scorer:
         print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses} "
               f"word{'s' if total_right_guesses > 1 else ''} "
               "out of 15.\n".center(80))
-        if mode == 3:
+
+        # Additional performance result in 'Beat the Highscore' mode
+        if game_mode == 3:
             u_score = Scorer.total_score
             hi_score = Scorer.get_highscore()
             s_msg = ""
@@ -93,8 +99,8 @@ class Scorer:
     @staticmethod
     def validate_to_reset_highscore(score_msg):
         """
-        Prompts user to choose whether to reset highscore or not,
-        and validates the input.
+        Prompts user to reset highscore if desired, and validates
+        the input.
         """
         local_storage = localStoragePy('guessthatword-hiscore')
         total_right_guesses = Scorer.total_correct_guesses
@@ -103,6 +109,7 @@ class Scorer:
         while True:
             clear_hi_score = input("Do you want to reset the highscore? "
                                    "['Y' | 'N']:\n".center(80)).lower()
+            # resets highscore
             if clear_hi_score == 'y':
                 local_storage.removeItem("hi-score")
                 clear_terminal()
@@ -114,11 +121,13 @@ class Scorer:
                     blank_lines(2, "after_line")
                     )
                 break
+            # does not reset highscore
             if clear_hi_score == 'n':
                 clear_terminal()
                 print(blank_lines(8))
                 break
 
+            # feedback to invalid input
             clear_terminal()
             print(blank_lines(6))
             print(Fore.MAGENTA + f"You correctly guessed {total_right_guesses}"
