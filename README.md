@@ -273,8 +273,24 @@ After thorough manual testing of the site, there were no bugs that I found.
 ![Test cases 7](docs/test-cases//test-cases-7.png)
 ![Test cases 8](docs/test-cases//test-cases-8.png)
 
-### Pep8 Online Checker
-<!-- Pep8 online -->
+[Back to Table of Contents](#table-of-contents)
+
+### **Pep8 Online Checker**
+Using the [Pep8 Online Checker](http://pep8online.com/), the Python code in this site is compliant to the Pep8 requirements.
+* run.py module     
+![run module pep 8 result](docs/pep8-results/pep8-check-run.png)
+* game_manager module       
+![game_manager module pep8 result](docs/pep8-results/pep8-check-game.png)   
+* score_manager module
+![score_manager module pep8 result](docs/pep8-results/pep8-check-scorer.png)    
+* word_manager module       
+![word_manager module pep8 result](docs/pep8-results/pep8-check-word.png)
+* utility_manager module      
+![utility_manager module pep8 result](docs/pep8-results/pep8-check-utility.png)    
+* dictionary.py
+![dictionary module pep8 result](docs/pep8-results/pep8-check-dictionary.png)
+* arts.py       
+![arts pep8 result](docs/pep8-results/pep8-check-arts.png)
 
 [Back to Table of Contents](#table-of-contents)
 
