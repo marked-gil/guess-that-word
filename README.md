@@ -185,7 +185,7 @@ The [Colorama](https://pypi.org/project/colorama/) library is used to provide co
 To make the game more fun and less arduous, hints to the answer are provided. For every word challenge, there are 3 hints provided:   
 * 1st hint - the "number of characters" the word has through the placeholders (underscores) that are displayed on the game area.    
 * 2nd hint - 1st and last letters of the word. These are provided after the 1st failed try.
-* 3rd hint - more supplied letters within the word: 2 letters for words with less than 8 characters; and 3 letters for words with 8 or more characters.
+* 3rd hint - more supplied letters: 2 more letters if word has less than 8 characters; 3 letters if word has 8 or 9 characters; and 4 letters if word has at least 10 characters.
 ![Hints screenshot](docs/screeshots/hints.png)
 
 ### **Display of Correct Answer**
