@@ -12,6 +12,7 @@
         * [Planned Features](#planned-features)
         * [Design Choice](#design-choice)
     * [Structure](#structure)
+    	* [Interaction Design](#interaction-design)
     * [Skeleton](#skeleton)
         * [Data Model](#data-model)
     * [Surface](#surface)
@@ -28,10 +29,14 @@
     * [Scoring System](#scoring-system)
     * [Saving of Highscore](#saving-of-highscore)
     * [Performance Display](#performance-display)
+    * [Resetting the Highscore](#resetting-the-highscore)
     * [Re-running the Program](#re-running-the-program)
+    * [No-scrolling Screen](#no-scrolling-screen)
 * [Fixed Bugs](#fixed-bugs)
 * [Bugs Left To Fix](#bugs-left-to-fix)
 * [Testing](#testing)
+	* [Test Cases](#test-cases)
+    * [Pep8 Checker](#pep8-online-checker)
 * [Deployment](#deployment)
 * [Technologies Used](#technologies-used)
 * [Credits](#credits)
@@ -224,7 +229,7 @@ When the user finishes the 15-word challenge, a prompt will ask the user to see 
 * For the 'Beat the Highscore' game mode, the program will show total number of their correct guesses, and their total score.       
 ![Performance display](docs/screeshots/performance_display.png)
 
-### **Re-setting the Highscore**
+### **Resetting the Highscore**
 On the 'Beat the Highscore' mode, the user is given the control to choose to reset the highscore at the end of the game.
 ![Reset highscore](docs/screeshots/reset-highscore.png)
 
@@ -232,7 +237,7 @@ On the 'Beat the Highscore' mode, the user is given the control to choose to res
 As the user finishes the game, they are asked if they want to play again. And if they wish to re-run the game to play, they will need to enter the letter 'Y' to proceed.       
 ![Re-running the program](docs/screeshots/rerunning-program.png)
 
-### **No-scrolling screen**
+### **No-scrolling Screen**
 This program prevents the tendency of scrolling the screen by displaying only a group of data that can fit the screen at each moment. It does not allow for texts to be repeatedly printed on the screen, which could make it look untidy, and overwhelming to the user. This feature creates a more user-friendly and intuitive interface.
 
 [Back to Table of Contents](#table-of-contents)
@@ -263,7 +268,7 @@ I noticed that when I played the 'Beat the Highscore' game mode, the score track
 After thorough manual testing of the site, there were no bugs that I found.
 
 ## TESTING
-### Test Cases
+### **Test Cases**
 ![Test cases 1](docs/test-cases/test-cases-1.png)
 ![Test cases 2](docs/test-cases//test-cases-2.png)
 ![Test cases 3](docs/test-cases//test-cases-3.png)
