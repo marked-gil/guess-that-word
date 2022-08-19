@@ -1,13 +1,16 @@
 """
-This module contains the class that provide a randomly selected
-word that will be used in the game
+This module contains the class Word that provides an instance
+that randomly selects a word, and has attributes related to
+selected the word.
 """
 from random import choice
 
 
 class Word:
     """
-    Creates a word instance that will be guessed in the game
+    Creates an instance that randomly selects a word; and it has
+    attributes which includes the definition, id, word length, and
+    its placeholder. It also tracks the words that are used in the game.
     """
     used_words = []    # Holds the IDs of used words
 
@@ -22,8 +25,10 @@ class Word:
 
     def _get_random_word(self, words_list):
         """
-        Selects a random word from passed in words dictionary
-        and returns the word object
+        Randomly selects a word from a list of words dictionary.
+        Parameter: words_list
+        Returns: word object (a dictionary containing the word, its id, and
+        definition)
         """
         word_obj = choice(words_list)
 
