@@ -1,6 +1,6 @@
 # Guess That Word
 ![game snippet](docs/screeshots/game-snippet.gif)     
-**Guess that Word** is a terminal game that tests the English vocabulary of its users by letting them guess words as they are defined. It gives them 3 game modes to choose from: (1) Easy, (2) Hard, and (3) Beat the High Score. The ‘Easy’ mode and ‘Hard’ mode each provide 15 words to guess and the number of correct guesses will be shown to the user at the end. For the ‘Beat the High Score’ mode, the user will also be provided with 15 words (8 are easy, and 7 are hard) but with a scoring; and at the end of the game the total score will be shown and a high score will be saved locally which the user can beat in the future. In all these modes of the game, 3 hints are provided: (1) the number of letters through the placeholder (underscores), (2) the 1st and last letters (after the first failed guess), and (3) additional revealed letters (after 2nd wrong guess). For each word, the user is only allowed to guess three (3) times. [View live website.](https://guess-that-word-game.herokuapp.com)
+**Guess that Word** is a terminal game that tests the English vocabulary of its users by letting them guess words as they are defined. It gives them 3 game modes to choose from: (1) Easy, (2) Hard, and (3) Beat the High Score. The ‘Easy’ mode and ‘Hard’ mode each provide 15 words to guess, and the number of correct guesses will be shown to the user at the end. For the ‘Beat the High Score’ mode, the user will also be provided with 15 words (8 are easy, and 7 are hard) but with a scoring; and at the end of the game the total score will be shown, and a high score will be saved locally which the user can beat in the future. In all these modes of the game, 3 hints are provided: (1) the number of letters through the placeholder (underscores), (2) the 1st and last letters (after the 1st failed guess), and (3) additional revealed letters (after the 2nd wrong guess). For each word, the user is only allowed to guess three (3) times. [View live website.](https://guess-that-word-game.herokuapp.com)
 
 ## TABLE OF CONTENTS
 * [User Experience Design (UXD)](#user-experience-design-uxd)
@@ -89,7 +89,7 @@ Using the user stories, I have planned the following features:
 * User Story:
     > As a user, I want to be able to choose a hard game mode that will provide hard words to guess.
     * IMPLEMENTATION:
-        * The game will include a hard mode which will provide either long words or words that are relatively not common.
+        * The game will include a hard mode, which will provide either long words or words that are relatively not common.
 * User Story:
     > As a user, I want the game to track my progress in building my vocabulary by scoring my correct guesses.
     * IMPLEMENTATION:
@@ -145,6 +145,23 @@ The following diagram shows the flow of the functions inside the main() function
 The **solid arrow lines** imply the sequential flow of the functions, while the **broken arrow lines** symbolize the direct relationship of the classes, modules, and libraries (internal & external) to each other.
 ![Relational Diagram](docs/charts/relational-diagram.png)
 
+* **Python Files & Modules**
+This program uses seven (7) custom Python files and modules.
+    * **run.py**    
+    This file runs the main() function, which contains the entire program from start to finish. It imports custom-built modules, such as the game_manager, score_manager, utility_manager and arts.
+    * **game_manager module**   
+    This module contains the class Game, which is responsible for the main game's logical process. It imports all the other custom-built modules except the run.py.
+    * **score_manager module**  
+    This module contains the Scorer class, which tracks the user's score and the number of correct guesses. It imports the custom-built utility_manager and the external package localStoragePy.
+    * **word_manager module**   
+    This module contains the class Word, which provides an instance that randomly selects a word and has attributes related to the selected word.
+    * **utility_manager module**    
+    This module contains the utility functions that are frequently used in the other modules. It includes functions that clear the terminal, add blank lines on the screen, and refresh the program.
+    * **dictionary.py**     
+    This file contains the dictionaries of words and their definitions that are used in the game. These dictionaries are grouped into 2 lists (easy_words and hard_words).      
+    * **arts.py**       
+    This file contains the ASCII arts, which are mainly used as logos.
+
 [Back to Table of Contents](#table-of-contents)
 
 ### SURFACE
@@ -176,7 +193,7 @@ The [Colorama](https://pypi.org/project/colorama/) library is used to provide co
 ![Game modes screenshot](docs/screeshots/game-modes.png)    
 
 ### **Game Area**
-* The game area is where the game happens. It has a header which contains the game title (to the left) and the number of words left to guess. The 'Easy' and 'Hard' modes have an added display of correct guesses, while the 'Beat the Higshcore' mode has the score tracker display.
+* The game area is where the game happens. It has a header which contains the game title (to the left) and the number of words left to guess. The 'Easy' and 'Hard' modes have an added display of correct guesses, while the 'Beat the High Score' mode has the score tracker display.
 * It also displays the definition of the word to guess and the word placeholders, which are underscores equivalent to the number of letters the word has.
 * Inside the game area, the user will be prompted to provide their guess. The answer (input) has to be the full word and correctly spelt. The input is not case-sensitive, so both upper and lower cases are accepted.
     * **'Easy Mode' game area**     
