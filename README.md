@@ -1,5 +1,5 @@
 # Guess That Word
-![sample_clip](docs/screeshots/intro_shot.gif)     
+![game snippet](docs/screeshots/game-snippet.gif)     
 **Guess that Word** is a terminal game that tests the English vocabulary of its users by letting them guess words as they are defined. It gives them 3 game modes to choose from: (1) Easy, (2) Hard, and (3) Beat the High Score. The ‘Easy’ mode and ‘Hard’ mode each provide 15 words to guess and the number of correct guesses will be shown to the user at the end. For the ‘Beat the High Score’ mode, the user will also be provided with 15 words (8 are easy, and 7 are hard) but with a scoring; and at the end of the game the total score will be shown and a high score will be saved locally which the user can beat in the future. In all these modes of the game, 3 hints are provided: (1) the number of letters through the placeholder (underscores), (2) the 1st and last letters (after the first failed guess), and (3) additional revealed letters (after 2nd wrong guess). For each word, the user is only allowed to guess three (3) times. [View live website.](https://guess-that-word-game.herokuapp.com)
 
 ## TABLE OF CONTENTS
