@@ -1,5 +1,5 @@
 """
-This file runs the main() function which runs the entire program
+This file runs the main() function which contains the entire program
 from start to finish.
 """
 from colorama import init, Fore, Style
