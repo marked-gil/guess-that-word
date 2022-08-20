@@ -258,6 +258,11 @@ As the user finishes the game, they are asked if they want to play again. And if
 ### **No-scrolling Screen**
 This program prevents scrolling of a long screen page by displaying only a group of data that can fit the screen at each moment. It does not allow for texts to be repeatedly printed on the screen, which could make it look untidy and overwhelming to the user. This feature creates a more user-friendly and intuitive interface.
 
+### Features for the Future:
+In the future, when I revisit this project, I want to add the following features:
+1. Require the user to provide their name and save it in a database, along with their score, and highlight the top 10 high scores for every user to beat.
+2. Add more words using a database.
+
 [Back to Table of Contents](#table-of-contents)
 
 ## FIXED BUGS
