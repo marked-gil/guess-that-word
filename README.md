@@ -191,7 +191,7 @@ The [Colorama](https://pypi.org/project/colorama/) library is used to provide co
 ### **Game Modes**
 * The different game modes will be shown under the ASCII art logo/title, and the user will be prompted to choose among the options by entering either number '1', '2', or '3'.
 * There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the High Score. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short, while the **Hard mode** will give relatively difficult or uncommon words, and can sometimes be long. And the **Beat the High Score** mode will be a combination of easy & hard words (the first 8 words are easy, and the rest are hard) with the added feature of a scoring system and high score challenge.     
-[See 'How to Play' section.](#how-to-play)
+[See 'How to Play' section](#how-to-play)
 ![Game modes screenshot](docs/screeshots/game-modes.png)    
 
 ### **Game Area**
@@ -222,14 +222,14 @@ As this is a Python terminal game, the user is required to use their keyboard to
 
 ### **Input Validations and Feedbacks**
 All inputs that the user will enter into the program as prompted will be validated to check if it follows the specified and required data input. If the user's input fails the validation, the game will return a feedback message which will be a red-coloured text to inform that user that they have entered an invalid input. These feedback messages will show at the top of the input prompt.       
-* Sample 1:
-    * ![Input feedback 1](docs/screeshots/input-feedback-1.png)   
-* Sample 2:
-    * ![Input feedback 2](docs/screeshots/input-feedback-2.png)
+* Sample 1:     
+![Input feedback 1](docs/screeshots/input-feedback-1.png)   
+* Sample 2:     
+![Input feedback 2](docs/screeshots/input-feedback-2.png)
 
 ### **Input Case-Insensitivity**
 Upper case or lower case or a combination of both are allowed as input.     
-* ![case-insensitive input](docs/screeshots/case-insensitive.png)     
+![case-insensitive input](docs/screeshots/case-insensitive.png)     
 
 ### **Scoring System**
 The 'Beat the High Score' game mode has a scoring system in place. For each word challenge, when the user correctly guesses the word on the first try, they earn 5 points; on the 2nd try (with 2nd hint), 3 points are awarded; and on the 3rd try (with 3rd hint), 1 point is added to their total score. A score tracker is displayed at the header of the game area.  
@@ -304,16 +304,16 @@ Using the [Pep8 Online Checker](http://pep8online.com/), the Python code in this
 ![run module pep 8 result](docs/pep8-results/pep8-check-run.png)
 * game_manager module       
 ![game_manager module pep8 result](docs/pep8-results/pep8-check-game.png)   
-* score_manager module
+* score_manager module      
 ![score_manager module pep8 result](docs/pep8-results/pep8-check-scorer.png)    
 * word_manager module       
 ![word_manager module pep8 result](docs/pep8-results/pep8-check-word.png)
 * utility_manager module      
 ![utility_manager module pep8 result](docs/pep8-results/pep8-check-utility.png)    
-* dictionary.py
+* dictionary.py     
 ![dictionary module pep8 result](docs/pep8-results/pep8-check-dictionary.png)
 * arts.py       
-![arts pep8 result](docs/pep8-results/pep8-check-arts.png)
+![arts pep8 result](docs/pep8-results/pep8-check-arts.png)      
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -365,12 +365,11 @@ The following are the technologies used in this project:
 * GitHub — stores the source code repository for this website.
 * [LucidCharts](https://www.lucidchart.com/) - used in creating the flowcharts/diagram for the data model.
 * [Diffchecker](https://www.diffchecker.com/) - used when comparing codes tested in another IDE to the codes in gitpod.
-* [Fsymbols](https://fsymbols.com/generators/carty/) - generates ascii text art
-* [pep8](http://pep8online.com/) - used to check the Python script for compliance with PEP8 requirements
+* [Fsymbols](https://fsymbols.com/generators/carty/) - generates the ascii text arts used as logos in this project.
+* [pep8](http://pep8online.com/) - used to check the Python script for compliance with PEP8 requirements.
 * [TinyPng](https://tinypng.com/) - used to compress the images displayed in the README file.
 * [Ezgif](https://ezgif.com/) - used to create the snippet of this program's functionality by converting the video into a gif.
 * [Grammarly](https://www.grammarly.com) - used to check the grammar of the contents in this project.
-
 
 [Back to Table of Contents](#table-of-contents)
 
