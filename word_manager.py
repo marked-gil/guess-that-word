@@ -1,6 +1,6 @@
 """
-This module contains the class Word that provides an instance
-that randomly selects a word, and has attributes related to
+This module contains the class Word, which provides an instance
+that randomly selects a word and has attributes related to the
 selected the word.
 """
 from random import choice
