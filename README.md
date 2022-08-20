@@ -171,7 +171,7 @@ The [Colorama](https://pypi.org/project/colorama/) library is used to provide co
 
 ### **Game Modes**
 * The different game modes will be shown under the ASCII art logo/title, and the user will be prompted to choose among the options by entering either number '1', '2', or '3'.
-* There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the High Score. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short, while the **Hard mode** will give relatively difficult or uncommon words, and can sometimes be long. And the **Beat the High Score** mode will be a combination of easy & hard words (the first 8 words are easy, and the rest are hard) with the added feature of a scoring system and high score challenge.
+* There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the High Score. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short, while the **Hard mode** will give relatively difficult or uncommon words, and can sometimes be long. And the **Beat the High Score** mode will be a combination of easy & hard words (the first 8 words are easy, and the rest are hard) with the added feature of a scoring system and high score challenge.     
 [See 'How to Play' section.](#how-to-play)
 ![Game modes screenshot](docs/screeshots/game-modes.png)    
 
@@ -199,8 +199,7 @@ The correct answer is revealed immediately after 3 wrong guesses.
 
 ### **Input prompts**
 As this is a Python terminal game, the user is required to use their keyboard to type in an input to the program. Prompts are provided, which are yellow-coloured texts, and will specify the required input to proceed in the game.    
-![Input prompt 1](docs/screeshots/prompt-1.png)     
-![Input prompt 2](docs/screeshots/prompt-2.png)     
+![Input prompt](docs/screeshots/prompt-1.png)        
 
 ### **Input Validations and Feedbacks**
 All inputs that the user will enter into the program as prompted will be validated to check if it follows the specified and required data input. If the user's input fails the validation, the game will return a feedback message which will be a red-coloured text to inform that user that they have entered an invalid input. These feedback messages will show at the top of the input prompt.       
@@ -227,10 +226,10 @@ The 'Beat the High Score' game mode has a scoring system in place. For each word
 When the user finishes the 15-word challenge, a prompt will ask the user to see their performance result by entering a specified key. When the required input is entered, the following will be displayed:
 * For 'Easy' and 'Hard' game modes, their total number of correct guesses will be revealed.
 * For the 'Beat the High Score' game mode, the program will show the total number of correct guesses, and their total score.       
-![Performance display](docs/screeshots/performance_display.png)
+![Performance display](docs/screeshots/performance-display.png)
 
 ### **Resetting the High Score**
-On the 'Beat the High Score' mode, the user is given the control to choose to reset the high score at the end of the game.
+On the 'Beat the High Score' mode, the user is given the control to choose to reset the high score at the end of the game.      
 ![Reset high score](docs/screeshots/reset-highscore.png)
 
 ### **Re-running the Program**
