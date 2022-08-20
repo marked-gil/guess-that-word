@@ -1,5 +1,5 @@
 """
-This module contains the Scorer class which tracks the user's
+This module contains the Scorer class, which tracks the user's
 score and the number of correct guesses.
 """
 from colorama import Fore
