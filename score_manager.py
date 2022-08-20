@@ -52,7 +52,6 @@ class Scorer:
     def store_highscore():
         """
         Stores the high score in the localStorage.
-        Returns: the local storage
         """
         u_score = Scorer.total_score
         local_storage = localStoragePy('guessthatword-hiscore')
@@ -60,10 +59,8 @@ class Scorer:
 
         if hi_score is None:
             local_storage.setItem("hi-score", u_score)
-            hi_score = local_storage.getItem("hi-score")
         elif int(hi_score) < u_score:
             local_storage.setItem("hi-score", u_score)
-        return local_storage
 
     @staticmethod
     def show_performance(game_mode: int):
@@ -84,9 +81,16 @@ class Scorer:
             u_score = Scorer.total_score
             hi_score = Scorer.get_highscore()
             s_msg = ""
+
             if hi_score is None:
-                s_msg = f"Your score is: {u_score}. (Saved as high score.)\n"
-                print(Fore.YELLOW + s_msg.center(80))
+                if u_score == 0:
+                    s_msg = f"Your score is: {u_score}. (Earn a score to save"\
+                        " a high score.)\n"
+                    print(s_msg.center(80))
+                else:
+                    s_msg = f"Your score is: {u_score}. (Saved as high score."\
+                        ")\n"
+                    print(Fore.YELLOW + s_msg.center(80))
             elif int(hi_score) >= u_score:
                 s_msg = f"Your score is: {u_score} || HIGH SCORE: {hi_score}\n"
                 print(Fore.YELLOW + s_msg.center(80))
