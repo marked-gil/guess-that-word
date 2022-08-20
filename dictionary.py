@@ -215,7 +215,8 @@ easy_words = [
     {
         "id": "e40",
         "word": "threat",
-        "definition": "An expression of intention to inflict evil, injury, or damage",
+        "definition": "An expression of intention to inflict evil, injury, or "
+        "damage",
     },
     {
         "id": "e41",
@@ -240,7 +241,8 @@ easy_words = [
     {
         "id": "e45",
         "word": "hungry",
-        "definition": "Feeling an uneasy or painful sensation from lack of food",
+        "definition": "Feeling an uneasy or painful sensation from lack of "
+        "food",
     },
     {
         "id": "e46",
@@ -250,7 +252,8 @@ easy_words = [
     {
         "id": "e47",
         "word": "barrier",
-        "definition": "Something material that blocks or is intended to block passage",
+        "definition": "Something material that blocks or is intended to block "
+        "passage",
     },
     {
         "id": "e48",
