@@ -34,12 +34,12 @@ class Game:
         if game_mode == 3:
             score_display = f"Score: {Scorer.total_score}"
             space = " " * 8
-            mode = "BEAT THE HIGHSCORE"
+            mode = "BEAT THE HIGH SCORE"
             hi_score = Scorer.get_highscore()
             if hi_score is None:
-                hi_score_display = "No Saved Highscore"
+                hi_score_display = "No Saved High Score"
             else:
-                hi_score_display = f"Highscore: {hi_score}"
+                hi_score_display = f"High Score: {hi_score}"
         else:
             score_display = f"Correct Answers: {Scorer.total_correct_guesses}"
             space = " "
@@ -237,7 +237,7 @@ class Game:
                 self._display_placeholder(word)
                 print(Fore.YELLOW + "Correct!\n".center(80))
 
-                # display points earned for game mode 3 (Beat the Highscore)
+                # display points earned for game mode 3 (Beat the High Score)
                 if self.game_mode == 3:
                     print(f"You earned: {points}"
                           f" point{'s' if points > 1 else ''}\n".center(80))

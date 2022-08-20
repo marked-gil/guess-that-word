@@ -10,7 +10,7 @@ from utility_manager import clear_terminal, blank_lines
 class Scorer:
     """
     Tracks the user's score and number of correct guesses; and provides
-    methods to locally store, retrieve, and reset the highscore; and to
+    methods to locally store, retrieve, and reset the high score; and to
     show user's performance.
     """
     total_score = 0
@@ -41,8 +41,8 @@ class Scorer:
     @staticmethod
     def get_highscore():
         """
-        Retrieves the highscore from the local storage.
-        Returns: saved highscore
+        Retrieves the high score from the local storage.
+        Returns: saved high score
         """
         local_storage = localStoragePy('guessthatword-hiscore')
         hi_score = local_storage.getItem("hi-score")
@@ -51,7 +51,7 @@ class Scorer:
     @staticmethod
     def store_highscore():
         """
-        Stores the highscore in the localStorage.
+        Stores the high score in the localStorage.
         Returns: the local storage
         """
         u_score = Scorer.total_score
@@ -70,7 +70,7 @@ class Scorer:
         """
         Displays the performance of the user.
         Parameter: game_mode
-        Returns: score performance of user (in 'Beat the Highscore' mode)
+        Returns: score performance of user (in 'Beat the High Score' mode)
         """
         clear_terminal()
         total_right_guesses = Scorer.total_correct_guesses
@@ -79,27 +79,27 @@ class Scorer:
               f"word{'s' if total_right_guesses > 1 else ''} "
               "out of 15.\n".center(80))
 
-        # Additional performance result in 'Beat the Highscore' mode
+        # Additional performance result in 'Beat the High Score' mode
         if game_mode == 3:
             u_score = Scorer.total_score
             hi_score = Scorer.get_highscore()
             s_msg = ""
             if hi_score is None:
-                s_msg = f"Your score is: {u_score}. (Saved as highscore.)\n"
+                s_msg = f"Your score is: {u_score}. (Saved as high score.)\n"
                 print(Fore.YELLOW + s_msg.center(80))
             elif int(hi_score) >= u_score:
-                s_msg = f"Your score is: {u_score} || HIGHSCORE: {hi_score}\n"
+                s_msg = f"Your score is: {u_score} || HIGH SCORE: {hi_score}\n"
                 print(Fore.YELLOW + s_msg.center(80))
             elif int(hi_score) < u_score:
-                s_msg = "Congratulations! You've just set the NEW HIGHSCORE: "\
-                      + f"{u_score}\n"
+                s_msg = "Congratulations! You've just set the NEW HIGH SCORE:"\
+                      + f" {u_score}\n"
                 print(Fore.YELLOW + s_msg.center(80))
             return s_msg
 
     @staticmethod
     def validate_to_reset_highscore(score_msg):
         """
-        Prompts user to reset highscore if desired, and validates
+        Prompts user to reset high score if desired, and validates
         the input.
         """
         local_storage = localStoragePy('guessthatword-hiscore')
@@ -107,21 +107,21 @@ class Scorer:
 
         print(blank_lines(3))
         while True:
-            clear_hi_score = input("Do you want to reset the highscore? "
+            clear_hi_score = input("Do you want to reset the high score? "
                                    "['Y' | 'N']:\n".center(80)).lower()
-            # resets highscore
+            # resets high score
             if clear_hi_score == 'y':
                 local_storage.removeItem("hi-score")
                 clear_terminal()
                 print(
                     blank_lines(6) +
                     "++++++++++++++++++++".center(80) +
-                    "Highscore reset!".center(80) +
+                    "High score reset!".center(80) +
                     "++++++++++++++++++++".center(80) +
                     blank_lines(2, "after_line")
                     )
                 break
-            # does not reset highscore
+            # does not reset high score
             if clear_hi_score == 'n':
                 clear_terminal()
                 print(blank_lines(8))

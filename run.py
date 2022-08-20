@@ -32,7 +32,7 @@ def show_instruction():
         "     1. There are 3 modes of the game you can choose to play:\n"
         "        a. Easy Mode - guess 15 EASY words\n"
         "        b. Hard Mode - guess 15 HARD words\n"
-        "        c. Beat the Highscore - guess 15 EASY & HARD words with "
+        "        c. Beat the High Score - guess 15 EASY & HARD words with "
         "scoring\n"
         "     2. A definition will be shown, and you will guess the word it "
         "defines"
@@ -51,17 +51,17 @@ def show_game_modes():
     print(blank_lines(1))
     print("GAME MODES:\n".center(80))
     print("[1] Easy Mode      [2] Hard Mode      "
-          "[3] Beat the Highscore\n\n".center(80))
+          "[3] Beat the High Score\n\n".center(80))
 
 
 def show_scoring_system(mode):
     """
-    Displays the scoring system of the 'Beat the Highscore' game mode
+    Displays the scoring system of the 'Beat the High Score' game mode
     """
     if mode == 3:
         display_logo(LOGO)
         print(blank_lines(2))
-        print("In the 'Beat the Highscore' mode, you earn:".center(80))
+        print("In the 'Beat the High Score' mode, you earn:".center(80))
         print(blank_lines(1))
         print("5 points -- if guess is correct on the 1st try".center(80))
         print("3 points -- if guess is correct on the 2nd try".center(80))
@@ -71,7 +71,7 @@ def show_scoring_system(mode):
 
 def start_hiscore_input_validator(mode):
     """
-    Prompts user to proceed to 'Beat the Highscore' game; validates
+    Prompts user to proceed to 'Beat the High Score' game; validates
     user input, and flashes feedback message if invalid.
     Parameter: game mode number
     """
@@ -203,7 +203,7 @@ def main():
         if see_modes == 'y':
             # shows game modes menu and validates user input
             game_mode_num = game_mode_input_validator()
-            # run only on 'Beat the Highscore' mode
+            # run only on 'Beat the High Score' mode
             show_scoring_system(game_mode_num)
             start_hiscore_input_validator(game_mode_num)
         elif see_modes == 'n':
@@ -214,7 +214,7 @@ def main():
     elif see_instruction == 'n':
         # shows game modes menu and validates user input
         game_mode_num = game_mode_input_validator()
-        # run only on 'Beat the Highscore' mode
+        # run only on 'Beat the High Score' mode
         show_scoring_system(game_mode_num)
         start_hiscore_input_validator(game_mode_num)
     # ******* HOME [end] *******
