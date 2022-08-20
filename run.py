@@ -147,7 +147,7 @@ def play_again_input_validator():
                                  "click the 'Run Program' button at the top."
                                  "\n".center(80) +
                                  Style.RESET_ALL).lower()
-        if play_again_input not in ('y', 'n'):
+        if play_again_input != 'y':
             raise ValueError("Invalid input. Please enter Y only.")
     except ValueError as err:
         clear_terminal()
