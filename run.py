@@ -228,7 +228,8 @@ def main():
     # ******* USER PERFORMANCE [start] *******
     score_msg = Scorer.show_performance(game_mode_num)
 
-    if game_mode_num == 3:
+    # store high score if on game mode 3
+    if game_mode_num == 3 and Scorer.total_score != 0:
         Scorer.store_highscore()
         Scorer.validate_to_reset_highscore(score_msg)
     # ******* USER PERFORMANCE [end] *******
