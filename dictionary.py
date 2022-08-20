@@ -145,6 +145,128 @@ easy_words = [
         "word": "attack",
         "definition": "To set upon or work against forcefully",
     },
+    {
+        "id": "e27",
+        "word": "nomad",
+        "definition": "An individual who roams about",
+    },
+    {
+        "id": "e28",
+        "word": "warehouse",
+        "definition": "A structure or room for the storage of merchandise or "
+        "commodities",
+    },
+    {
+        "id": "e29",
+        "word": "danger",
+        "definition": "Exposure or liability to injury, pain, harm, or loss",
+    },
+    {
+        "id": "e30",
+        "word": "escape",
+        "definition": "To get away",
+    },
+    {
+        "id": "e31",
+        "word": "strong",
+        "definition": "Having or marked by great physical power",
+    },
+    {
+        "id": "e32",
+        "word": "breathe",
+        "definition": "To draw air into and expel it from the lungs",
+    },
+    {
+        "id": "e33",
+        "word": "opportunity",
+        "definition": "A good chance for advancement or progress",
+    },
+    {
+        "id": "e34",
+        "word": "dirty",
+        "definition": "Not clean or pure",
+    },
+    {
+        "id": "e35",
+        "word": "common",
+        "definition": "Belonging to or shared by two or more individuals or "
+        "things or by all",
+    },
+    {
+        "id": "e36",
+        "word": "extreme",
+        "definition": "Going to great or exaggerated lengths",
+    },
+    {
+        "id": "e37",
+        "word": "fever",
+        "definition": "A rise of body temperature above the normal",
+    },
+    {
+        "id": "e38",
+        "word": "healthy",
+        "definition": "Not displaying clinical signs of disease or infection",
+    },
+    {
+        "id": "e39",
+        "word": "opposite",
+        "definition": "Contrary to one another or to a thing specified",
+    },
+    {
+        "id": "e40",
+        "word": "threat",
+        "definition": "An expression of intention to inflict evil, injury, or damage",
+    },
+    {
+        "id": "e41",
+        "word": "simple",
+        "definition": "Of humble origin or modest position",
+    },
+    {
+        "id": "e42",
+        "word": "school",
+        "definition": "An organization that provides instruction",
+    },
+    {
+        "id": "e43",
+        "word": "prevent",
+        "definition": "To keep from happening or existing",
+    },
+    {
+        "id": "e44",
+        "word": "perfect",
+        "definition": "Being entirely without fault or defect",
+    },
+    {
+        "id": "e45",
+        "word": "hungry",
+        "definition": "Feeling an uneasy or painful sensation from lack of food",
+    },
+    {
+        "id": "e46",
+        "word": "accurate",
+        "definition": "Free from error especially as the result of care",
+    },
+    {
+        "id": "e47",
+        "word": "barrier",
+        "definition": "Something material that blocks or is intended to block passage",
+    },
+    {
+        "id": "e48",
+        "word": "complaint",
+        "definition": "Expression of grief, pain, or dissatisfaction",
+    },
+    {
+        "id": "e49",
+        "word": "decline",
+        "definition": "To tend toward an inferior state or weaker condition",
+    },
+    {
+        "id": "e50",
+        "word": "expand",
+        "definition": "To increase the extent, number, volume, or scope of",
+    },
 ]
 
 
@@ -333,8 +455,84 @@ hard_words = [
     },
     {
         "id": "h35",
-        "word": "warehouse",
-        "definition": "A structure or room for the storage of merchandise or "
-        "commodities",
+        "word": "canny",
+        "definition": "clever, shrewd",
+    },
+    {
+        "id": "h36",
+        "word": "aspirant",
+        "definition": "seeking to attain a desired position or status",
+    },
+    {
+        "id": "h37",
+        "word": "abhor",
+        "definition": "To regard with extreme repugnance",
+    },
+    {
+        "id": "h38",
+        "word": "amiable",
+        "definition": "Friendly, sociable, and congenial",
+    },
+    {
+        "id": "h39",
+        "word": "brusque",
+        "definition": "Blunt in manner or speech often to the point of "
+        "ungracious harshness",
+    },
+    {
+        "id": "h40",
+        "word": "coherent",
+        "definition": "Having clarity or intelligibility",
+    },
+    {
+        "id": "h41",
+        "word": "fabricate",
+        "definition": "To make up for the purpose of deception",
+    },
+    {
+        "id": "h42",
+        "word": "haughty",
+        "definition": "Blatantly and disdainfully proud",
+    },
+    {
+        "id": "h43",
+        "word": "indolent",
+        "definition": "Showing an inclination to laziness",
+    },
+    {
+        "id": "h44",
+        "word": "insatiable",
+        "definition": "Incapable of being satisfied",
+    },
+    {
+        "id": "h45",
+        "word": "intrepid",
+        "definition": "Characterized by resolute fearlessness, "
+        "fortitude, and endurance",
+    },
+    {
+        "id": "h46",
+        "word": "gluttony",
+        "definition": "Excess in eating or drinking",
+    },
+    {
+        "id": "h47",
+        "word": "eloquent",
+        "definition": "Marked by forceful and fluent expression",
+    },
+    {
+        "id": "h48",
+        "word": "connive",
+        "definition": "To be indulgent or in secret sympathy",
+    },
+    {
+        "id": "h49",
+        "word": "candor",
+        "definition": "Unreserved, honest, or sincere expression",
+    },
+    {
+        "id": "h50",
+        "word": "callous",
+        "definition": "Feeling no emotion",
     },
 ]
