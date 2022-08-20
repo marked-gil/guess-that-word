@@ -162,6 +162,8 @@ This program uses seven (7) custom Python files and modules.
     * **arts.py**       
     This file contains the ASCII arts, which are mainly used as logos.
 
+* For the external Python packages and built-in modules used in this project, go to the [Technologies Used](#technologies-used) section.
+
 [Back to Table of Contents](#table-of-contents)
 
 ### SURFACE
