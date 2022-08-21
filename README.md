@@ -108,7 +108,7 @@ Using the user stories, I have planned the following features:
         * After each word challenge, the correct word will be displayed along with its definition before proceeding to the next word to guess.
 
 #### **Design Choice:**
-As this is a game played on a terminal, therefore the design option is limited, I still endeavoured to make it as visually appealing, intuitive and simplistic as it can be. This is achieved by using ASCII arts, making the terminal look uncluttered by clearing it after every group of displayed data/information, and providing only necessary data in the terminal at each moment.
+As this is a game played on a terminal, therefore the design options are limited, I still endeavoured to make it as visually appealing, intuitive and simplistic as it can be. This is achieved by using ASCII arts, making the terminal look uncluttered by clearing it after every group of displayed data/information, and providing only necessary data in the terminal at each moment.
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -190,7 +190,7 @@ The [Colorama](https://pypi.org/project/colorama/) library is used to provide co
 
 ### **Game Modes**
 * The different game modes will be shown under the ASCII art logo/title, and the user will be prompted to choose among the options by entering either number '1', '2', or '3'.
-* There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] Beat the High Score. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short, while the **Hard mode** will give relatively difficult or uncommon words, and can sometimes be long. And the **Beat the High Score** mode will be a combination of easy & hard words (the first 8 words are easy, and the rest are hard) with the added feature of a scoring system and high score challenge.     
+* There are 3 game modes that the user can play: [1] Easy mode, [2] Hard mode, and [3] 'Beat the High Score'. Each of these modes will provide 15 words for the user to guess. The **Easy mode** will give easy or common words, and are usually short, while the **Hard mode** will give relatively difficult or uncommon words, and can sometimes be long. And the **'Beat the High Score'** mode will be a combination of easy & hard words (the first 8 words are easy, and the rest are hard) with the added feature of a scoring system and high score challenge.     
 [See 'How to Play' section](#how-to-play)
 ![Game modes screenshot](docs/screeshots/game-modes.png)    
 
@@ -364,7 +364,7 @@ The following are the technologies used in this project:
     * [os](https://docs.python.org/3/library/os.html) - a built-in module to use operating-system-dependent functionality. This is used in the program, along the with `sys` module, to refresh/re-start the program.
     * [sys](https://docs.python.org/3/library/sys.html) - a built-in module where the sys.executable and sys.argv came from, which were passed into the os.execv method to restart the game.
     * [random](https://docs.python.org/3/library/random.html) - a built-in module that generates pseudo-randomness. This was used in adding randomness to the selection of words from the custom dictionary module, and to the randomness of the provision of letters as hints.
-    * [localStoragePy](https://pypi.org/project/localStoragePy/) - an external Python package that allows local storage of data. This is used to locally store the high score, retrieve it, and/or delete it when in the Beat the High Score mode.
+    * [localStoragePy](https://pypi.org/project/localStoragePy/) - an external Python package that allows local storage of data. This is used to locally store the high score, retrieve it, and/or delete it when in the 'Beat the High Score' mode.
     * [colorama](https://pypi.org/project/colorama/) - an external Python package that colors the terminal text. This adds to the aesthetic appeal of the game.
 * Gitpod — the cloud-based IDE (Integrated Developer Environment) used to build this site.
 * Git — as a version control system, was used to monitor and record changes made when building the site. This allowed for the restoration of an earlier version of the code when it was necessary.
@@ -405,5 +405,5 @@ The words and definitions used in this game are taken from [Merriam-Webster](htt
 [Back to Table of Contents](#table-of-contents)
 
 ## ACKNOWLEDGMENT
-* Ms Daisy McGirr, my Code Institute mentor, of her guidance and valuable suggestions in this project.
-* My wife, Kyle, for the full support especially as I burn the midnight oil.
+* Ms Daisy McGirr, my Code Institute mentor, for her guidance and valuable suggestions in this project.
+* My wife, Kyle, for the full support, especially as I burn the midnight oil on numerous occasions to finish this project.
