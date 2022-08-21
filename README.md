@@ -342,7 +342,8 @@ This website is published on [Heroku](https://www.heroku.com). The following wer
 6. Then, on the 'Buildpacks' section, I clicked the 'Add buildpack' button and added python (1st) and nodejs (2nd) - the ordering is important.
 7. Then, I went to the 'Deploy' link and clicked on Github as the Deployment Method.
 8. Below the Deployment Method section is the Connect to Github section. Here I searched for the name of my new app on Github using the search input field provided. When the name of the repository was displayed, I clicked on the 'connect' button.
-9. After a few minutes, it revealed a button to view the deployed website.
+9. After a few minutes, it revealed a button to view the deployed website.      
+[View deployed live website.](https://guess-that-word-game.herokuapp.com)
 
 ### **Cloning from Github**
 To clone the repository for this site, do the following steps:  
