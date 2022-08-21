@@ -47,7 +47,7 @@ ___
 
 ### STRATEGY
 #### Main Goal:
-* The main goal of this game is to test the English vocabulary of its users, and/or help them learn English words while enjoying the excitement and stress-relieving nature of an online game. [View live website here.](https://guess-that-word-game.herokuapp.com/)
+* The main goal of this game is to test the English vocabulary of its users, and help them learn English words while enjoying the excitement and stress-relieving nature of an online game.
 
 #### Target Audience:
 * People who want to test and challenge their English vocabulary.
