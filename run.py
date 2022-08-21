@@ -203,7 +203,7 @@ def main():
         if see_modes == 'y':
             # shows game modes menu and validates user input
             game_mode_num = game_mode_input_validator()
-            # run only on 'Beat the High Score' mode
+            # runs only on 'Beat the High Score' mode
             show_scoring_system(game_mode_num)
             start_hiscore_input_validator(game_mode_num)
         elif see_modes == 'n':
@@ -214,7 +214,7 @@ def main():
     elif see_instruction == 'n':
         # shows game modes menu and validates user input
         game_mode_num = game_mode_input_validator()
-        # run only on 'Beat the High Score' mode
+        # runs only on 'Beat the High Score' mode
         show_scoring_system(game_mode_num)
         start_hiscore_input_validator(game_mode_num)
     # ******* HOME [end] *******
@@ -228,7 +228,7 @@ def main():
     # ******* USER PERFORMANCE [start] *******
     score_msg = Scorer.show_performance(game_mode_num)
 
-    # store high score if on game mode 3
+    # stores high score if on game mode 3
     if game_mode_num == 3 and Scorer.total_score != 0:
         Scorer.store_highscore()
         Scorer.validate_to_reset_highscore(score_msg)

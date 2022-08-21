@@ -27,7 +27,7 @@ class Game:
     @staticmethod
     def _display_game_area(word_def: str, game_mode: int):
         """
-        Returns the game area layout with modified content according to
+        Returns the game area layout with modified content based
         on the game mode selected by the user.
         Parameters: word_def (word definition), game_mode
         """
@@ -238,7 +238,7 @@ class Game:
                 self._display_placeholder(word)
                 print(Fore.YELLOW + "Correct!\n".center(80))
 
-                # display points earned for game mode 3 (Beat the High Score)
+                # displays the earned points for 'Beat the High Score' mode
                 if self.game_mode == 3:
                     print(f"You earned: {points}"
                           f" point{'s' if points > 1 else ''}\n".center(80))
@@ -272,7 +272,7 @@ class Game:
 
         game_continues = True
 
-        # Game ends after 15 words
+        # Game ends after 15 words (the assigned max number of words)
         if len(Word.used_words) == max_num:
             game_continues = False
             prompt_msg = "Enter Y to see your PERFORMANCE: \n"

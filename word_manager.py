@@ -9,7 +9,7 @@ from random import choice
 class Word:
     """
     Creates an instance that randomly selects a word; and it has
-    attributes which includes the definition, id, word length, and
+    attributes which include the definition, id, word length, and
     its placeholder. It also tracks the words that are used in the game.
     """
     used_words = []    # Holds the IDs of used words
